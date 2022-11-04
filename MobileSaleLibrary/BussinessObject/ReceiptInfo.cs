@@ -7,8 +7,16 @@ namespace MobileSaleLibrary.Models
     {
         public int ReceiptId { get; set; }
         public int PhoneId { get; set; }
-        public int Quantity { get; set; }
+        public string PhoneName
+        {
+            get
+            {
+                return Phone.GetPhoneName();
+            }
+        }
         public int SellPricePerUnit { get; set; }
+        public int Quantity { get; set; }
+        
 
         public int Total
         {
@@ -18,13 +26,7 @@ namespace MobileSaleLibrary.Models
             }
         }
 
-        public string PhoneName
-        {
-            get
-            {
-                return Phone.GetPhoneName();
-            }
-        }
+        
         public virtual Phone Phone { get; set; }
         public virtual Receipt Receipt { get; set; }
     }
