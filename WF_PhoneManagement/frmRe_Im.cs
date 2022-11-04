@@ -73,11 +73,15 @@ namespace WF_PhoneManagement
             dgvIm_DetailList.Columns["Import"].Visible = false;
             dgvIm_DetailList.Columns["Phone"].Visible = false;
             cbbRe_PID.DataBindings.Add("Text", recInfo, "PhoneId");
+            txtRe_PName.DataBindings.Add("Text", recInfo, "PhoneName");
             txtRe_PPrice.DataBindings.Add("Text", recInfo, "SellPricePerUnit");
             nudRe_PQuantity.DataBindings.Add("Text", recInfo, "Quantity");
+            txtRe_PTotal.DataBindings.Add("Text", recInfo, "Total");
             cbbIm_PID.DataBindings.Add("Text", impInfo, "PhoneId");
+            txtRe_PName.DataBindings.Add("Text", impInfo, "PhoneName");
             txtIm_PPrice.DataBindings.Add("Text", impInfo, "BuyPricePerUnit");
             nudIm_PQuantity.DataBindings.Add("Text", impInfo, "Quantity");
+            txtRe_PTotal.DataBindings.Add("Text", impInfo, "Total");
             control = "Default";
         }
         public void AddSettings()
