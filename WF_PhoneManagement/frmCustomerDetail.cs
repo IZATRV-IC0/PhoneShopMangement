@@ -77,8 +77,6 @@ namespace WF_PhoneManagement
                         customer.Gender = "X";
                     }
                 }
-                ResetForm();
-                this.Close();
             }
             catch (Exception ex)
             {

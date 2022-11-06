@@ -17,5 +17,7 @@ namespace MobileSaleLibrary.Models
         public string CustomerAddress { get; set; }
 
         public virtual ICollection<Receipt> TblReceipts { get; set; }
+
+        
     }
 }

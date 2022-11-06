@@ -18,7 +18,7 @@ namespace WF_PhoneManagement
 
         List<Object> list;
 
-        public List<String> control;
+        public String control;
 
         public frmView()
         {

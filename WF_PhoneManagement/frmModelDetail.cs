@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WF_PhoneManagement
 {
-    public partial class ModelDetail : Form
+    public partial class frmModelDetail : Form
     {
-        public ModelDetail()
+        public frmModelDetail()
         {
             InitializeComponent();
         }

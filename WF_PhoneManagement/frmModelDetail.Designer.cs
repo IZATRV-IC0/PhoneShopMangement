@@ -1,6 +1,6 @@
 ﻿namespace WF_PhoneManagement
 {
-    partial class ModelDetail
+    partial class frmModelDetail
     {
         /// <summary>
         /// Required designer variable.
