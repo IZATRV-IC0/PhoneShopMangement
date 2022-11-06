@@ -45,5 +45,20 @@ namespace WF_PhoneManagement
         {
             hasClosed = true;
         }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPhone_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

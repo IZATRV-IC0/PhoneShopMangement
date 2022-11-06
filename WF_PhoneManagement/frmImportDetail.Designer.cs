@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
             this.nudRe_PQuantity = new System.Windows.Forms.NumericUpDown();
             this.lblRePID = new System.Windows.Forms.Label();
             this.lblRePTotal = new System.Windows.Forms.Label();
@@ -40,28 +40,28 @@
             this.txtRe_PPrice = new System.Windows.Forms.TextBox();
             this.lblRePPrice = new System.Windows.Forms.Label();
             this.txtRe_PTotal = new System.Windows.Forms.TextBox();
+            this.btnPhone = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudRe_PQuantity)).BeginInit();
             this.SuspendLayout();
             // 
-            // button2
+            // btnCancel
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(189, 254);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(189, 254);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 12;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnOK
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(108, 254);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnOK.Location = new System.Drawing.Point(108, 254);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.TabIndex = 13;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
             // 
             // nudRe_PQuantity
             // 
@@ -167,6 +167,16 @@
             this.txtRe_PTotal.Size = new System.Drawing.Size(121, 23);
             this.txtRe_PTotal.TabIndex = 16;
             // 
+            // btnPhone
+            // 
+            this.btnPhone.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnPhone.Location = new System.Drawing.Point(256, 25);
+            this.btnPhone.Name = "btnPhone";
+            this.btnPhone.Size = new System.Drawing.Size(91, 23);
+            this.btnPhone.TabIndex = 13;
+            this.btnPhone.Text = "Phone...";
+            this.btnPhone.UseVisualStyleBackColor = true;
+            // 
             // frmImportDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -182,8 +192,9 @@
             this.Controls.Add(this.txtRe_PPrice);
             this.Controls.Add(this.lblRePPrice);
             this.Controls.Add(this.txtRe_PTotal);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnPhone);
+            this.Controls.Add(this.btnOK);
             this.Name = "frmImportDetail";
             this.Text = "Import Detail";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmImportDetail_FormClosing);
@@ -197,8 +208,8 @@
 
         #endregion
 
-        private Button button2;
-        private Button button1;
+        private Button btnCancel;
+        private Button btnOK;
         private NumericUpDown nudRe_PQuantity;
         private Label lblRePID;
         private Label lblRePTotal;
@@ -209,5 +220,6 @@
         private TextBox txtRe_PPrice;
         private Label lblRePPrice;
         private TextBox txtRe_PTotal;
+        private Button btnPhone;
     }
 }

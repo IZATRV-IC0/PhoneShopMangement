@@ -392,7 +392,6 @@
             this.dgvIm_DetailList.RowTemplate.Height = 25;
             this.dgvIm_DetailList.Size = new System.Drawing.Size(691, 345);
             this.dgvIm_DetailList.TabIndex = 13;
-            this.dgvIm_DetailList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIm_DetailList_CellContentClick);
             // 
             // txtImID
             // 
@@ -826,7 +825,6 @@
             this.dgvRe_DetailList.RowTemplate.Height = 25;
             this.dgvRe_DetailList.Size = new System.Drawing.Size(691, 345);
             this.dgvRe_DetailList.TabIndex = 13;
-            this.dgvRe_DetailList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRe_DetailList_CellContentClick);
             // 
             // tabpgImport
             // 
