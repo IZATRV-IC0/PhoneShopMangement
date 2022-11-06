@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace WF_PhoneManagement
 {
@@ -52,6 +53,10 @@ namespace WF_PhoneManagement
 
         private void btnRI_Click(object sender, EventArgs e)
         {
+            foreach (Control c in frmRe_Im.Controls)
+            {
+                c.DataBindings.Clear();
+            }
             this.Hide();
             frmRe_Im.DefaultSettings();
             frmRe_Im.AddSettings();
