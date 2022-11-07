@@ -77,6 +77,7 @@ namespace WF_PhoneManagement
         private void btnSales_Click(object sender, EventArgs e)
         {
             this.Hide();
+            frmView.control = "Sales";
             frmView.ShowDialog();
             while (!frmView.hasClosed) { }
             this.Show();

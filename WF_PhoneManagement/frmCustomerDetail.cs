@@ -17,93 +17,37 @@ namespace WF_PhoneManagement
     public partial class frmCustomerDetail : Form
     {
         public bool hasClosed;
-        Customer? customer;
+        public string dataString = "";
 
         public frmCustomerDetail()
         {
             InitializeComponent();
-            ResetForm();
-            ResetData();
-        }
-
-        public Customer? GetCustomer()
-        {
-            return customer;
-        }
-
-        public void ResetData()
-        {
-            customer = new Customer();
         }
 
         public void ResetForm()
         {
-            txtAddress.Text = "";
-            txtID.Text = "";
-            txtName.Text = "";
-            txtPhone.Text = "";
+            foreach (TextBox txt in this.Controls)
+            {
+                txt.Text = "";
+            }
+            dataString = "";
         }
 
 
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            try
-            {
-                DialogResult result = MessageBox.Show("Do you want to apply changes?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.No)
-                {
-                    throw new Exception("Cancelled.");
-                }
-                customer = new Customer();
-                if (!txtID.Text.Equals(""))
-                {
-                    customer.CustomerId = Int32.Parse(txtID.Text);
-                }
-                customer.CustomerName = txtName.Text;
-                customer.CustomerPhoneNumber = txtPhone.Text;
-                customer.CustomerAddress = txtAddress.Text;
-                if (rbtn_Male.Checked)
-                {
-                    customer.Gender = "Male";
-                } 
-                else
-                {
-                    if (rbtn_Female.Checked)
-                    {
-                        customer.Gender = "Female";
-                    } 
-                    else
-                    {
-                        customer.Gender = "X";
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                if (ex.Message.Equals("Cancelled."))
-                {
-                    MessageBox.Show("Receive request. " + ex, "Abort", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                }
-                else
-                {
-                    if (ex is ArgumentException || ex is FormatException || ex is OverflowException)
-                    {
-                        MessageBox.Show("Error while parse. Check text box ID and Parse method and try again.\n"
-                                        + "Info: " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error occured.\n"
-                                        + "Info: " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                customer = null;
-            }
+            dataString = txtID.Text + ','
+                        + txtName.Text + ','
+                        + txtPhone.Text + ','
+                        + txtAddress.Text + ',';
+            if (rbtn_Male.Checked) { dataString += "Male"; }
+            else if (rbtn_Female.Checked) { dataString += "Female"; }
+            else { dataString += "X"; }
+            dataString.Trim();
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
-            customer = null;
             this.Close();
         }
 
@@ -145,6 +89,12 @@ namespace WF_PhoneManagement
             {
                 rbtn_X.Checked = false;
             }
+        }
+
+        private void frmCustomerDetail_Load(object sender, EventArgs e)
+        {
+            ResetForm();
+            this.hasClosed = false;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MobileSaleLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,25 +8,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace WF_PhoneManagement
 {
     public partial class frmSupplierDetail : Form
     {
-        bool hasClosed;
+        public bool hasClosed;
+        public string dataString = "";
         public frmSupplierDetail()
         {
             InitializeComponent();
         }
 
-        private void LoadMethod()
+        public void ResetForm()
         {
-
+            foreach (TextBox txt in this.Controls)
+            {
+                txt.Text = "";
+            }
+            dataString = "";
         }
 
         private void frmSupplierDetail_Load(object sender, EventArgs e)
         {
-            LoadMethod();
+            ResetForm();
             hasClosed = false;
         }
 
@@ -41,12 +48,16 @@ namespace WF_PhoneManagement
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            dataString = txtSupplierID.Text + ','
+                        + txtSupplierName.Text + ','
+                        + txtPhone.Text + ','
+                        + txtAddress.Text;
+            dataString.Trim();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }

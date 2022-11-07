@@ -183,6 +183,7 @@
             this.Controls.Add(this.txtName);
             this.Name = "frmCustomerDetail";
             this.Text = "Customer Detail";
+            this.Load += new System.EventHandler(this.frmCustomerDetail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
