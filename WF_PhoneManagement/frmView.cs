@@ -98,8 +98,8 @@ namespace WF_PhoneManagement
 
         internal class Sales
         {
-            public DateTime Date;
-            public int? Total;
+            public DateTime Date { get; set; }
+            public int? Total { get; set; }
 
             public Sales()
             {
@@ -120,7 +120,6 @@ namespace WF_PhoneManagement
             
             Slist = new List<Sales>();
             //Slist.Clear();
-            Sales ss = new Sales();
             IReceiptRepository rRepos = new ReceiptRepository();
             IReceiptInfoRepository rInfoRepos = new ReceiptInfoRepository();
             rInfoRepos.GetReceiptInfoList();
@@ -137,24 +136,24 @@ namespace WF_PhoneManagement
                                             Date = receipt.ReceiptDate
                                         }
                                         ).ToList();
-            
-            foreach (DateTime date in (from date in rIrJoinList
-                                       select date.Date).Distinct())
+            var DateList = (from date in rIrJoinList
+                            select date.Date).Distinct();
+            List<Sales> listSales = new List<Sales>();
+            foreach (DateTime date in DateList)
             {
-                ss.Date = date;
-                Slist.Add(ss);
+                listSales.Add(new Sales(date));
             }
-            foreach (Sales sales in Slist)
+            foreach (Sales s in listSales)
             {
                 int temp = (from temporarily in rIrJoinList
-                            where temporarily.Date.Equals(sales.Date)
+                            where temporarily.Date.Equals(s.Date)
                             select temporarily.Total).Sum();
-                sales.Total = temp;
-                MessageBox.Show(sales.ToString());
+                s.Total = temp;
+                MessageBox.Show(s.ToString());
             }
-            source.DataSource = Slist.ToList();
-            //dgvShowList.DataSource = null;
-            dgvShowList.DataSource = source;
+            source.DataSource = DateList;
+            dgvShowList.DataSource = null;
+            dgvShowList.DataSource = listSales;
             hasClosed = false;
         }
 
