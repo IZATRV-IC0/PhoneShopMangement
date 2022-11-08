@@ -93,8 +93,12 @@ namespace WF_PhoneManagement
 
         private void frmCustomerDetail_Load(object sender, EventArgs e)
         {
-            ResetForm();
             this.hasClosed = false;
+        }
+
+        private void frmCustomerDetail_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            hasClosed = true;
         }
     }
 }

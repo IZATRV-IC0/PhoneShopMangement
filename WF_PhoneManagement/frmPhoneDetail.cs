@@ -12,9 +12,31 @@ namespace WF_PhoneManagement
 {
     public partial class frmPhoneDetail : Form
     {
+        public bool hasClosed;
+        public string dataString = "";
         public frmPhoneDetail()
         {
             InitializeComponent();
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void frmPhoneDetail_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            hasClosed = true;
+        }
+
+        private void frmPhoneDetail_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

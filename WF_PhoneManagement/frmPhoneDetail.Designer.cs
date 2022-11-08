@@ -125,6 +125,7 @@
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -134,6 +135,7 @@
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // label6
             // 
@@ -255,9 +257,12 @@
             this.Controls.Add(this.txtModelName);
             this.Controls.Add(this.txtPhoneName);
             this.Controls.Add(this.txtPhoneID);
+            this.Enabled = false;
             this.Name = "frmPhoneDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phone Detail";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPhoneDetail_FormClosed);
+            this.Load += new System.EventHandler(this.frmPhoneDetail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

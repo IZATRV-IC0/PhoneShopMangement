@@ -30,18 +30,18 @@
         {
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.nudRe_PQuantity = new System.Windows.Forms.NumericUpDown();
+            this.nud_PQuantity = new System.Windows.Forms.NumericUpDown();
             this.lblRePID = new System.Windows.Forms.Label();
             this.lblRePTotal = new System.Windows.Forms.Label();
-            this.cbbRe_PID = new System.Windows.Forms.ComboBox();
+            this.cbb_PID = new System.Windows.Forms.ComboBox();
             this.lblRePName = new System.Windows.Forms.Label();
             this.lblRePQuantity = new System.Windows.Forms.Label();
-            this.txtRe_PName = new System.Windows.Forms.TextBox();
-            this.txtRe_PPrice = new System.Windows.Forms.TextBox();
+            this.txt_PName = new System.Windows.Forms.TextBox();
+            this.txt_PPrice = new System.Windows.Forms.TextBox();
             this.lblRePPrice = new System.Windows.Forms.Label();
-            this.txtRe_PTotal = new System.Windows.Forms.TextBox();
+            this.txt_PTotal = new System.Windows.Forms.TextBox();
             this.btnPhone = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRe_PQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_PQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -53,6 +53,7 @@
             this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 
@@ -62,20 +63,21 @@
             this.btnOK.TabIndex = 13;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // nudRe_PQuantity
+            // nud_PQuantity
             // 
-            this.nudRe_PQuantity.Enabled = false;
-            this.nudRe_PQuantity.Location = new System.Drawing.Point(115, 154);
-            this.nudRe_PQuantity.Minimum = new decimal(new int[] {
+            this.nud_PQuantity.Enabled = false;
+            this.nud_PQuantity.Location = new System.Drawing.Point(115, 154);
+            this.nud_PQuantity.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.nudRe_PQuantity.Name = "nudRe_PQuantity";
-            this.nudRe_PQuantity.Size = new System.Drawing.Size(120, 23);
-            this.nudRe_PQuantity.TabIndex = 23;
-            this.nudRe_PQuantity.Value = new decimal(new int[] {
+            this.nud_PQuantity.Name = "nud_PQuantity";
+            this.nud_PQuantity.Size = new System.Drawing.Size(120, 23);
+            this.nud_PQuantity.TabIndex = 23;
+            this.nud_PQuantity.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -101,14 +103,14 @@
             this.lblRePTotal.TabIndex = 19;
             this.lblRePTotal.Text = "Total:";
             // 
-            // cbbRe_PID
+            // cbb_PID
             // 
-            this.cbbRe_PID.Enabled = false;
-            this.cbbRe_PID.FormattingEnabled = true;
-            this.cbbRe_PID.Location = new System.Drawing.Point(114, 26);
-            this.cbbRe_PID.Name = "cbbRe_PID";
-            this.cbbRe_PID.Size = new System.Drawing.Size(121, 23);
-            this.cbbRe_PID.TabIndex = 17;
+            this.cbb_PID.Enabled = false;
+            this.cbb_PID.FormattingEnabled = true;
+            this.cbb_PID.Location = new System.Drawing.Point(114, 26);
+            this.cbb_PID.Name = "cbb_PID";
+            this.cbb_PID.Size = new System.Drawing.Size(121, 23);
+            this.cbb_PID.TabIndex = 17;
             // 
             // lblRePName
             // 
@@ -130,23 +132,23 @@
             this.lblRePQuantity.TabIndex = 21;
             this.lblRePQuantity.Text = "Quantity:";
             // 
-            // txtRe_PName
+            // txt_PName
             // 
-            this.txtRe_PName.Enabled = false;
-            this.txtRe_PName.Location = new System.Drawing.Point(114, 67);
-            this.txtRe_PName.Name = "txtRe_PName";
-            this.txtRe_PName.ReadOnly = true;
-            this.txtRe_PName.Size = new System.Drawing.Size(233, 23);
-            this.txtRe_PName.TabIndex = 14;
+            this.txt_PName.Enabled = false;
+            this.txt_PName.Location = new System.Drawing.Point(114, 67);
+            this.txt_PName.Name = "txt_PName";
+            this.txt_PName.ReadOnly = true;
+            this.txt_PName.Size = new System.Drawing.Size(233, 23);
+            this.txt_PName.TabIndex = 14;
             // 
-            // txtRe_PPrice
+            // txt_PPrice
             // 
-            this.txtRe_PPrice.Enabled = false;
-            this.txtRe_PPrice.Location = new System.Drawing.Point(114, 109);
-            this.txtRe_PPrice.Name = "txtRe_PPrice";
-            this.txtRe_PPrice.ReadOnly = true;
-            this.txtRe_PPrice.Size = new System.Drawing.Size(121, 23);
-            this.txtRe_PPrice.TabIndex = 15;
+            this.txt_PPrice.Enabled = false;
+            this.txt_PPrice.Location = new System.Drawing.Point(114, 109);
+            this.txt_PPrice.Name = "txt_PPrice";
+            this.txt_PPrice.ReadOnly = true;
+            this.txt_PPrice.Size = new System.Drawing.Size(121, 23);
+            this.txt_PPrice.TabIndex = 15;
             // 
             // lblRePPrice
             // 
@@ -158,14 +160,14 @@
             this.lblRePPrice.TabIndex = 22;
             this.lblRePPrice.Text = "Price:";
             // 
-            // txtRe_PTotal
+            // txt_PTotal
             // 
-            this.txtRe_PTotal.Enabled = false;
-            this.txtRe_PTotal.Location = new System.Drawing.Point(114, 199);
-            this.txtRe_PTotal.Name = "txtRe_PTotal";
-            this.txtRe_PTotal.ReadOnly = true;
-            this.txtRe_PTotal.Size = new System.Drawing.Size(121, 23);
-            this.txtRe_PTotal.TabIndex = 16;
+            this.txt_PTotal.Enabled = false;
+            this.txt_PTotal.Location = new System.Drawing.Point(114, 199);
+            this.txt_PTotal.Name = "txt_PTotal";
+            this.txt_PTotal.ReadOnly = true;
+            this.txt_PTotal.Size = new System.Drawing.Size(121, 23);
+            this.txt_PTotal.TabIndex = 16;
             // 
             // btnPhone
             // 
@@ -182,25 +184,24 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(389, 289);
-            this.Controls.Add(this.nudRe_PQuantity);
+            this.Controls.Add(this.nud_PQuantity);
             this.Controls.Add(this.lblRePID);
             this.Controls.Add(this.lblRePTotal);
-            this.Controls.Add(this.cbbRe_PID);
+            this.Controls.Add(this.cbb_PID);
             this.Controls.Add(this.lblRePName);
             this.Controls.Add(this.lblRePQuantity);
-            this.Controls.Add(this.txtRe_PName);
-            this.Controls.Add(this.txtRe_PPrice);
+            this.Controls.Add(this.txt_PName);
+            this.Controls.Add(this.txt_PPrice);
             this.Controls.Add(this.lblRePPrice);
-            this.Controls.Add(this.txtRe_PTotal);
+            this.Controls.Add(this.txt_PTotal);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnPhone);
             this.Controls.Add(this.btnOK);
             this.Name = "frmImportDetail";
             this.Text = "Import Detail";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmImportDetail_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmImportDetail_FormClosed);
             this.Load += new System.EventHandler(this.frmImportDetail_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.nudRe_PQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_PQuantity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,16 +211,16 @@
 
         private Button btnCancel;
         private Button btnOK;
-        private NumericUpDown nudRe_PQuantity;
+        private NumericUpDown nud_PQuantity;
         private Label lblRePID;
         private Label lblRePTotal;
-        private ComboBox cbbRe_PID;
+        private ComboBox cbb_PID;
         private Label lblRePName;
         private Label lblRePQuantity;
-        private TextBox txtRe_PName;
-        private TextBox txtRe_PPrice;
+        private TextBox txt_PName;
+        private TextBox txt_PPrice;
         private Label lblRePPrice;
-        private TextBox txtRe_PTotal;
+        private TextBox txt_PTotal;
         private Button btnPhone;
     }
 }

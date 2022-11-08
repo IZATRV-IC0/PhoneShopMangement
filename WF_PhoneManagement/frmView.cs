@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MobileSaleLibrary.Repository.IRepository;
+using MobileSaleLibrary.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.EntityFrameworkCore;
+using MobileSaleLibrary.DataAccess;
 
 namespace WF_PhoneManagement
 {
@@ -92,9 +96,65 @@ namespace WF_PhoneManagement
             hasClosed = true;
         }
 
+        internal class Sales
+        {
+            public DateTime Date;
+            public int? Total;
+
+            public Sales()
+            {
+
+            }
+            public Sales(DateTime date) { Date = date; }
+            public override string ToString()
+            {
+                return "Date=" + Date + ",Total=" + Total;
+            }
+        }
+
+
         private void frmView_Load(object sender, EventArgs e)
         {
-            LoadMethod();
+            List<Sales> Slist;
+            BindingSource source = new BindingSource();
+            
+            Slist = new List<Sales>();
+            //Slist.Clear();
+            Sales ss = new Sales();
+            IReceiptRepository rRepos = new ReceiptRepository();
+            IReceiptInfoRepository rInfoRepos = new ReceiptInfoRepository();
+            rInfoRepos.GetReceiptInfoList();
+            var rIList = rInfoRepos.GetReceiptInfoList().ToList();
+            var rList = rRepos.GetReceiptList().ToList();
+            var rIrJoinList = rIList.Join(rList,
+                                        receiptInfo => receiptInfo.ReceiptId,
+                                        receipt => receipt.ReceiptId,
+                                        (receiptInfo, receipt) => new
+                                        {
+                                            RecID = receiptInfo.ReceiptId,
+                                            PID = receiptInfo.PhoneId,
+                                            Total = receiptInfo.Total,
+                                            Date = receipt.ReceiptDate
+                                        }
+                                        ).ToList();
+            
+            foreach (DateTime date in (from date in rIrJoinList
+                                       select date.Date).Distinct())
+            {
+                ss.Date = date;
+                Slist.Add(ss);
+            }
+            foreach (Sales sales in Slist)
+            {
+                int temp = (from temporarily in rIrJoinList
+                            where temporarily.Date.Equals(sales.Date)
+                            select temporarily.Total).Sum();
+                sales.Total = temp;
+                MessageBox.Show(sales.ToString());
+            }
+            source.DataSource = Slist.ToList();
+            //dgvShowList.DataSource = null;
+            dgvShowList.DataSource = source;
             hasClosed = false;
         }
 

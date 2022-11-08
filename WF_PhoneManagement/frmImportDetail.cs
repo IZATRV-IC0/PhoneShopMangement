@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace WF_PhoneManagement
 {
@@ -15,37 +16,44 @@ namespace WF_PhoneManagement
     public partial class frmImportDetail : Form
     {
         public bool hasClosed;
+        public string dataString = "";
         
         public frmImportDetail()
         {
             InitializeComponent();
         }
 
-        private void LoadMethod()
+        public void ResetForm()
         {
-
-        }
-
-        public ImportInfo GetImportInfo()
-        {
-            ImportInfo imInfo = new ImportInfo();
-            return imInfo;
+            foreach (TextBox txt in this.Controls)
+            {
+                txt.Text = "";
+            }
+            dataString = "";
         }
 
         private void frmImportDetail_Load(object sender, EventArgs e)
         {
-            LoadMethod();
             hasClosed = false;
         }
 
-        private void frmImportDetail_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
 
         private void frmImportDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
             hasClosed = true;
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            dataString = cbb_PID.Text + ','
+                        + txt_PPrice.Text + ','
+                        + nud_PQuantity.Text;
+            dataString.Trim();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

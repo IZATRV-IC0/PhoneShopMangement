@@ -50,6 +50,7 @@
             this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 
@@ -59,6 +60,7 @@
             this.btnOK.TabIndex = 14;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // label6
             // 
@@ -140,7 +142,7 @@
             this.txtModelName.Size = new System.Drawing.Size(180, 23);
             this.txtModelName.TabIndex = 7;
             // 
-            // ModelDetail
+            // frmModelDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -157,8 +159,10 @@
             this.Controls.Add(this.txtYearOfWarranty);
             this.Controls.Add(this.txtOrigin);
             this.Controls.Add(this.txtModelName);
-            this.Name = "ModelDetail";
+            this.Name = "frmModelDetail";
             this.Text = "Model Detail";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmModelDetail_FormClosed);
+            this.Load += new System.EventHandler(this.frmModelDetail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

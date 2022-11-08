@@ -436,7 +436,7 @@ namespace WF_PhoneManagement
         }
         private void btnIm_PAdd_Click(object sender, EventArgs e)
         {
-            frmImportDetail ImDetail = new frmImportDetail();
+            /*frmImportDetail ImDetail = new frmImportDetail();
             ImDetail.ShowDialog();
             while (!ImDetail.hasClosed)
             {
@@ -446,11 +446,11 @@ namespace WF_PhoneManagement
                 impInfo.Add(ImDetail.GetImportInfo());
                 MessageBox.Show("Add successfully.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
-            LoadMethod();
+            LoadMethod();*/
         }
         private void btnIm_PUpdate_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 frmImportDetail ImDetail = new frmImportDetail();
                 ImDetail.ShowDialog();
@@ -484,7 +484,7 @@ namespace WF_PhoneManagement
             {
                 MessageBox.Show("Exception:\n" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            LoadMethod();
+            LoadMethod();*/
         }
 
         private void btnIm_PDelete_Click(object sender, EventArgs e)
