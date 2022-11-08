@@ -21,7 +21,8 @@ namespace WF_PhoneManagement
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-
+            dataString = txtPhoneID.Text + ',' + txtModelID.Text + ',' + txtPrice.Text + ',' + txtType.Text;
+            dataString.Trim();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -36,7 +37,7 @@ namespace WF_PhoneManagement
 
         private void frmPhoneDetail_Load(object sender, EventArgs e)
         {
-
+            hasClosed = false;
         }
     }
 }

@@ -197,7 +197,6 @@
             this.Name = "frmReceiptDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Receipt Detail";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmReceiptDetail_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmReceiptDetail_FormClosed);
             this.Load += new System.EventHandler(this.frmReceiptDetail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudRe_PQuantity)).EndInit();

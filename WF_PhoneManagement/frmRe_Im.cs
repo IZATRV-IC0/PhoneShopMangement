@@ -362,7 +362,7 @@ namespace WF_PhoneManagement
                 {
                     int i = 0;
                     bool findCurr = false;
-                    while (i < recInfo.Count && !findCurr)
+                    while (recInfo != null && i < recInfo.Count && !findCurr)
                     {
                         if (recInfo[i].PhoneId == Int32.Parse(cbbRe_PID.Text))
                         {
