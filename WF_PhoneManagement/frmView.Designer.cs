@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbbListPick = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearchInfo = new System.Windows.Forms.TextBox();
-            this.cbbBox = new System.Windows.Forms.ComboBox();
             this.lblListPick = new System.Windows.Forms.Label();
             this.dgvShowList = new System.Windows.Forms.DataGridView();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -45,28 +43,14 @@
             this.rbtnSortDsc = new System.Windows.Forms.RadioButton();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnPick = new System.Windows.Forms.Button();
+            this.lboxListPick = new System.Windows.Forms.ListBox();
+            this.lboxBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).BeginInit();
             this.SuspendLayout();
             // 
-            // cbbListPick
-            // 
-            this.cbbListPick.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbbListPick.FormattingEnabled = true;
-            this.cbbListPick.Items.AddRange(new object[] {
-            "Receipt",
-            "Import",
-            "Customer",
-            "Supplier",
-            "Model",
-            "Phone"});
-            this.cbbListPick.Location = new System.Drawing.Point(136, 64);
-            this.cbbListPick.Name = "cbbListPick";
-            this.cbbListPick.Size = new System.Drawing.Size(121, 23);
-            this.cbbListPick.TabIndex = 0;
-            // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(658, 99);
+            this.btnSearch.Location = new System.Drawing.Point(658, 151);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 1;
@@ -76,24 +60,15 @@
             // 
             // txtSearchInfo
             // 
-            this.txtSearchInfo.Location = new System.Drawing.Point(434, 99);
+            this.txtSearchInfo.Location = new System.Drawing.Point(434, 151);
             this.txtSearchInfo.Name = "txtSearchInfo";
             this.txtSearchInfo.Size = new System.Drawing.Size(187, 23);
             this.txtSearchInfo.TabIndex = 2;
             // 
-            // cbbBox
-            // 
-            this.cbbBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbbBox.FormattingEnabled = true;
-            this.cbbBox.Location = new System.Drawing.Point(434, 18);
-            this.cbbBox.Name = "cbbBox";
-            this.cbbBox.Size = new System.Drawing.Size(121, 23);
-            this.cbbBox.TabIndex = 3;
-            // 
             // lblListPick
             // 
             this.lblListPick.AutoSize = true;
-            this.lblListPick.Location = new System.Drawing.Point(75, 67);
+            this.lblListPick.Location = new System.Drawing.Point(75, 48);
             this.lblListPick.Name = "lblListPick";
             this.lblListPick.Size = new System.Drawing.Size(28, 15);
             this.lblListPick.TabIndex = 4;
@@ -102,7 +77,7 @@
             // dgvShowList
             // 
             this.dgvShowList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvShowList.Location = new System.Drawing.Point(75, 147);
+            this.dgvShowList.Location = new System.Drawing.Point(75, 202);
             this.dgvShowList.Name = "dgvShowList";
             this.dgvShowList.RowTemplate.Height = 25;
             this.dgvShowList.Size = new System.Drawing.Size(658, 238);
@@ -110,7 +85,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(353, 430);
+            this.btnEdit.Location = new System.Drawing.Point(362, 461);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 8;
@@ -120,7 +95,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(497, 430);
+            this.btnDelete.Location = new System.Drawing.Point(506, 461);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 9;
@@ -130,7 +105,7 @@
             // 
             // btnSort
             // 
-            this.btnSort.Location = new System.Drawing.Point(658, 59);
+            this.btnSort.Location = new System.Drawing.Point(658, 111);
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(75, 23);
             this.btnSort.TabIndex = 10;
@@ -141,7 +116,7 @@
             // lblField
             // 
             this.lblField.AutoSize = true;
-            this.lblField.Location = new System.Drawing.Point(353, 22);
+            this.lblField.Location = new System.Drawing.Point(353, 48);
             this.lblField.Name = "lblField";
             this.lblField.Size = new System.Drawing.Size(58, 15);
             this.lblField.TabIndex = 11;
@@ -150,7 +125,7 @@
             // lblSearchInfo
             // 
             this.lblSearchInfo.AutoSize = true;
-            this.lblSearchInfo.Location = new System.Drawing.Point(353, 102);
+            this.lblSearchInfo.Location = new System.Drawing.Point(353, 154);
             this.lblSearchInfo.Name = "lblSearchInfo";
             this.lblSearchInfo.Size = new System.Drawing.Size(33, 15);
             this.lblSearchInfo.TabIndex = 11;
@@ -158,7 +133,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(638, 430);
+            this.btnExit.Location = new System.Drawing.Point(647, 461);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 12;
@@ -168,7 +143,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(217, 430);
+            this.btnAdd.Location = new System.Drawing.Point(226, 461);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 8;
@@ -180,7 +155,7 @@
             // 
             this.rbtnSortAsc.AutoSize = true;
             this.rbtnSortAsc.Checked = true;
-            this.rbtnSortAsc.Location = new System.Drawing.Point(382, 61);
+            this.rbtnSortAsc.Location = new System.Drawing.Point(382, 113);
             this.rbtnSortAsc.Name = "rbtnSortAsc";
             this.rbtnSortAsc.Size = new System.Drawing.Size(81, 19);
             this.rbtnSortAsc.TabIndex = 13;
@@ -191,7 +166,7 @@
             // rbtnSortDsc
             // 
             this.rbtnSortDsc.AutoSize = true;
-            this.rbtnSortDsc.Location = new System.Drawing.Point(516, 61);
+            this.rbtnSortDsc.Location = new System.Drawing.Point(516, 113);
             this.rbtnSortDsc.Name = "rbtnSortDsc";
             this.rbtnSortDsc.Size = new System.Drawing.Size(87, 19);
             this.rbtnSortDsc.TabIndex = 14;
@@ -201,7 +176,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(658, 17);
+            this.btnRefresh.Location = new System.Drawing.Point(658, 59);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 10;
@@ -211,7 +186,7 @@
             // 
             // btnPick
             // 
-            this.btnPick.Location = new System.Drawing.Point(75, 430);
+            this.btnPick.Location = new System.Drawing.Point(84, 461);
             this.btnPick.Name = "btnPick";
             this.btnPick.Size = new System.Drawing.Size(75, 23);
             this.btnPick.TabIndex = 8;
@@ -219,11 +194,39 @@
             this.btnPick.UseVisualStyleBackColor = true;
             this.btnPick.Click += new System.EventHandler(this.btnPick_Click);
             // 
+            // lboxListPick
+            // 
+            this.lboxListPick.FormattingEnabled = true;
+            this.lboxListPick.ItemHeight = 15;
+            this.lboxListPick.Items.AddRange(new object[] {
+            "Receipt",
+            "Import",
+            "Customer",
+            "Supplier",
+            "Model",
+            "Phone"});
+            this.lboxListPick.Location = new System.Drawing.Point(124, 18);
+            this.lboxListPick.Name = "lboxListPick";
+            this.lboxListPick.Size = new System.Drawing.Size(120, 94);
+            this.lboxListPick.TabIndex = 15;
+            this.lboxListPick.SelectedIndexChanged += new System.EventHandler(this.lboxListPick_SelectedIndexChanged);
+            // 
+            // lboxBox
+            // 
+            this.lboxBox.FormattingEnabled = true;
+            this.lboxBox.ItemHeight = 15;
+            this.lboxBox.Location = new System.Drawing.Point(452, 18);
+            this.lboxBox.Name = "lboxBox";
+            this.lboxBox.Size = new System.Drawing.Size(120, 79);
+            this.lboxBox.TabIndex = 16;
+            // 
             // frmView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 513);
+            this.Controls.Add(this.lboxBox);
+            this.Controls.Add(this.lboxListPick);
             this.Controls.Add(this.rbtnSortDsc);
             this.Controls.Add(this.rbtnSortAsc);
             this.Controls.Add(this.btnExit);
@@ -237,13 +240,10 @@
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.dgvShowList);
             this.Controls.Add(this.lblListPick);
-            this.Controls.Add(this.cbbBox);
             this.Controls.Add(this.txtSearchInfo);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.cbbListPick);
             this.Name = "frmView";
             this.Text = "View";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmView_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmView_FormClosed);
             this.Load += new System.EventHandler(this.frmView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).EndInit();
@@ -253,11 +253,8 @@
         }
 
         #endregion
-
-        private ComboBox cbbListPick;
         private Button btnSearch;
         private TextBox txtSearchInfo;
-        private ComboBox cbbBox;
         private Label lblListPick;
         private DataGridView dgvShowList;
         private Button btnEdit;
@@ -271,5 +268,7 @@
         private RadioButton rbtnSortDsc;
         private Button btnRefresh;
         private Button btnPick;
+        private ListBox lboxListPick;
+        private ListBox lboxBox;
     }
 }

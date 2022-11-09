@@ -1,4 +1,5 @@
 ﻿using MobileSaleLibrary.DataAccess;
+using MobileSaleLibrary.IOData;
 using MobileSaleLibrary.Models;
 using MobileSaleLibrary.Repository.IRepository;
 using System;
@@ -19,5 +20,7 @@ namespace MobileSaleLibrary.Repository
         public bool UpdatePhone(Phone phone) => PhoneDAO.Instance.UpdatePhone(phone);
 
         public bool DeletePhone(int phoneID) => PhoneDAO.Instance.RemovePhone(phoneID);
+
+        public Phone? StringConvert(String s) => DataString.PConvert(s);
     }
 }

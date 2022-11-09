@@ -14,5 +14,7 @@ namespace MobileSaleLibrary.Repository.IRepository
         bool RemoveImport(int id);
         Import GetImportByID(int id);
         bool UpdateImport(Import import);
+
+        Import? StringConvert(String s);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MobileSaleLibrary.DataAccess;
+using MobileSaleLibrary.IOData;
 using MobileSaleLibrary.Models;
 using MobileSaleLibrary.Repository.IRepository;
 using System;
@@ -16,6 +17,8 @@ namespace MobileSaleLibrary.Repository
         public bool AddNewImport(Import import) => ImportDAO.Instance.AddNewImport(import);
         public bool UpdateImport(Import import) => ImportDAO.Instance.updateImport(import);
         public bool RemoveImport(int id) => ImportDAO.Instance.DeleteImport(id);
-        
+
+        public Import? StringConvert(String s) => DataString.IConvert(s);
+
     }
 }

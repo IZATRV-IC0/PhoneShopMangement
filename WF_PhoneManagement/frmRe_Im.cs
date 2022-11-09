@@ -436,28 +436,28 @@ namespace WF_PhoneManagement
         }
         private void btnIm_PAdd_Click(object sender, EventArgs e)
         {
-            /*frmImportDetail ImDetail = new frmImportDetail();
+            frmImportDetail ImDetail = new frmImportDetail();
             ImDetail.ShowDialog();
             while (!ImDetail.hasClosed)
             {
             }
-            if (ImDetail.GetImportInfo() != null)
+            /*if (ImDetail.GetImportInfo() != null)
             {
                 impInfo.Add(ImDetail.GetImportInfo());
                 MessageBox.Show("Add successfully.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-            LoadMethod();*/
+            }*/
+            LoadMethod();
         }
         private void btnIm_PUpdate_Click(object sender, EventArgs e)
         {
-            /*try
+            try
             {
                 frmImportDetail ImDetail = new frmImportDetail();
                 ImDetail.ShowDialog();
                 while (!ImDetail.hasClosed)
                 {
                 }
-                if (ImDetail.GetImportInfo() != null)
+                /*if (ImDetail.GetImportInfo() != null)
                 {
                     int i = 0;
                     bool findCurr = false;
@@ -478,13 +478,13 @@ namespace WF_PhoneManagement
                         impInfo[i] = ImDetail.GetImportInfo();
                         MessageBox.Show("Update successfully.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
-                }
+                }*/
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Exception:\n" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            LoadMethod();*/
+            LoadMethod();
         }
 
         private void btnIm_PDelete_Click(object sender, EventArgs e)

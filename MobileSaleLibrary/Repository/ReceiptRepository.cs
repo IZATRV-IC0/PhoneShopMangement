@@ -1,4 +1,5 @@
 ﻿using MobileSaleLibrary.DataAccess;
+using MobileSaleLibrary.IOData;
 using MobileSaleLibrary.Models;
 using MobileSaleLibrary.Repository.IRepository;
 using System;
@@ -16,5 +17,7 @@ namespace MobileSaleLibrary.Repository
         public bool AddNewReceipt(Receipt rec) => ReceiptDAO.Instance.AddNewRecipt(rec);
         public bool UpdateReceipt(Receipt rec) => ReceiptDAO.Instance.UpdateReceipt(rec);
         public bool RemoveReceipt(int id) => ReceiptDAO.Instance.RemoveRecipt(id);
+
+        public Receipt? StringConvert(String s) => DataString.RConvert(s);
     }
 }

@@ -14,5 +14,7 @@ namespace MobileSaleLibrary.Repository.IRepository
         bool RemoveReceipt(int  id);
         Receipt GetReceiptByID(int id);
         bool UpdateReceipt(Receipt receipt);
+
+        Receipt? StringConvert(String s);
     }
 }

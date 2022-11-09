@@ -14,5 +14,7 @@ namespace MobileSaleLibrary.Repository.IRepository
         bool UpdateModel(Model model);
         bool AddNewModel(Model model);
         bool DeleteModel(int modelID);
+
+        Model? StringConvert(String s);
     }
 }

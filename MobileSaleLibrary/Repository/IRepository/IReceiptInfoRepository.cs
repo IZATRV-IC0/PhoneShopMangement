@@ -17,6 +17,6 @@ namespace MobileSaleLibrary.Repository.IRepository
 
         bool CreateReceiptInfo(ReceiptInfo recInfo);
 
-        
+        ReceiptInfo StringConvert(String s);
     }
 }

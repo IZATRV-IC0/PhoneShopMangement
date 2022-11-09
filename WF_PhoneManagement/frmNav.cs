@@ -68,6 +68,9 @@ namespace WF_PhoneManagement
         private void btnView_Click(object sender, EventArgs e)
         {
             this.Hide();
+            frmView.SetListPickIndex(0);
+            frmView.index = 0;
+            frmView.mainFeature = true;
             frmView.ShowDialog();
             while (!frmView.hasClosed) { }
             this.Show();
@@ -77,7 +80,8 @@ namespace WF_PhoneManagement
         private void btnSales_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmView.control = "Sales";
+            frmView.mainFeature = false;
+            frmView.SalesSettings();
             frmView.ShowDialog();
             while (!frmView.hasClosed) { }
             this.Show();

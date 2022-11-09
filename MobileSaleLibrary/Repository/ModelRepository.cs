@@ -1,4 +1,5 @@
 ﻿using MobileSaleLibrary.DataAccess;
+using MobileSaleLibrary.IOData;
 using MobileSaleLibrary.Models;
 using MobileSaleLibrary.Repository.IRepository;
 using System;
@@ -19,5 +20,7 @@ namespace MobileSaleLibrary.Repository
         public bool UpdateModel(Model model) => ModelDAO.Instance.UpdateModel(model);
 
         public bool DeleteModel(int modelID) => ModelDAO.Instance.DeleteModel(modelID);
+
+        public Model? StringConvert(String s) => DataString.MConvert(s);
     }
 }

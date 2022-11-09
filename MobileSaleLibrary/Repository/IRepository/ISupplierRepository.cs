@@ -14,5 +14,7 @@ namespace MobileSaleLibrary.Repository.IRepository
         bool RemoveSupplier(int id);
         Supplier GetSupplierByID(int id);
         bool UpdateSupplier(Supplier supplier);
+
+        Supplier? StringConvert(String s);
     }
 }

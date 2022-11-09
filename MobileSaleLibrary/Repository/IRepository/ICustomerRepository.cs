@@ -14,5 +14,7 @@ namespace MobileSaleLibrary.Repository.IRepository
         bool RemoveCustomer(int id);
         Customer GetCustomerByID(int id);
         bool UpdateCustomer(Customer customer);
+
+        Customer? StringConvert(String s);
     }
 }

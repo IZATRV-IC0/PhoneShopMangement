@@ -14,5 +14,7 @@ namespace MobileSaleLibrary.Repository.IRepository
         bool RemoveImportInfo(int id, int phoneID);
         ImportInfo GetImportInfoByID(int id, int phoneID);
         bool UpdateImportInfo(ImportInfo importInfo);
+
+        ImportInfo? StringConvert(String s);
     }
 }

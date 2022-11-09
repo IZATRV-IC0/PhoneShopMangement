@@ -14,5 +14,7 @@ namespace MobileSaleLibrary.Repository.IRepository
         bool AddNewPhone(Phone phone);
         bool UpdatePhone(Phone phone);
         bool DeletePhone(int phoneID);
+
+        Phone? StringConvert(String s);
     }
 }

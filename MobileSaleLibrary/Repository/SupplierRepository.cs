@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MobileSaleLibrary.DataAccess;
+using MobileSaleLibrary.IOData;
 using MobileSaleLibrary.Models;
 using MobileSaleLibrary.Repository.IRepository;
 
@@ -17,5 +18,7 @@ namespace MobileSaleLibrary.Repository
         public bool AddNewSupplier(Supplier supplier) => SupplierDAO.Instance.AddNewSupplier(supplier);
         public bool UpdateSupplier(Supplier supplier) => SupplierDAO.Instance.updateSupplier(supplier);
         public bool RemoveSupplier(int id) => SupplierDAO.Instance.DeleteSupplier(id);
+
+        public Supplier? StringConvert(String s) => DataString.SConvert(s);
     }
 }

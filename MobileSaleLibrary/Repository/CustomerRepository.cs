@@ -1,4 +1,5 @@
 ﻿using MobileSaleLibrary.DataAccess;
+using MobileSaleLibrary.IOData;
 using MobileSaleLibrary.Models;
 using MobileSaleLibrary.Repository.IRepository;
 using System;
@@ -16,5 +17,7 @@ namespace MobileSaleLibrary.Repository
         public bool AddNewCustomer(Customer customer) => CustomerDAO.Instance.AddNewCustomer(customer);
         public bool UpdateCustomer(Customer customer) => CustomerDAO.Instance.updateCustomer(customer);
         public bool RemoveCustomer(int id) => CustomerDAO.Instance.DeleteCustomer(id);
+
+        public Customer? StringConvert(String s) => DataString.CConvert(s);
     }
 }

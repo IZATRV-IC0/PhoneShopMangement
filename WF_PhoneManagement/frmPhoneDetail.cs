@@ -21,7 +21,7 @@ namespace WF_PhoneManagement
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            dataString = txtPhoneID.Text + ',' + txtModelID.Text + ',' + txtPrice.Text + ',' + txtType.Text;
+            dataString = txtPhoneID.Text + ',' + txtModelID.Text + ',' + txtType.Text + ',' + txtPrice.Text;
             dataString.Trim();
         }
 

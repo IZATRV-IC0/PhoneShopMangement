@@ -1,4 +1,5 @@
 ﻿using MobileSaleLibrary.DataAccess;
+using MobileSaleLibrary.IOData;
 using MobileSaleLibrary.Models;
 using MobileSaleLibrary.Repository.IRepository;
 using System;
@@ -19,5 +20,7 @@ namespace MobileSaleLibrary.Repository
         public IEnumerable<ReceiptInfo> GetReceiptInfoListByRecieptID(int id) => ReceiptInfoDAO.Instance.GetReciptInfoByReceiptID(id);
 
         public bool UpdateReceiptInfo(ReceiptInfo receiptInfo) => ReceiptInfoDAO.Instance.UpdateReceiptInfo(receiptInfo);
+
+        public ReceiptInfo? StringConvert(String s) => DataString.RIConvert(s);
     }
 }
