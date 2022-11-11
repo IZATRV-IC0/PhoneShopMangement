@@ -59,6 +59,7 @@ namespace WF_PhoneManagement
             }
             this.Hide();
             frmRe_Im.DefaultSettings();
+            frmRe_Im.dataBindings();
             frmRe_Im.AddSettings();
             frmRe_Im.ShowDialog();
             while (!frmRe_Im.hasClosed) { }
@@ -71,6 +72,8 @@ namespace WF_PhoneManagement
             frmView.SetListPickIndex(0);
             frmView.index = 0;
             frmView.mainFeature = true;
+            frmView.instock = false;
+            frmView.sales = false;
             frmView.ShowDialog();
             while (!frmView.hasClosed) { }
             this.Show();
@@ -81,6 +84,8 @@ namespace WF_PhoneManagement
         {
             this.Hide();
             frmView.mainFeature = false;
+            frmView.sales = true;
+            frmView.instock = false;
             frmView.SalesSettings();
             frmView.ShowDialog();
             while (!frmView.hasClosed) { }
@@ -90,6 +95,9 @@ namespace WF_PhoneManagement
         private void btnInStock_Click(object sender, EventArgs e)
         {
             this.Hide();
+            frmView.mainFeature = false;
+            frmView.sales = false;
+            frmView.instock = true;
             frmView.ShowDialog();
             while (!frmView.hasClosed) { }
             this.Show();

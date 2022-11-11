@@ -747,12 +747,18 @@ namespace WF_PhoneManagement
                         {
                             case 0:
                                 frmRe_Im viewR = new frmRe_Im();
+                                
                                 viewR.setRec(id);
+                                viewR.ViewRecSettings(id);
+                                viewR.dataBindings();
                                 viewR.ShowDialog();
                                 break;
                             case 1:
                                 frmRe_Im viewI = new frmRe_Im();
+                                
                                 viewI.setImp(id);
+                                viewI.ViewImpSettings(id);
+                                viewI.dataBindings();
                                 viewI.ShowDialog();
                                 break;
                             default:

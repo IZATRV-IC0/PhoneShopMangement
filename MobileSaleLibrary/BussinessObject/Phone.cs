@@ -30,7 +30,9 @@ namespace MobileSaleLibrary.Models
 
         public String GetPhoneName()
         {
-            return Model.ModelName + ":" + Type;
+            IModelRepository mRepos = new ModelRepository();
+            Model m = mRepos.GetModelByID(this.ModelId);
+            return m.ModelName + ":" + Type;
         }
         public virtual Model Model { get; set; }
         public virtual ICollection<ImportInfo> TblImportInfos { get; set; }

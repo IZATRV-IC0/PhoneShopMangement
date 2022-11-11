@@ -47,18 +47,53 @@ namespace WF_PhoneManagement
             impInfo = new List<ImportInfo>();
             dgvRe_DetailList.DataSource = recInfo;
             dgvIm_DetailList.DataSource = impInfo;
-            txtRe_PID.DataBindings.Add("Text", recInfo, "PhoneId");
-            txtRe_PName.DataBindings.Add("Text", recInfo, "PhoneName");
-            txtRe_PPrice.DataBindings.Add("Text", recInfo, "SellPricePerUnit");
-            nudRe_PQuantity.DataBindings.Add("Text", recInfo, "Quantity");
-            txtRe_PTotal.DataBindings.Add("Text", recInfo, "Total");
-            txtIm_PID.DataBindings.Add("Text", impInfo, "PhoneId");
-            txtIm_PName.DataBindings.Add("Text", impInfo, "PhoneName");
-            txtIm_PPrice.DataBindings.Add("Text", impInfo, "BuyPricePerUnit");
-            nudIm_PQuantity.DataBindings.Add("Text", impInfo, "Quantity");
-            txtIm_PTotal.DataBindings.Add("Text", impInfo, "Total");
             btnRe_Customer.Enabled = true;
             btnIm_Supplier.Enabled = true;
+            dgvRe_DetailList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvIm_DetailList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        public void dataBindings()
+        {
+            txtRe_PID.DataBindings.Add("Text", dgvRe_DetailList.DataSource, "PhoneId");
+            txtRe_PName.DataBindings.Add("Text", dgvRe_DetailList.DataSource, "PhoneName");
+            txtRe_PPrice.DataBindings.Add("Text", dgvRe_DetailList.DataSource, "SellPricePerUnit");
+            nudRe_PQuantity.DataBindings.Add("Text", dgvRe_DetailList.DataSource, "Quantity");
+            txtRe_PTotal.DataBindings.Add("Text", dgvRe_DetailList.DataSource, "Total");
+            txtIm_PID.DataBindings.Add("Text", dgvIm_DetailList.DataSource, "PhoneId");
+            txtIm_PName.DataBindings.Add("Text", dgvIm_DetailList.DataSource, "PhoneName");
+            txtIm_PPrice.DataBindings.Add("Text", dgvIm_DetailList.DataSource, "BuyPricePerUnit");
+            nudIm_PQuantity.DataBindings.Add("Text", dgvIm_DetailList.DataSource, "Quantity");
+            txtIm_PTotal.DataBindings.Add("Text", dgvIm_DetailList.DataSource, "Total");
+        }
+
+        void TotalSet()
+        {
+            if (recInfo is null || recInfo.Count == 0)
+            {
+                txtReTotal.Text = "0";
+            } else
+            {
+                int total = 0;
+                foreach(ReceiptInfo r in recInfo)
+                {
+                    total += r.Total;
+                }
+                txtReTotal.Text = "" + total;
+            }
+            if (impInfo is null || impInfo.Count == 0)
+            {
+                txtImTotal.Text = "0";
+            }
+            else
+            {
+                int total = 0;
+                foreach (ImportInfo i in impInfo)
+                {
+                    total += i.Total;
+                }
+                txtImTotal.Text = "" + total;
+            }
         }
 
         //Settings for different purposes
@@ -140,27 +175,29 @@ namespace WF_PhoneManagement
             {
                 case "Add":
                     AddSettings();
-                    
-                    
                     if (recInfo is null || recInfo.Count == 0)
                     {
                         dgvRe_DetailList.DataSource = null;
+                        dgvRe_DetailList.Enabled = false;
                         btnRe_PDelete.Enabled = false;
                         btnRe_PUpdate.Enabled = false;
                     } else
                     {
                         dgvRe_DetailList.DataSource = recInfo;
+                        dgvRe_DetailList.Enabled = true;
                         btnRe_PDelete.Enabled = true;
                         btnRe_PUpdate.Enabled = true;
                     }
                     if (impInfo is null || impInfo.Count == 0)
                     {
                         dgvIm_DetailList.DataSource = null;
+                        dgvIm_DetailList.Enabled = false;
                         btnIm_PDelete.Enabled = false;
                         btnIm_PUpdate.Enabled = false;
                     } else
                     {
                         dgvIm_DetailList.DataSource = impInfo;
+                        dgvIm_DetailList.Enabled = true;
                         btnIm_PDelete.Enabled = true;
                         btnIm_PUpdate.Enabled = true;
                     }
@@ -186,6 +223,7 @@ namespace WF_PhoneManagement
                     DefaultSettings();
                     break;
             }
+            TotalSet();
         }
         
         //Close notify
@@ -286,7 +324,7 @@ namespace WF_PhoneManagement
         {
             frmReceiptDetail ReDetail = new frmReceiptDetail();
             ReDetail.ShowDialog();
-            if (ReDetail.dataString != null)
+            if (ReDetail.dataString != null && ReDetail.dataString != ",," && !ReDetail.DialogResult.Equals(DialogResult.Cancel))
             {
                 var rI = recInfoRepos.StringConvert(ReDetail.dataString);
                 recInfo.Add(rI);
@@ -300,7 +338,7 @@ namespace WF_PhoneManagement
             {
                 frmReceiptDetail ReDetail = new frmReceiptDetail();
                 ReDetail.ShowDialog();
-                if (ReDetail.dataString != null)
+                if (ReDetail.dataString is not null && ReDetail.dataString != ",," && !ReDetail.DialogResult.Equals(DialogResult.Cancel))
                 {
                     int i = 0;
                     bool findCurr = false;
@@ -375,8 +413,12 @@ namespace WF_PhoneManagement
         {
             frmImportDetail ImDetail = new frmImportDetail();
             ImDetail.ShowDialog();
-            var iI = impInfoRepos.StringConvert(ImDetail.dataString);
-            impInfo.Add(iI);
+            if (ImDetail.dataString is not null && ImDetail.dataString != ",," && !ImDetail.DialogResult.Equals(DialogResult.Cancel))
+            {
+                var iI = impInfoRepos.StringConvert(ImDetail.dataString);
+                impInfo.Add(iI);
+            }
+            
             LoadMethod();
         }
         private void btnIm_PUpdate_Click(object sender, EventArgs e)
@@ -385,7 +427,7 @@ namespace WF_PhoneManagement
             {
                 frmImportDetail ImDetail = new frmImportDetail();
                 ImDetail.ShowDialog();
-                if (ImDetail.dataString != null)
+                if (ImDetail.dataString is not null && ImDetail.dataString != ",," && !ImDetail.DialogResult.Equals(DialogResult.Cancel))
                 {
                     int i = 0;
                     bool findCurr = false;
@@ -498,15 +540,25 @@ namespace WF_PhoneManagement
 
         private void btnRe_Customer_Click(object sender, EventArgs e)
         {
-            frmView view = new();
+            frmView view = new frmView();
+            view.SetListPickIndex(2);
             view.index = 2;
+            view.mainFeature = true;
+            view.instock = false;
+            view.sales = false;
+            view.DefaultSettings();
             view.ShowDialog();
         }
 
         private void btnIm_Supplier_Click(object sender, EventArgs e)
         {
-            frmView view = new();
+            frmView view = new frmView();
+            view.SetListPickIndex(3);
             view.index = 3;
+            view.mainFeature = true;
+            view.instock = false;
+            view.sales = false;
+            view.DefaultSettings();
             view.ShowDialog();
         }
     }

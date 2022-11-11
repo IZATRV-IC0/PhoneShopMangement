@@ -64,5 +64,17 @@ namespace WF_PhoneManagement
         {
             this.Close();
         }
+
+        private void btnPhone_Click(object sender, EventArgs e)
+        {
+            frmView view = new frmView();
+            view.SetListPickIndex(5);
+            view.index = 5;
+            view.mainFeature = true;
+            view.instock = false;
+            view.sales = false;
+            view.DefaultSettings();
+            view.ShowDialog();
+        }
     }
 }

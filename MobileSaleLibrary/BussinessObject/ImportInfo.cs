@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MobileSaleLibrary.Repository.IRepository;
+using MobileSaleLibrary.Repository;
+using System;
 using System.Collections.Generic;
 
 namespace MobileSaleLibrary.Models
@@ -11,7 +13,9 @@ namespace MobileSaleLibrary.Models
         {
             get
             {
-                return Phone.GetPhoneName();
+                IPhoneRepository pRepos = new PhoneRepository();
+                Phone p = pRepos.GetPhoneByID(this.PhoneId);
+                return p.GetPhoneName();
             }
         }
 

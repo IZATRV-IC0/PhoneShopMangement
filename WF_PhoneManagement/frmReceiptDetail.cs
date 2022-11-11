@@ -70,8 +70,12 @@ namespace WF_PhoneManagement
         private void btnPhone_Click(object sender, EventArgs e)
         {
             frmView view = new();
+            view.SetListPickIndex(5);
             view.index = 5;
-            view.ViewSettings();
+            view.mainFeature = true;
+            view.instock = false;
+            view.sales = false;
+            view.DefaultSettings();
             view.ShowDialog();
         }
     }

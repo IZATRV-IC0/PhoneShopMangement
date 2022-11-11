@@ -170,6 +170,7 @@
             this.btnPhone.TabIndex = 13;
             this.btnPhone.Text = "Phone...";
             this.btnPhone.UseVisualStyleBackColor = true;
+            this.btnPhone.Click += new System.EventHandler(this.btnPhone_Click);
             // 
             // txt_PID
             // 
