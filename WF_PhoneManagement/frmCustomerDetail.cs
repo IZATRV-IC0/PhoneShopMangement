@@ -24,12 +24,37 @@ namespace WF_PhoneManagement
             InitializeComponent();
         }
 
+        public void setDefaultData(Customer c)
+        {
+            txtID.Text = "" + c.CustomerId;
+            txtName.Text = c.CustomerName;
+            txtPhone.Text = c.CustomerPhoneNumber;
+            txtAddress.Text = c.CustomerAddress;
+            switch (c.Gender)
+            {
+                case "Male":
+                    rbtn_Male.Checked = true;
+                    break;
+                case "Female":
+                    rbtn_Female.Checked = true;
+                    break;
+                case "X":
+                    rbtn_X.Checked = true;
+                    break;
+                default:
+                    throw new Exception("Data field gender is corrupted.");
+            }
+        }
+
+
+
         public void ResetForm()
         {
             foreach (TextBox txt in this.Controls)
             {
                 txt.Text = "";
             }
+            txtID.Text = "0";
             dataString = "";
         }
 
@@ -43,7 +68,7 @@ namespace WF_PhoneManagement
             if (rbtn_Male.Checked) { dataString += "Male"; }
             else if (rbtn_Female.Checked) { dataString += "Female"; }
             else { dataString += "X"; }
-            dataString.Trim();
+            dataString = dataString.Trim();
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)

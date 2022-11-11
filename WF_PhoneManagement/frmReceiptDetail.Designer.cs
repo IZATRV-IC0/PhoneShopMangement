@@ -33,7 +33,6 @@
             this.nudRe_PQuantity = new System.Windows.Forms.NumericUpDown();
             this.lblRePID = new System.Windows.Forms.Label();
             this.lblRePTotal = new System.Windows.Forms.Label();
-            this.cbbRe_PID = new System.Windows.Forms.ComboBox();
             this.lblRePName = new System.Windows.Forms.Label();
             this.lblRePQuantity = new System.Windows.Forms.Label();
             this.txtRe_PName = new System.Windows.Forms.TextBox();
@@ -41,11 +40,13 @@
             this.lblRePPrice = new System.Windows.Forms.Label();
             this.txtRe_PTotal = new System.Windows.Forms.TextBox();
             this.btnPhone = new System.Windows.Forms.Button();
+            this.txtRe_PID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudRe_PQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
             // 
+            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.Location = new System.Drawing.Point(112, 289);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
@@ -56,6 +57,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(212, 289);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
@@ -100,15 +102,6 @@
             this.lblRePTotal.Size = new System.Drawing.Size(35, 15);
             this.lblRePTotal.TabIndex = 9;
             this.lblRePTotal.Text = "Total:";
-            // 
-            // cbbRe_PID
-            // 
-            this.cbbRe_PID.Enabled = false;
-            this.cbbRe_PID.FormattingEnabled = true;
-            this.cbbRe_PID.Location = new System.Drawing.Point(112, 46);
-            this.cbbRe_PID.Name = "cbbRe_PID";
-            this.cbbRe_PID.Size = new System.Drawing.Size(121, 23);
-            this.cbbRe_PID.TabIndex = 7;
             // 
             // lblRePName
             // 
@@ -176,15 +169,23 @@
             this.btnPhone.UseVisualStyleBackColor = true;
             this.btnPhone.Click += new System.EventHandler(this.btnPhone_Click);
             // 
+            // txtRe_PID
+            // 
+            this.txtRe_PID.Location = new System.Drawing.Point(113, 46);
+            this.txtRe_PID.Name = "txtRe_PID";
+            this.txtRe_PID.Size = new System.Drawing.Size(100, 23);
+            this.txtRe_PID.TabIndex = 14;
+            this.txtRe_PID.Text = "0";
+            // 
             // frmReceiptDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 339);
+            this.Controls.Add(this.txtRe_PID);
             this.Controls.Add(this.nudRe_PQuantity);
             this.Controls.Add(this.lblRePID);
             this.Controls.Add(this.lblRePTotal);
-            this.Controls.Add(this.cbbRe_PID);
             this.Controls.Add(this.lblRePName);
             this.Controls.Add(this.lblRePQuantity);
             this.Controls.Add(this.txtRe_PName);
@@ -211,7 +212,6 @@
         private NumericUpDown nudRe_PQuantity;
         private Label lblRePID;
         private Label lblRePTotal;
-        private ComboBox cbbRe_PID;
         private Label lblRePName;
         private Label lblRePQuantity;
         private TextBox txtRe_PName;
@@ -219,5 +219,6 @@
         private Label lblRePPrice;
         private TextBox txtRe_PTotal;
         private Button btnPhone;
+        private TextBox txtRe_PID;
     }
 }

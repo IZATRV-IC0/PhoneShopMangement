@@ -33,7 +33,6 @@
             this.nud_PQuantity = new System.Windows.Forms.NumericUpDown();
             this.lblRePID = new System.Windows.Forms.Label();
             this.lblRePTotal = new System.Windows.Forms.Label();
-            this.cbb_PID = new System.Windows.Forms.ComboBox();
             this.lblRePName = new System.Windows.Forms.Label();
             this.lblRePQuantity = new System.Windows.Forms.Label();
             this.txt_PName = new System.Windows.Forms.TextBox();
@@ -41,6 +40,7 @@
             this.lblRePPrice = new System.Windows.Forms.Label();
             this.txt_PTotal = new System.Windows.Forms.TextBox();
             this.btnPhone = new System.Windows.Forms.Button();
+            this.txt_PID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nud_PQuantity)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,6 +57,7 @@
             // 
             // btnOK
             // 
+            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.Location = new System.Drawing.Point(108, 254);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
@@ -102,15 +103,6 @@
             this.lblRePTotal.Size = new System.Drawing.Size(35, 15);
             this.lblRePTotal.TabIndex = 19;
             this.lblRePTotal.Text = "Total:";
-            // 
-            // cbb_PID
-            // 
-            this.cbb_PID.Enabled = false;
-            this.cbb_PID.FormattingEnabled = true;
-            this.cbb_PID.Location = new System.Drawing.Point(114, 26);
-            this.cbb_PID.Name = "cbb_PID";
-            this.cbb_PID.Size = new System.Drawing.Size(121, 23);
-            this.cbb_PID.TabIndex = 17;
             // 
             // lblRePName
             // 
@@ -179,15 +171,23 @@
             this.btnPhone.Text = "Phone...";
             this.btnPhone.UseVisualStyleBackColor = true;
             // 
+            // txt_PID
+            // 
+            this.txt_PID.Location = new System.Drawing.Point(115, 25);
+            this.txt_PID.Name = "txt_PID";
+            this.txt_PID.Size = new System.Drawing.Size(100, 23);
+            this.txt_PID.TabIndex = 24;
+            this.txt_PID.Text = "0";
+            // 
             // frmImportDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(389, 289);
+            this.Controls.Add(this.txt_PID);
             this.Controls.Add(this.nud_PQuantity);
             this.Controls.Add(this.lblRePID);
             this.Controls.Add(this.lblRePTotal);
-            this.Controls.Add(this.cbb_PID);
             this.Controls.Add(this.lblRePName);
             this.Controls.Add(this.lblRePQuantity);
             this.Controls.Add(this.txt_PName);
@@ -214,7 +214,6 @@
         private NumericUpDown nud_PQuantity;
         private Label lblRePID;
         private Label lblRePTotal;
-        private ComboBox cbb_PID;
         private Label lblRePName;
         private Label lblRePQuantity;
         private TextBox txt_PName;
@@ -222,5 +221,6 @@
         private Label lblRePPrice;
         private TextBox txt_PTotal;
         private Button btnPhone;
+        private TextBox txt_PID;
     }
 }

@@ -23,12 +23,21 @@ namespace WF_PhoneManagement
             InitializeComponent();
         }
 
+        public void setDefaultData(ImportInfo iI)
+        {
+            txt_PID.Text = "" + iI.PhoneId;
+            txt_PName.Text = iI.PhoneName;
+            txt_PPrice.Text = "" + iI.BuyPricePerUnit;
+            txt_PTotal.Text = "" + iI.Total;
+            nud_PQuantity.Value = iI.Quantity;
+        }
         public void ResetForm()
         {
             foreach (TextBox txt in this.Controls)
             {
                 txt.Text = "";
             }
+            txt_PID.Text = "0";
             dataString = "";
         }
 
@@ -45,7 +54,7 @@ namespace WF_PhoneManagement
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            dataString = cbb_PID.Text + ','
+            dataString = txt_PID.Text + ','
                         + txt_PPrice.Text + ','
                         + nud_PQuantity.Text;
             dataString.Trim();

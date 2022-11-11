@@ -27,8 +27,17 @@ namespace WF_PhoneManagement
             {
                 txt.Text = "";
             }
+            txtSupplierID.Text = "0";
             dataString = "";
         }
+        public void setDefaultData(Supplier s)
+        {
+            txtSupplierID.Text = "" + s.SupplierId;
+            txtSupplierName.Text = s.SupplierName;
+            txtPhone.Text = s.SupplierPhoneNumber;
+            txtAddress.Text = s.SupplierAddress;
+        }
+
 
         private void frmSupplierDetail_Load(object sender, EventArgs e)
         {
@@ -52,7 +61,7 @@ namespace WF_PhoneManagement
                         + txtSupplierName.Text + ','
                         + txtPhone.Text + ','
                         + txtAddress.Text;
-            dataString.Trim();
+            dataString = dataString.Trim();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -58,6 +58,7 @@
             this.txtPhoneID.Name = "txtPhoneID";
             this.txtPhoneID.Size = new System.Drawing.Size(180, 23);
             this.txtPhoneID.TabIndex = 0;
+            this.txtPhoneID.Text = "0";
             // 
             // txtPhoneName
             // 
@@ -119,6 +120,7 @@
             // 
             // btnOK
             // 
+            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.Location = new System.Drawing.Point(305, 298);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
@@ -129,6 +131,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(410, 298);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
@@ -148,11 +151,12 @@
             // 
             // txtModelID
             // 
-            this.txtModelID.Enabled = false;
             this.txtModelID.Location = new System.Drawing.Point(504, 38);
             this.txtModelID.Name = "txtModelID";
             this.txtModelID.Size = new System.Drawing.Size(180, 23);
             this.txtModelID.TabIndex = 0;
+            this.txtModelID.Text = "0";
+            this.txtModelID.TextChanged += new System.EventHandler(this.txtModelID_TextChanged);
             // 
             // txtModelName
             // 
@@ -230,6 +234,7 @@
             this.btnModel.TabIndex = 2;
             this.btnModel.Text = "Model...";
             this.btnModel.UseVisualStyleBackColor = true;
+            this.btnModel.Click += new System.EventHandler(this.btnModel_Click);
             // 
             // frmPhoneDetail
             // 

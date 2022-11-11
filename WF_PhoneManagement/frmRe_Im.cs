@@ -27,9 +27,6 @@ namespace WF_PhoneManagement
         ISupplierRepository sRepos = new SupplierRepository();
 
 
-        //Object clarifies source data.
-        public Customer? customer;
-        public Supplier? supplier;
 
         //Control determines action and basic settings.
         String? control;
@@ -48,53 +45,53 @@ namespace WF_PhoneManagement
             recInfo = new List<ReceiptInfo>();
             impInfo = new List<ImportInfo>();
             
-            Receipt r = new Receipt();
-            Import i = new Import();
-            MobileSaleLibrary.Models.Model m = new MobileSaleLibrary.Models.Model();
-            m.ModelId = 1;
-            m.ModelName = "Model";
-            Phone p = new Phone();
-            p.Model = m;
-            p.ModelId = m.ModelId;
-            p.PhoneId = 1;
-            p.ShowPrice = 1;
-            p.Type = "Type";
-            customer = new Customer();
-            customer.CustomerId = 1;
-            customer.CustomerName = "a";
-            customer.CustomerAddress = "here";
-            customer.CustomerPhoneNumber = "0x";
-            customer.Gender = "Male";
-            supplier = new Supplier();
-            supplier.SupplierId = 1;
-            supplier.SupplierName = "a";
-            supplier.SupplierAddress = "here";
-            supplier.SupplierPhoneNumber = "0x";
-            r.ReceiptId = 1;
-            r.ReceiptDate = DateTime.Now;
-            r.Customer = customer;
-            r.CustomerId = customer.CustomerId;
-            ReceiptInfo re = new ReceiptInfo();
-            re.Receipt = r;
-            re.ReceiptId = r.ReceiptId;
-            re.Phone = p;
-            re.PhoneId = p.PhoneId;
-            re.Quantity = 1;
-            re.SellPricePerUnit = p.ShowPrice;
-            i.ImportId = 1;
-            i.ImportDate = DateTime.Now;
-            i.Supplier = supplier;
-            i.SupplierId = i.Supplier.SupplierId;
-            ImportInfo im = new ImportInfo();
-            im.Import = i;
-            im.ImportId = im.Import.ImportId;
-            im.Phone = p;
-            im.PhoneId = p.PhoneId;
-            im.BuyPricePerUnit = p.ShowPrice;
-            im.Quantity = 1;
+            //Receipt r = new Receipt();
+            //Import i = new Import();
+            //MobileSaleLibrary.Models.Model m = new MobileSaleLibrary.Models.Model();
+            //m.ModelId = 1;
+            //m.ModelName = "Model";
+            //Phone p = new Phone();
+            //p.Model = m;
+            //p.ModelId = m.ModelId;
+            //p.PhoneId = 1;
+            //p.ShowPrice = 1;
+            //p.Type = "Type";
+            //customer = new Customer();
+            //customer.CustomerId = 1;
+            //customer.CustomerName = "a";
+            //customer.CustomerAddress = "here";
+            //customer.CustomerPhoneNumber = "0x";
+            //customer.Gender = "Male";
+            //supplier = new Supplier();
+            //supplier.SupplierId = 1;
+            //supplier.SupplierName = "a";
+            //supplier.SupplierAddress = "here";
+            //supplier.SupplierPhoneNumber = "0x";
+            //r.ReceiptId = 1;
+            //r.ReceiptDate = DateTime.Now;
+            //r.Customer = customer;
+            //r.CustomerId = customer.CustomerId;
+            //ReceiptInfo re = new ReceiptInfo();
+            //re.Receipt = r;
+            //re.ReceiptId = r.ReceiptId;
+            //re.Phone = p;
+            //re.PhoneId = p.PhoneId;
+            //re.Quantity = 1;
+            //re.SellPricePerUnit = p.ShowPrice;
+            //i.ImportId = 1;
+            //i.ImportDate = DateTime.Now;
+            //i.Supplier = supplier;
+            //i.SupplierId = i.Supplier.SupplierId;
+            //ImportInfo im = new ImportInfo();
+            //im.Import = i;
+            //im.ImportId = im.Import.ImportId;
+            //im.Phone = p;
+            //im.PhoneId = p.PhoneId;
+            //im.BuyPricePerUnit = p.ShowPrice;
+            //im.Quantity = 1;
 
-            recInfo.Add(re);
-            impInfo.Add(im);
+            //recInfo.Add(re);
+            //impInfo.Add(im);
             dgvRe_DetailList.DataSource = recInfo;
             dgvIm_DetailList.DataSource = impInfo;
             cbbRe_PID.DataBindings.Add("Text", recInfo, "PhoneId");
@@ -141,7 +138,14 @@ namespace WF_PhoneManagement
             this.btn_Action.Text = "Cart Finish...";
             control = "Add";
         }
-
+        public void setRec(int ReId)
+        {
+            txtReID.Text = "" + ReId;
+        }
+        public void setImp(int ImId)
+        {
+            txtReID.Text = "" + ImId;
+        }
         public void ViewRecSettings(int ReId)
         {
             tabRI.TabPages.Remove(tabpgImport);
@@ -151,10 +155,8 @@ namespace WF_PhoneManagement
             this.btnRe_PUpdate.Hide();
             this.btnRe_CChange.Hide();
             
-            var list = from ReceiptInfo rI in recInfoRepos.GetReceiptInfoList()
-                       where rI.ReceiptId == ReId
-                       select rI;
-            recInfo = (List<ReceiptInfo>)list;
+            var list = recInfoRepos.GetReceiptInfoListByRecieptID(ReId);
+            recInfo = list.ToList();
             dgvRe_DetailList.DataSource = recInfo;
             control = "ViewRec";
         }
@@ -170,7 +172,7 @@ namespace WF_PhoneManagement
             var list = from ImportInfo iI in impInfoRepos.GetImportInfoList()
                        where iI.ImportId == ImId
                        select iI;
-            impInfo = (List<ImportInfo>)list;
+            impInfo = list.ToList();
             dgvIm_DetailList.DataSource = impInfo;
             control = "ViewImp";
         }
@@ -183,44 +185,51 @@ namespace WF_PhoneManagement
             {
                 case "Add":
                     AddSettings();
-                    dgvRe_DetailList.DataSource = recInfo;
-                    dgvIm_DetailList.DataSource = impInfo;
+                    
+                    
+                    if (recInfo is null || recInfo.Count == 0)
+                    {
+                        dgvRe_DetailList.DataSource = null;
+                        btnRe_PDelete.Enabled = false;
+                        btnRe_PUpdate.Enabled = false;
+                    } else
+                    {
+                        dgvRe_DetailList.DataSource = recInfo;
+                        btnRe_PDelete.Enabled = true;
+                        btnRe_PUpdate.Enabled = true;
+                    }
+                    if (impInfo is null || impInfo.Count == 0)
+                    {
+                        dgvIm_DetailList.DataSource = null;
+                        btnIm_PDelete.Enabled = false;
+                        btnIm_PUpdate.Enabled = false;
+                    } else
+                    {
+                        dgvIm_DetailList.DataSource = impInfo;
+                        btnIm_PDelete.Enabled = true;
+                        btnIm_PUpdate.Enabled = true;
+                    }
                     break;
                 case "ViewRec":
                     ViewRecSettings(Int32.Parse(this.txtReID.Text));
                     var currReceipt = recRepos.GetReceiptByID(Int32.Parse(this.txtReID.Text));
-                    customer = cRepos.GetCustomerByID(currReceipt.CustomerId);
+                    var customer = cRepos.GetCustomerByID(currReceipt.CustomerId);
+                    cbbRe_PID.Text = "" + customer.CustomerId;
+                    txtRe_CAddress.Text = customer.CustomerAddress;
+                    txtRe_CName.Text = customer.CustomerName;
+                    txtRe_CPhone.Text = customer.CustomerPhoneNumber;
                     break;
                 case "ViewImp":
-                    ViewImpSettings(Int32.Parse(this.txtImID.Text));
-                    var currImport = impRepos.GetImportByID(Int32.Parse(this.txtImID.Text));
-                    supplier = sRepos.GetSupplierByID(currImport.SupplierId);
+                    var currImport = impRepos.GetImportByID(Int32.Parse(this.txtReID.Text));
+                    var supplier = sRepos.GetSupplierByID(currImport.SupplierId);
+                    cbbIm_PID.Text = "" + supplier.SupplierId;
+                    txtIm_SAddress.Text = supplier.SupplierAddress;
+                    txtIm_SName.Text = supplier.SupplierName;
+                    txtIm_SPhone.Text = supplier.SupplierPhoneNumber;
                     break;
                 default:
                     DefaultSettings();
                     break;
-            }
-            if (customer is not null)
-            {
-                txtRe_CAddress.Text = customer.CustomerAddress;
-                txtRe_CName.Text = customer.CustomerName;
-                txtRe_CPhone.Text = customer.CustomerPhoneNumber;
-            } else
-            {
-                txtRe_CAddress.Text = "";
-                txtRe_CName.Text = "";
-                txtRe_CPhone.Text = "";
-            }
-            if (supplier is not null)
-            {
-                txtIm_SAddress.Text = supplier.SupplierAddress;
-                txtIm_SName.Text = supplier.SupplierName;
-                txtIm_SPhone.Text = supplier.SupplierPhoneNumber;
-            } else
-            {
-                txtIm_SAddress.Text = "";
-                txtIm_SName.Text = "";
-                txtIm_SPhone.Text = "";
             }
         }
         
@@ -254,8 +263,6 @@ namespace WF_PhoneManagement
             LoadMethod();
             recInfo = new List<ReceiptInfo>();
             impInfo = new List<ImportInfo>();
-            customer = null;
-            supplier = null;
             dgvRe_DetailList.DataSource = null;
             dgvIm_DetailList.DataSource = null;
         }
@@ -339,9 +346,6 @@ namespace WF_PhoneManagement
         {
             frmReceiptDetail ReDetail = new frmReceiptDetail();
             ReDetail.ShowDialog();
-            while (!ReDetail.hasClosed)
-            {
-            }
             if (ReDetail.GetReceiptInfo() != null)
             {
                 recInfo.Add(ReDetail.GetReceiptInfo());
@@ -355,9 +359,6 @@ namespace WF_PhoneManagement
             {
                 frmReceiptDetail ReDetail = new frmReceiptDetail();
                 ReDetail.ShowDialog();
-                while (!ReDetail.hasClosed)
-                {
-                }
                 if (ReDetail.GetReceiptInfo() != null)
                 {
                     int i = 0;
@@ -438,9 +439,6 @@ namespace WF_PhoneManagement
         {
             frmImportDetail ImDetail = new frmImportDetail();
             ImDetail.ShowDialog();
-            while (!ImDetail.hasClosed)
-            {
-            }
             /*if (ImDetail.GetImportInfo() != null)
             {
                 impInfo.Add(ImDetail.GetImportInfo());
@@ -454,9 +452,6 @@ namespace WF_PhoneManagement
             {
                 frmImportDetail ImDetail = new frmImportDetail();
                 ImDetail.ShowDialog();
-                while (!ImDetail.hasClosed)
-                {
-                }
                 /*if (ImDetail.GetImportInfo() != null)
                 {
                     int i = 0;

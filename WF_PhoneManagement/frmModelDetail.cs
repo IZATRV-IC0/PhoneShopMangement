@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MobileSaleLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,13 +15,21 @@ namespace WF_PhoneManagement
     {
         public bool hasClosed;
         public string dataString = "";
-
+        public void setDefaultData(Model m)
+        {
+            txtModelID.Text = "" + m.ModelId;
+            txtModelName.Text = m.ModelName;
+            txtOrigin.Text = m.ModelOrigin;
+            txtYearOfWarranty.Text = "" + m.ModelYearOfWarranty;
+            txtBrand.Text = m.ModelBrand;
+        }
         public void ResetForm()
         {
             foreach (TextBox txt in this.Controls)
             {
                 txt.Text = "";
             }
+            txtModelID.Text = "0";
             dataString = "";
         }
         public frmModelDetail()
@@ -35,7 +44,7 @@ namespace WF_PhoneManagement
                         + txtOrigin.Text + ','
                         + txtYearOfWarranty.Text + ','
                         + txtBrand.Text;
-            dataString.Trim();
+            dataString = dataString.Trim();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

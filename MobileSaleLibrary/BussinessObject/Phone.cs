@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MobileSaleLibrary.Repository;
+using MobileSaleLibrary.Repository.IRepository;
+using System;
 using System.Collections.Generic;
 
 namespace MobileSaleLibrary.Models
@@ -17,7 +19,8 @@ namespace MobileSaleLibrary.Models
             ModelId = modelId;
             Type = type;
             ShowPrice = showPrice;
-            Model = model;
+            IModelRepository mRepos = new ModelRepository();
+            Model = mRepos.GetModelByID(modelId);
         }
 
         public int PhoneId { get; set; }

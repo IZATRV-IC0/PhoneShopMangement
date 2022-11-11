@@ -93,6 +93,7 @@
             // 
             // btn_OK
             // 
+            this.btn_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_OK.Location = new System.Drawing.Point(84, 294);
             this.btn_OK.Name = "btn_OK";
             this.btn_OK.Size = new System.Drawing.Size(75, 23);
@@ -103,6 +104,7 @@
             // 
             // btn_Cancel
             // 
+            this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_Cancel.Location = new System.Drawing.Point(212, 294);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
@@ -151,6 +153,7 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(176, 23);
             this.txtID.TabIndex = 0;
+            this.txtID.Text = "0";
             // 
             // rbtn_X
             // 

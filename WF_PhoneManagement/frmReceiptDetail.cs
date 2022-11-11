@@ -20,11 +20,27 @@ namespace WF_PhoneManagement
         {
             InitializeComponent();
         }
+        public void setDefaultData(ReceiptInfo rI)
+        {
+            txtRe_PID.Text = "" + rI.PhoneId;
+            txtRe_PName.Text = rI.PhoneName;
+            txtRe_PPrice.Text = "" + rI.SellPricePerUnit;
+            txtRe_PTotal.Text = "" + rI.Total;
+            nudRe_PQuantity.Value = rI.Quantity;
+        }
         private void LoadMethod()
         {
 
         }
-
+        public void ResetForm()
+        {
+            foreach (TextBox txt in this.Controls)
+            {
+                txt.Text = "";
+            }
+            txtRe_PID.Text = "0";
+            dataString = "";
+        }
         public ReceiptInfo GetReceiptInfo()
         {
             ReceiptInfo reInfo = new ReceiptInfo();
@@ -47,8 +63,8 @@ namespace WF_PhoneManagement
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            dataString = cbbRe_PID.Text + ',' + txtRe_PPrice + ',' + nudRe_PQuantity;
-            dataString.Trim();
+            dataString = txtRe_PID.Text + ',' + txtRe_PPrice + ',' + nudRe_PQuantity;
+            dataString = dataString.Trim();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -34,14 +34,10 @@
             this.dgvShowList = new System.Windows.Forms.DataGridView();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.btnSort = new System.Windows.Forms.Button();
             this.lblField = new System.Windows.Forms.Label();
             this.lblSearchInfo = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.rbtnSortAsc = new System.Windows.Forms.RadioButton();
-            this.rbtnSortDsc = new System.Windows.Forms.RadioButton();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnPick = new System.Windows.Forms.Button();
             this.lboxListPick = new System.Windows.Forms.ListBox();
             this.lboxBox = new System.Windows.Forms.ListBox();
@@ -103,16 +99,6 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnSort
-            // 
-            this.btnSort.Location = new System.Drawing.Point(658, 111);
-            this.btnSort.Name = "btnSort";
-            this.btnSort.Size = new System.Drawing.Size(75, 23);
-            this.btnSort.TabIndex = 10;
-            this.btnSort.Text = "Sort";
-            this.btnSort.UseVisualStyleBackColor = true;
-            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
-            // 
             // lblField
             // 
             this.lblField.AutoSize = true;
@@ -151,46 +137,13 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // rbtnSortAsc
-            // 
-            this.rbtnSortAsc.AutoSize = true;
-            this.rbtnSortAsc.Checked = true;
-            this.rbtnSortAsc.Location = new System.Drawing.Point(382, 113);
-            this.rbtnSortAsc.Name = "rbtnSortAsc";
-            this.rbtnSortAsc.Size = new System.Drawing.Size(81, 19);
-            this.rbtnSortAsc.TabIndex = 13;
-            this.rbtnSortAsc.TabStop = true;
-            this.rbtnSortAsc.Text = "Ascending";
-            this.rbtnSortAsc.UseVisualStyleBackColor = true;
-            // 
-            // rbtnSortDsc
-            // 
-            this.rbtnSortDsc.AutoSize = true;
-            this.rbtnSortDsc.Location = new System.Drawing.Point(516, 113);
-            this.rbtnSortDsc.Name = "rbtnSortDsc";
-            this.rbtnSortDsc.Size = new System.Drawing.Size(87, 19);
-            this.rbtnSortDsc.TabIndex = 14;
-            this.rbtnSortDsc.Text = "Descending";
-            this.rbtnSortDsc.UseVisualStyleBackColor = true;
-            this.rbtnSortDsc.CheckedChanged += new System.EventHandler(this.rbtnSortDsc_CheckedChanged);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(658, 59);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
-            this.btnRefresh.TabIndex = 10;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
             // btnPick
             // 
             this.btnPick.Location = new System.Drawing.Point(84, 461);
             this.btnPick.Name = "btnPick";
             this.btnPick.Size = new System.Drawing.Size(75, 23);
             this.btnPick.TabIndex = 8;
-            this.btnPick.Text = "OK";
+            this.btnPick.Text = "Detail";
             this.btnPick.UseVisualStyleBackColor = true;
             this.btnPick.Click += new System.EventHandler(this.btnPick_Click);
             // 
@@ -217,7 +170,7 @@
             this.lboxBox.ItemHeight = 15;
             this.lboxBox.Location = new System.Drawing.Point(452, 18);
             this.lboxBox.Name = "lboxBox";
-            this.lboxBox.Size = new System.Drawing.Size(120, 79);
+            this.lboxBox.Size = new System.Drawing.Size(120, 94);
             this.lboxBox.TabIndex = 16;
             // 
             // frmView
@@ -227,13 +180,9 @@
             this.ClientSize = new System.Drawing.Size(834, 513);
             this.Controls.Add(this.lboxBox);
             this.Controls.Add(this.lboxListPick);
-            this.Controls.Add(this.rbtnSortDsc);
-            this.Controls.Add(this.rbtnSortAsc);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.lblSearchInfo);
             this.Controls.Add(this.lblField);
-            this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.btnSort);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnPick);
             this.Controls.Add(this.btnAdd);
@@ -259,14 +208,10 @@
         private DataGridView dgvShowList;
         private Button btnEdit;
         private Button btnDelete;
-        private Button btnSort;
         private Label lblField;
         private Label lblSearchInfo;
         private Button btnExit;
         private Button btnAdd;
-        private RadioButton rbtnSortAsc;
-        private RadioButton rbtnSortDsc;
-        private Button btnRefresh;
         private Button btnPick;
         private ListBox lboxListPick;
         private ListBox lboxBox;

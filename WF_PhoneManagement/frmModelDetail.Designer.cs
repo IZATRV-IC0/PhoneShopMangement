@@ -44,6 +44,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(217, 282);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
@@ -54,6 +55,7 @@
             // 
             // btnOK
             // 
+            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.Location = new System.Drawing.Point(112, 282);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
@@ -109,10 +111,12 @@
             // 
             // txtModelID
             // 
+            this.txtModelID.Enabled = false;
             this.txtModelID.Location = new System.Drawing.Point(171, 61);
             this.txtModelID.Name = "txtModelID";
             this.txtModelID.Size = new System.Drawing.Size(180, 23);
             this.txtModelID.TabIndex = 3;
+            this.txtModelID.Text = "0";
             // 
             // txtBrand
             // 
