@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.lblImSID = new System.Windows.Forms.Label();
-            this.cbbIm_SID = new System.Windows.Forms.ComboBox();
-            this.btnIm_SChange = new System.Windows.Forms.Button();
+            this.btnIm_Supplier = new System.Windows.Forms.Button();
             this.lblImSPhone = new System.Windows.Forms.Label();
             this.txtIm_SName = new System.Windows.Forms.TextBox();
             this.lblImSName = new System.Windows.Forms.Label();
@@ -38,9 +37,9 @@
             this.txtIm_SAddress = new System.Windows.Forms.TextBox();
             this.nudIm_PQuantity = new System.Windows.Forms.NumericUpDown();
             this.grbIm_PDetail = new System.Windows.Forms.GroupBox();
+            this.txtIm_PID = new System.Windows.Forms.TextBox();
             this.lblImPID = new System.Windows.Forms.Label();
             this.lblImPTotal = new System.Windows.Forms.Label();
-            this.cbbIm_PID = new System.Windows.Forms.ComboBox();
             this.btnIm_PDelete = new System.Windows.Forms.Button();
             this.lblImPName = new System.Windows.Forms.Label();
             this.lblImPQuantity = new System.Windows.Forms.Label();
@@ -61,12 +60,13 @@
             this.lblImID = new System.Windows.Forms.Label();
             this.txtImSellDate = new System.Windows.Forms.TextBox();
             this.grbIm_SInfo = new System.Windows.Forms.GroupBox();
+            this.txtIm_SID = new System.Windows.Forms.TextBox();
             this.btn_Action = new System.Windows.Forms.Button();
             this.tabpgReceipt = new System.Windows.Forms.TabPage();
             this.grbRe_CInfo = new System.Windows.Forms.GroupBox();
+            this.txtRe_CID = new System.Windows.Forms.TextBox();
             this.lblReCID = new System.Windows.Forms.Label();
-            this.cbbRe_CID = new System.Windows.Forms.ComboBox();
-            this.btnRe_CChange = new System.Windows.Forms.Button();
+            this.btnRe_Customer = new System.Windows.Forms.Button();
             this.lblReCPhone = new System.Windows.Forms.Label();
             this.txtRe_CName = new System.Windows.Forms.TextBox();
             this.lblReCName = new System.Windows.Forms.Label();
@@ -80,10 +80,10 @@
             this.txtReID = new System.Windows.Forms.TextBox();
             this.grbRe_Detail = new System.Windows.Forms.GroupBox();
             this.grbRe_PDetail = new System.Windows.Forms.GroupBox();
+            this.txtRe_PID = new System.Windows.Forms.TextBox();
             this.nudRe_PQuantity = new System.Windows.Forms.NumericUpDown();
             this.lblRePID = new System.Windows.Forms.Label();
             this.lblRePTotal = new System.Windows.Forms.Label();
-            this.cbbRe_PID = new System.Windows.Forms.ComboBox();
             this.btnRe_PDelete = new System.Windows.Forms.Button();
             this.lblRePName = new System.Windows.Forms.Label();
             this.lblRePQuantity = new System.Windows.Forms.Label();
@@ -127,24 +127,16 @@
             this.lblImSID.TabIndex = 1;
             this.lblImSID.Text = "ID:";
             // 
-            // cbbIm_SID
+            // btnIm_Supplier
             // 
-            this.cbbIm_SID.Enabled = false;
-            this.cbbIm_SID.FormattingEnabled = true;
-            this.cbbIm_SID.Location = new System.Drawing.Point(93, 29);
-            this.cbbIm_SID.Name = "cbbIm_SID";
-            this.cbbIm_SID.Size = new System.Drawing.Size(121, 23);
-            this.cbbIm_SID.TabIndex = 2;
-            // 
-            // btnIm_SChange
-            // 
-            this.btnIm_SChange.Enabled = false;
-            this.btnIm_SChange.Location = new System.Drawing.Point(635, 28);
-            this.btnIm_SChange.Name = "btnIm_SChange";
-            this.btnIm_SChange.Size = new System.Drawing.Size(141, 23);
-            this.btnIm_SChange.TabIndex = 17;
-            this.btnIm_SChange.Text = "Change...";
-            this.btnIm_SChange.UseVisualStyleBackColor = true;
+            this.btnIm_Supplier.Enabled = false;
+            this.btnIm_Supplier.Location = new System.Drawing.Point(635, 28);
+            this.btnIm_Supplier.Name = "btnIm_Supplier";
+            this.btnIm_Supplier.Size = new System.Drawing.Size(141, 23);
+            this.btnIm_Supplier.TabIndex = 17;
+            this.btnIm_Supplier.Text = "Supplier...";
+            this.btnIm_Supplier.UseVisualStyleBackColor = true;
+            this.btnIm_Supplier.Click += new System.EventHandler(this.btnIm_Supplier_Click);
             // 
             // lblImSPhone
             // 
@@ -211,10 +203,10 @@
             // 
             // grbIm_PDetail
             // 
+            this.grbIm_PDetail.Controls.Add(this.txtIm_PID);
             this.grbIm_PDetail.Controls.Add(this.nudIm_PQuantity);
             this.grbIm_PDetail.Controls.Add(this.lblImPID);
             this.grbIm_PDetail.Controls.Add(this.lblImPTotal);
-            this.grbIm_PDetail.Controls.Add(this.cbbIm_PID);
             this.grbIm_PDetail.Controls.Add(this.btnIm_PDelete);
             this.grbIm_PDetail.Controls.Add(this.lblImPName);
             this.grbIm_PDetail.Controls.Add(this.lblImPQuantity);
@@ -230,6 +222,13 @@
             this.grbIm_PDetail.TabIndex = 16;
             this.grbIm_PDetail.TabStop = false;
             this.grbIm_PDetail.Text = "Product Detail";
+            // 
+            // txtIm_PID
+            // 
+            this.txtIm_PID.Location = new System.Drawing.Point(91, 33);
+            this.txtIm_PID.Name = "txtIm_PID";
+            this.txtIm_PID.Size = new System.Drawing.Size(100, 23);
+            this.txtIm_PID.TabIndex = 13;
             // 
             // lblImPID
             // 
@@ -248,15 +247,6 @@
             this.lblImPTotal.Size = new System.Drawing.Size(35, 15);
             this.lblImPTotal.TabIndex = 2;
             this.lblImPTotal.Text = "Total:";
-            // 
-            // cbbIm_PID
-            // 
-            this.cbbIm_PID.Enabled = false;
-            this.cbbIm_PID.FormattingEnabled = true;
-            this.cbbIm_PID.Location = new System.Drawing.Point(91, 33);
-            this.cbbIm_PID.Name = "cbbIm_PID";
-            this.cbbIm_PID.Size = new System.Drawing.Size(121, 23);
-            this.cbbIm_PID.TabIndex = 1;
             // 
             // btnIm_PDelete
             // 
@@ -438,9 +428,9 @@
             // 
             // grbIm_SInfo
             // 
+            this.grbIm_SInfo.Controls.Add(this.txtIm_SID);
             this.grbIm_SInfo.Controls.Add(this.lblImSID);
-            this.grbIm_SInfo.Controls.Add(this.cbbIm_SID);
-            this.grbIm_SInfo.Controls.Add(this.btnIm_SChange);
+            this.grbIm_SInfo.Controls.Add(this.btnIm_Supplier);
             this.grbIm_SInfo.Controls.Add(this.lblImSPhone);
             this.grbIm_SInfo.Controls.Add(this.txtIm_SName);
             this.grbIm_SInfo.Controls.Add(this.lblImSName);
@@ -453,6 +443,14 @@
             this.grbIm_SInfo.TabIndex = 16;
             this.grbIm_SInfo.TabStop = false;
             this.grbIm_SInfo.Text = "Supplier";
+            // 
+            // txtIm_SID
+            // 
+            this.txtIm_SID.Location = new System.Drawing.Point(93, 28);
+            this.txtIm_SID.Name = "txtIm_SID";
+            this.txtIm_SID.Size = new System.Drawing.Size(100, 23);
+            this.txtIm_SID.TabIndex = 18;
+            this.txtIm_SID.TextChanged += new System.EventHandler(this.txtIm_SID_TextChanged);
             // 
             // btn_Action
             // 
@@ -479,9 +477,9 @@
             // 
             // grbRe_CInfo
             // 
+            this.grbRe_CInfo.Controls.Add(this.txtRe_CID);
             this.grbRe_CInfo.Controls.Add(this.lblReCID);
-            this.grbRe_CInfo.Controls.Add(this.cbbRe_CID);
-            this.grbRe_CInfo.Controls.Add(this.btnRe_CChange);
+            this.grbRe_CInfo.Controls.Add(this.btnRe_Customer);
             this.grbRe_CInfo.Controls.Add(this.lblReCPhone);
             this.grbRe_CInfo.Controls.Add(this.txtRe_CName);
             this.grbRe_CInfo.Controls.Add(this.lblReCName);
@@ -495,6 +493,14 @@
             this.grbRe_CInfo.TabStop = false;
             this.grbRe_CInfo.Text = "Customer";
             // 
+            // txtRe_CID
+            // 
+            this.txtRe_CID.Location = new System.Drawing.Point(93, 28);
+            this.txtRe_CID.Name = "txtRe_CID";
+            this.txtRe_CID.Size = new System.Drawing.Size(100, 23);
+            this.txtRe_CID.TabIndex = 18;
+            this.txtRe_CID.TextChanged += new System.EventHandler(this.txtRe_CID_TextChanged);
+            // 
             // lblReCID
             // 
             this.lblReCID.AutoSize = true;
@@ -504,25 +510,16 @@
             this.lblReCID.TabIndex = 1;
             this.lblReCID.Text = "ID:";
             // 
-            // cbbRe_CID
+            // btnRe_Customer
             // 
-            this.cbbRe_CID.Enabled = false;
-            this.cbbRe_CID.FormattingEnabled = true;
-            this.cbbRe_CID.Location = new System.Drawing.Point(93, 29);
-            this.cbbRe_CID.Name = "cbbRe_CID";
-            this.cbbRe_CID.Size = new System.Drawing.Size(121, 23);
-            this.cbbRe_CID.TabIndex = 2;
-            // 
-            // btnRe_CChange
-            // 
-            this.btnRe_CChange.Enabled = false;
-            this.btnRe_CChange.Location = new System.Drawing.Point(635, 28);
-            this.btnRe_CChange.Name = "btnRe_CChange";
-            this.btnRe_CChange.Size = new System.Drawing.Size(141, 23);
-            this.btnRe_CChange.TabIndex = 17;
-            this.btnRe_CChange.Text = "Change...";
-            this.btnRe_CChange.UseVisualStyleBackColor = true;
-            this.btnRe_CChange.Click += new System.EventHandler(this.btnRe_CChange_Click);
+            this.btnRe_Customer.Enabled = false;
+            this.btnRe_Customer.Location = new System.Drawing.Point(635, 28);
+            this.btnRe_Customer.Name = "btnRe_Customer";
+            this.btnRe_Customer.Size = new System.Drawing.Size(141, 23);
+            this.btnRe_Customer.TabIndex = 17;
+            this.btnRe_Customer.Text = "Customer...";
+            this.btnRe_Customer.UseVisualStyleBackColor = true;
+            this.btnRe_Customer.Click += new System.EventHandler(this.btnRe_Customer_Click);
             // 
             // lblReCPhone
             // 
@@ -641,10 +638,10 @@
             // 
             // grbRe_PDetail
             // 
+            this.grbRe_PDetail.Controls.Add(this.txtRe_PID);
             this.grbRe_PDetail.Controls.Add(this.nudRe_PQuantity);
             this.grbRe_PDetail.Controls.Add(this.lblRePID);
             this.grbRe_PDetail.Controls.Add(this.lblRePTotal);
-            this.grbRe_PDetail.Controls.Add(this.cbbRe_PID);
             this.grbRe_PDetail.Controls.Add(this.btnRe_PDelete);
             this.grbRe_PDetail.Controls.Add(this.lblRePName);
             this.grbRe_PDetail.Controls.Add(this.lblRePQuantity);
@@ -660,6 +657,13 @@
             this.grbRe_PDetail.TabIndex = 16;
             this.grbRe_PDetail.TabStop = false;
             this.grbRe_PDetail.Text = "Product Detail";
+            // 
+            // txtRe_PID
+            // 
+            this.txtRe_PID.Location = new System.Drawing.Point(91, 33);
+            this.txtRe_PID.Name = "txtRe_PID";
+            this.txtRe_PID.Size = new System.Drawing.Size(100, 23);
+            this.txtRe_PID.TabIndex = 13;
             // 
             // nudRe_PQuantity
             // 
@@ -696,15 +700,6 @@
             this.lblRePTotal.Size = new System.Drawing.Size(35, 15);
             this.lblRePTotal.TabIndex = 2;
             this.lblRePTotal.Text = "Total:";
-            // 
-            // cbbRe_PID
-            // 
-            this.cbbRe_PID.Enabled = false;
-            this.cbbRe_PID.FormattingEnabled = true;
-            this.cbbRe_PID.Location = new System.Drawing.Point(91, 33);
-            this.cbbRe_PID.Name = "cbbRe_PID";
-            this.cbbRe_PID.Size = new System.Drawing.Size(121, 23);
-            this.cbbRe_PID.TabIndex = 1;
             // 
             // btnRe_PDelete
             // 
@@ -914,8 +909,7 @@
 
         #endregion
         private Label lblImSID;
-        private ComboBox cbbIm_SID;
-        private Button btnIm_SChange;
+        private Button btnIm_Supplier;
         private Label lblImSPhone;
         private TextBox txtIm_SName;
         private Label lblImSName;
@@ -925,7 +919,6 @@
         private GroupBox grbIm_PDetail;
         private Label lblImPID;
         private Label lblImPTotal;
-        private ComboBox cbbIm_PID;
         private Button btnIm_PDelete;
         private Label lblImPName;
         private Label lblImPQuantity;
@@ -950,8 +943,7 @@
         private TabPage tabpgReceipt;
         private GroupBox grbRe_CInfo;
         private Label lblReCID;
-        private ComboBox cbbRe_CID;
-        private Button btnRe_CChange;
+        private Button btnRe_Customer;
         private Label lblReCPhone;
         private TextBox txtRe_CName;
         private Label lblReCName;
@@ -968,7 +960,6 @@
         private NumericUpDown nudRe_PQuantity;
         private Label lblRePID;
         private Label lblRePTotal;
-        private ComboBox cbbRe_PID;
         private Button btnRe_PDelete;
         private Label lblRePName;
         private Label lblRePQuantity;
@@ -986,5 +977,9 @@
         private GroupBox grbIm_MainInfo;
         private TabControl tabRI;
         private Button btn_Exit;
+        private TextBox txtIm_SID;
+        private TextBox txtRe_CID;
+        private TextBox txtIm_PID;
+        private TextBox txtRe_PID;
     }
 }

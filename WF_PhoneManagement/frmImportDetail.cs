@@ -57,7 +57,7 @@ namespace WF_PhoneManagement
             dataString = txt_PID.Text + ','
                         + txt_PPrice.Text + ','
                         + nud_PQuantity.Text;
-            dataString.Trim();
+            dataString=dataString.Trim();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

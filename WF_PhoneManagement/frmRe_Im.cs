@@ -14,6 +14,7 @@ using Microsoft.VisualBasic.ApplicationServices;
 using MobileSaleLibrary.Models;
 using MobileSaleLibrary.Repository;
 using MobileSaleLibrary.Repository.IRepository;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace WF_PhoneManagement
 {
@@ -44,66 +45,20 @@ namespace WF_PhoneManagement
             InitializeComponent();
             recInfo = new List<ReceiptInfo>();
             impInfo = new List<ImportInfo>();
-            
-            //Receipt r = new Receipt();
-            //Import i = new Import();
-            //MobileSaleLibrary.Models.Model m = new MobileSaleLibrary.Models.Model();
-            //m.ModelId = 1;
-            //m.ModelName = "Model";
-            //Phone p = new Phone();
-            //p.Model = m;
-            //p.ModelId = m.ModelId;
-            //p.PhoneId = 1;
-            //p.ShowPrice = 1;
-            //p.Type = "Type";
-            //customer = new Customer();
-            //customer.CustomerId = 1;
-            //customer.CustomerName = "a";
-            //customer.CustomerAddress = "here";
-            //customer.CustomerPhoneNumber = "0x";
-            //customer.Gender = "Male";
-            //supplier = new Supplier();
-            //supplier.SupplierId = 1;
-            //supplier.SupplierName = "a";
-            //supplier.SupplierAddress = "here";
-            //supplier.SupplierPhoneNumber = "0x";
-            //r.ReceiptId = 1;
-            //r.ReceiptDate = DateTime.Now;
-            //r.Customer = customer;
-            //r.CustomerId = customer.CustomerId;
-            //ReceiptInfo re = new ReceiptInfo();
-            //re.Receipt = r;
-            //re.ReceiptId = r.ReceiptId;
-            //re.Phone = p;
-            //re.PhoneId = p.PhoneId;
-            //re.Quantity = 1;
-            //re.SellPricePerUnit = p.ShowPrice;
-            //i.ImportId = 1;
-            //i.ImportDate = DateTime.Now;
-            //i.Supplier = supplier;
-            //i.SupplierId = i.Supplier.SupplierId;
-            //ImportInfo im = new ImportInfo();
-            //im.Import = i;
-            //im.ImportId = im.Import.ImportId;
-            //im.Phone = p;
-            //im.PhoneId = p.PhoneId;
-            //im.BuyPricePerUnit = p.ShowPrice;
-            //im.Quantity = 1;
-
-            //recInfo.Add(re);
-            //impInfo.Add(im);
             dgvRe_DetailList.DataSource = recInfo;
             dgvIm_DetailList.DataSource = impInfo;
-            cbbRe_PID.DataBindings.Add("Text", recInfo, "PhoneId");
+            txtRe_PID.DataBindings.Add("Text", recInfo, "PhoneId");
             txtRe_PName.DataBindings.Add("Text", recInfo, "PhoneName");
             txtRe_PPrice.DataBindings.Add("Text", recInfo, "SellPricePerUnit");
             nudRe_PQuantity.DataBindings.Add("Text", recInfo, "Quantity");
             txtRe_PTotal.DataBindings.Add("Text", recInfo, "Total");
-            cbbIm_PID.DataBindings.Add("Text", impInfo, "PhoneId");
+            txtIm_PID.DataBindings.Add("Text", impInfo, "PhoneId");
             txtIm_PName.DataBindings.Add("Text", impInfo, "PhoneName");
             txtIm_PPrice.DataBindings.Add("Text", impInfo, "BuyPricePerUnit");
             nudIm_PQuantity.DataBindings.Add("Text", impInfo, "Quantity");
             txtIm_PTotal.DataBindings.Add("Text", impInfo, "Total");
+            btnRe_Customer.Enabled = true;
+            btnIm_Supplier.Enabled = true;
         }
 
         //Settings for different purposes
@@ -153,7 +108,7 @@ namespace WF_PhoneManagement
             this.btnRe_PAdd.Hide();
             this.btnRe_PDelete.Hide();
             this.btnRe_PUpdate.Hide();
-            this.btnRe_CChange.Hide();
+            this.btnRe_Customer.Hide();
             
             var list = recInfoRepos.GetReceiptInfoListByRecieptID(ReId);
             recInfo = list.ToList();
@@ -168,7 +123,7 @@ namespace WF_PhoneManagement
             this.btnIm_PAdd.Hide();
             this.btnIm_PDelete.Hide();
             this.btnIm_PUpdate.Hide();
-            this.btnRe_CChange.Hide();
+            this.btnRe_Customer.Hide();
             var list = from ImportInfo iI in impInfoRepos.GetImportInfoList()
                        where iI.ImportId == ImId
                        select iI;
@@ -214,7 +169,7 @@ namespace WF_PhoneManagement
                     ViewRecSettings(Int32.Parse(this.txtReID.Text));
                     var currReceipt = recRepos.GetReceiptByID(Int32.Parse(this.txtReID.Text));
                     var customer = cRepos.GetCustomerByID(currReceipt.CustomerId);
-                    cbbRe_PID.Text = "" + customer.CustomerId;
+                    txtRe_CID.Text = "" + customer.CustomerId;
                     txtRe_CAddress.Text = customer.CustomerAddress;
                     txtRe_CName.Text = customer.CustomerName;
                     txtRe_CPhone.Text = customer.CustomerPhoneNumber;
@@ -222,7 +177,7 @@ namespace WF_PhoneManagement
                 case "ViewImp":
                     var currImport = impRepos.GetImportByID(Int32.Parse(this.txtReID.Text));
                     var supplier = sRepos.GetSupplierByID(currImport.SupplierId);
-                    cbbIm_PID.Text = "" + supplier.SupplierId;
+                    txtIm_PID.Text = "" + supplier.SupplierId;
                     txtIm_SAddress.Text = supplier.SupplierAddress;
                     txtIm_SName.Text = supplier.SupplierName;
                     txtIm_SPhone.Text = supplier.SupplierPhoneNumber;
@@ -277,44 +232,31 @@ namespace WF_PhoneManagement
             {
                 if (tabRI.SelectedTab.Equals(tabpgReceipt))
                 {
-                    if (customer is null)
+                    Receipt rec = new Receipt();
+                    rec.ReceiptDate = DateTime.Now;
+                    rec.CustomerId = Int32.Parse(txtRe_CID.Text);
+                    recRepos.AddNewReceipt(rec);
+                    rec = recRepos.GetReceiptList().Last();
+                    foreach (ReceiptInfo recI in recInfo)
                     {
-                        throw new Exception("You haven't selected customer yet!");
-                    } else
-                    {
-                        Receipt rec = new Receipt();
-                        rec.ReceiptDate = DateTime.Now;
-                        rec.CustomerId = customer.CustomerId;
-                        recRepos.AddNewReceipt(rec);
-                        rec = recRepos.GetReceiptList().Last();
-                        foreach(ReceiptInfo recI in recInfo)
-                        {
-                            recI.ReceiptId = rec.ReceiptId;
-                            recInfoRepos.CreateReceiptInfo(recI);
-                        }
+                        recI.ReceiptId = rec.ReceiptId;
+                        recInfoRepos.CreateReceiptInfo(recI);
                     }
                     MessageBox.Show("Receipt create successfully.\n" +
-                                    "To view full detail of receipt, go to View.", 
+                                    "To view full detail of receipt, go to View.",
                                     "Notification", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 else
                 {
-                    if (supplier is null)
+                    Import imp = new Import();
+                    imp.ImportDate = DateTime.Now;
+                    imp.SupplierId = Int32.Parse(txtIm_SID.Text);
+                    impRepos.AddNewImport(imp);
+                    imp = impRepos.GetImportList().Last();
+                    foreach (ImportInfo impI in impInfo)
                     {
-                        throw new Exception("You haven't selected supplier yet!");
-                    }
-                    else
-                    {
-                        Import imp = new Import();
-                        imp.ImportDate = DateTime.Now;
-                        imp.SupplierId = supplier.SupplierId;
-                        impRepos.AddNewImport(imp);
-                        imp = impRepos.GetImportList().Last();
-                        foreach (ImportInfo impI in impInfo)
-                        {
-                            impI.ImportId = imp.ImportId;
-                            impInfoRepos.AddNewImportInfo(impI);
-                        }
+                        impI.ImportId = imp.ImportId;
+                        impInfoRepos.AddNewImportInfo(impI);
                     }
                     MessageBox.Show("Import create successfully.\n" +
                                     "To view full detail of import, go to View.",
@@ -330,12 +272,10 @@ namespace WF_PhoneManagement
                     if (tabRI.SelectedTab == tabpgReceipt)
                     {
                         recInfo.Clear();
-                        customer = new Customer();
                         LoadMethod();
                     } else
                     {
                         impInfo.Clear();
-                        supplier = new Supplier();
                         LoadMethod();
                     }
                 }
@@ -346,9 +286,10 @@ namespace WF_PhoneManagement
         {
             frmReceiptDetail ReDetail = new frmReceiptDetail();
             ReDetail.ShowDialog();
-            if (ReDetail.GetReceiptInfo() != null)
+            if (ReDetail.dataString != null)
             {
-                recInfo.Add(ReDetail.GetReceiptInfo());
+                var rI = recInfoRepos.StringConvert(ReDetail.dataString);
+                recInfo.Add(rI);
             }
             LoadMethod();
         }
@@ -359,13 +300,13 @@ namespace WF_PhoneManagement
             {
                 frmReceiptDetail ReDetail = new frmReceiptDetail();
                 ReDetail.ShowDialog();
-                if (ReDetail.GetReceiptInfo() != null)
+                if (ReDetail.dataString != null)
                 {
                     int i = 0;
                     bool findCurr = false;
                     while (recInfo != null && i < recInfo.Count && !findCurr)
                     {
-                        if (recInfo[i].PhoneId == Int32.Parse(cbbRe_PID.Text))
+                        if (recInfo[i].PhoneId == Int32.Parse(txtReID.Text))
                         {
                             findCurr = true;
                         }
@@ -377,7 +318,7 @@ namespace WF_PhoneManagement
                     }
                     else
                     {
-                        recInfo[i] = ReDetail.GetReceiptInfo();
+                        recInfo[i] = recInfoRepos.StringConvert(ReDetail.dataString);
                         MessageBox.Show("Update successfully.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                 }
@@ -404,7 +345,7 @@ namespace WF_PhoneManagement
                     bool findCurr = false;
                     while (i < recInfo.Count && !findCurr)
                     {
-                        if (recInfo[i].PhoneId == Int32.Parse(cbbRe_PID.Text))
+                        if (recInfo[i].PhoneId == Int32.Parse(txtRe_PID.Text))
                         {
                             findCurr = true;
                         }
@@ -430,20 +371,12 @@ namespace WF_PhoneManagement
             }
             LoadMethod();
         }
-
-        private void btnRe_CChange_Click(object sender, EventArgs e)
-        {
-
-        }
         private void btnIm_PAdd_Click(object sender, EventArgs e)
         {
             frmImportDetail ImDetail = new frmImportDetail();
             ImDetail.ShowDialog();
-            /*if (ImDetail.GetImportInfo() != null)
-            {
-                impInfo.Add(ImDetail.GetImportInfo());
-                MessageBox.Show("Add successfully.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }*/
+            var iI = impInfoRepos.StringConvert(ImDetail.dataString);
+            impInfo.Add(iI);
             LoadMethod();
         }
         private void btnIm_PUpdate_Click(object sender, EventArgs e)
@@ -452,13 +385,13 @@ namespace WF_PhoneManagement
             {
                 frmImportDetail ImDetail = new frmImportDetail();
                 ImDetail.ShowDialog();
-                /*if (ImDetail.GetImportInfo() != null)
+                if (ImDetail.dataString != null)
                 {
                     int i = 0;
                     bool findCurr = false;
-                    while (i < impInfo.Count && !findCurr)
+                    while (impInfo != null && i < impInfo.Count && !findCurr)
                     {
-                        if (impInfo[i].PhoneId == Int32.Parse(cbbIm_PID.Text))
+                        if (impInfo[i].PhoneId == Int32.Parse(txtImID.Text))
                         {
                             findCurr = true;
                         }
@@ -470,10 +403,10 @@ namespace WF_PhoneManagement
                     }
                     else
                     {
-                        impInfo[i] = ImDetail.GetImportInfo();
+                        impInfo[i] = impInfoRepos.StringConvert(ImDetail.dataString);
                         MessageBox.Show("Update successfully.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
-                }*/
+                }
             }
             catch (Exception ex)
             {
@@ -497,7 +430,7 @@ namespace WF_PhoneManagement
                     bool findCurr = false;
                     while (i < impInfo.Count && !findCurr)
                     {
-                        if (impInfo[i].PhoneId == Int32.Parse(cbbIm_PID.Text))
+                        if (impInfo[i].PhoneId == Int32.Parse(txtIm_PID.Text))
                         {
                             findCurr = true;
                         }
@@ -523,6 +456,58 @@ namespace WF_PhoneManagement
                 MessageBox.Show("Exception:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             LoadMethod();
+        }
+
+        private void txtRe_CID_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var customer = cRepos.GetCustomerByID(Int32.Parse(txtRe_CID.Text));
+                if (customer is null)
+                {
+                    throw new Exception("No customer with id inputted.");
+                }
+                txtRe_CName.Text = customer.CustomerName;
+                txtRe_CPhone.Text = customer.CustomerPhoneNumber;
+                txtRe_CAddress.Text = customer.CustomerAddress;
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Please input right id. " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtIm_SID_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                var supplier = sRepos.GetSupplierByID(Int32.Parse(txtIm_SID.Text));
+                if (supplier is null)
+                {
+                    throw new Exception("No customer with id inputted.");
+                }
+                txtIm_SName.Text = supplier.SupplierName;
+                txtIm_SPhone.Text = supplier.SupplierPhoneNumber;
+                txtIm_SAddress.Text = supplier.SupplierAddress;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please input right id. " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnRe_Customer_Click(object sender, EventArgs e)
+        {
+            frmView view = new();
+            view.index = 2;
+            view.ShowDialog();
+        }
+
+        private void btnIm_Supplier_Click(object sender, EventArgs e)
+        {
+            frmView view = new();
+            view.index = 3;
+            view.ShowDialog();
         }
     }
 }

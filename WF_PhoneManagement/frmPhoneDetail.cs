@@ -77,6 +77,7 @@ namespace WF_PhoneManagement
         private void btnModel_Click(object sender, EventArgs e)
         {
             frmView view = new frmView();
+            view.index = 4;
             view.ViewSettings();
             view.ShowDialog();
         }

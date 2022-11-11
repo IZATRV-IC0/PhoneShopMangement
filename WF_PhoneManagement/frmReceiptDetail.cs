@@ -41,11 +41,6 @@ namespace WF_PhoneManagement
             txtRe_PID.Text = "0";
             dataString = "";
         }
-        public ReceiptInfo GetReceiptInfo()
-        {
-            ReceiptInfo reInfo = new ReceiptInfo();
-            return reInfo;
-        }
 
         private void frmReceiptDetail_Load(object sender, EventArgs e)
         {
@@ -74,7 +69,10 @@ namespace WF_PhoneManagement
 
         private void btnPhone_Click(object sender, EventArgs e)
         {
-
+            frmView view = new();
+            view.index = 5;
+            view.ViewSettings();
+            view.ShowDialog();
         }
     }
 }
