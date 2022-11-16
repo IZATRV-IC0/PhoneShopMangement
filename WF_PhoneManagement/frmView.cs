@@ -327,51 +327,30 @@ namespace WF_PhoneManagement
                         
                         break;
                     case 5:
-                        frmPhoneDetail getAddP = new frmPhoneDetail();
+                        frmPhoneDetail phoneDetail = new frmPhoneDetail
+                        {
+                            isAdd = true,
+                            Text = "Add new phone"
+                        };
                         Phone p = new Phone();
-                        p.ModelId = 0;
-                        getAddP.setDefaultData(p);
-                        getAddP.DialogResult = DialogResult.None;
-                        getAddP.ShowDialog();
-                        
-                            if (getAddP.DialogResult == DialogResult.OK)
-                            {
-                                if (ConfirmMsgBox("Perform action?"))
-                                {
-                                    Phone? pData = pRepos.StringConvert(getAddP.dataString);
-                                    if (pData is null)
-                                    {
-                                        MessageBox.Show("Please check your data again.", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                    else
-                                    {
-                                        getAddP.Close();
-                                        try
-                                        {
-                                            pRepos.AddNewPhone(pData);
-                                            DefaultSettings();
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            MessageBox.Show("Add data failed. Details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        }
-                                    }
-                                } else
-                                {
-                                    getAddP.DialogResult = DialogResult.None;
-                                }
-                            }
-                            if (getAddP.DialogResult == DialogResult.Cancel)
-                            {
-                                getAddP.Close();
-                            }
-                        
+                        phoneDetail.ShowDialog();
+                        if(phoneDetail.DialogResult == DialogResult.OK)
+                        {
+                            ReloadPhoneList();
+                            source.Position = source.Count - 1;
+                        }
+
                         break;
                     default:
                         throw new Exception("Index out of bound exception");
                 }
                 LoadMethod();
             }
+        }
+        private void ReloadPhoneList()
+        {
+           source.DataSource =  pRepos.GetPhones();
+            dgvShowList.DataSource = source;
         }
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -510,44 +489,18 @@ namespace WF_PhoneManagement
                             
                             break;
                         case 5:
-                            frmPhoneDetail editP = new frmPhoneDetail();
                             Phone p = pRepos.GetPhoneByID(id);
-                            editP.setDefaultData(p);
-                            editP.DialogResult = DialogResult.None;
-                            editP.ShowDialog();
-                            
-                                if (editP.DialogResult == DialogResult.OK)
-                                {
-                                    if (ConfirmMsgBox("Perform action?"))
-                                    {
-                                        Phone? pData = pRepos.StringConvert(editP.dataString);
-                                        if (pData is null)
-                                        {
-                                            MessageBox.Show("Please check your data again.", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        }
-                                        else
-                                        {
-                                            editP.Close();
-                                            try
-                                            {
-                                                pRepos.AddNewPhone(pData);
-                                                DefaultSettings();
-                                            }
-                                            catch (Exception ex)
-                                            {
-                                                MessageBox.Show("Add data failed. Details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            }
-                                        }
-                                    } else
-                                    {
-                                        editP.DialogResult = DialogResult.None;
-                                    }
-                                }
-                                if (editP.DialogResult == DialogResult.Cancel)
-                                {
-                                    editP.Close();
-                                }
-                            
+                            frmPhoneDetail phoneDetail = new frmPhoneDetail
+                            {
+                                isAdd = false,
+                                Phone = p,
+                                Text = "Update phone",
+                            };
+                            phoneDetail.ShowDialog();
+                            if(phoneDetail.DialogResult == DialogResult.OK)
+                            {
+                                ReloadPhoneList();
+                            }
                             break;
                         default:
                             throw new Exception("Index out of bound exception");
@@ -667,6 +620,8 @@ namespace WF_PhoneManagement
                                     throw new Exception("Detected dependent data affected. Please take action with internal data first.");
                                 }
                                 pRepos.DeletePhone(id);
+                                ReloadPhoneList();
+                                source.Position = 0;
                                 break;
                             default:
                                 throw new Exception("Index out of bound exception");

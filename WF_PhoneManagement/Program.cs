@@ -14,7 +14,7 @@ namespace WF_PhoneManagement.Beta
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new frmLogin());
-            //Application.Run(new frmView());
+            //Application.Run(new frmNav());
             
         }
     }
