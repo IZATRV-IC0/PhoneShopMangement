@@ -1,4 +1,6 @@
 ﻿using MobileSaleLibrary.Models;
+using MobileSaleLibrary.Repository;
+using MobileSaleLibrary.Repository.IRepository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,38 +15,50 @@ namespace WF_PhoneManagement
 {
     public partial class frmModelDetail : Form
     {
-        public bool hasClosed;
-        public string dataString = "";
-        public void setDefaultData(Model m)
-        {
-            txtModelID.Text = "" + m.ModelId;
-            txtModelName.Text = m.ModelName;
-            txtOrigin.Text = m.ModelOrigin;
-            txtYearOfWarranty.Text = "" + m.ModelYearOfWarranty;
-            txtBrand.Text = m.ModelBrand;
-        }
-        public void ResetForm()
-        {
-            foreach (TextBox txt in this.Controls)
-            {
-                txt.Text = "";
-            }
-            txtModelID.Text = "0";
-            dataString = "";
-        }
+        IModelRepository modelRepository = new ModelRepository();
+        public bool isAdd { get; set; }
+        public Model Model { get; set; }
         public frmModelDetail()
         {
             InitializeComponent();
         }
+        private void setup()
+        {
+            if(isAdd == false)
+            {
+                txtModelID.Text = Model.ModelId.ToString();
+                txtModelName.Text = Model.ModelName.ToString();
+                txtOrigin.Text = Model.ModelOrigin;
+                txtYear.Text = Model.ModelYearOfWarranty.ToString();
+                txtBrand.Text = Model.ModelBrand;
+            }
+        }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            dataString = txtModelID.Text + ','
-                        + txtModelName.Text + ','
-                        + txtOrigin.Text + ','
-                        + txtYearOfWarranty.Text + ','
-                        + txtBrand.Text;
-            dataString = dataString.Trim();
+            var model = new Model
+            {
+                ModelId = int.Parse(txtModelID.Text),
+                ModelName = txtModelName.Text,
+                ModelOrigin = txtOrigin.Text,
+                ModelYearOfWarranty = int.Parse(txtYear.Text),
+                ModelBrand = txtBrand.Text,
+            };
+            try
+            {
+                if (isAdd)
+                {
+                    modelRepository.AddNewModel(model);
+                }
+                else{
+                    modelRepository.UpdateModel(model);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message,isAdd? "Add new Model":"Update Model");
+            }
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -54,12 +68,12 @@ namespace WF_PhoneManagement
 
         private void frmModelDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.hasClosed = true;
+            this.Close();
         }
 
         private void frmModelDetail_Load(object sender, EventArgs e)
         {
-            this.hasClosed = false;
+            setup();
         }
     }
 }

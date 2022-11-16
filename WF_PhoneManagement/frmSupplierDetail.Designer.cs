@@ -81,6 +81,7 @@
             this.txtSupplierID.Enabled = false;
             this.txtSupplierID.Location = new System.Drawing.Point(127, 31);
             this.txtSupplierID.Name = "txtSupplierID";
+            this.txtSupplierID.ReadOnly = true;
             this.txtSupplierID.Size = new System.Drawing.Size(175, 23);
             this.txtSupplierID.TabIndex = 0;
             this.txtSupplierID.Text = "0";

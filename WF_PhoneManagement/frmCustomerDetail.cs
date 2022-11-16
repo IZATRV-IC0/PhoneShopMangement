@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.IdentityModel.Tokens;
 using MobileSaleLibrary;
 using MobileSaleLibrary.Models;
 using MobileSaleLibrary.Repository;
@@ -16,59 +17,78 @@ namespace WF_PhoneManagement
 {
     public partial class frmCustomerDetail : Form
     {
-        public bool hasClosed;
-        public string dataString = "";
+        ICustomerRepository customerRepository;
+        public bool isAdd { get; set; }
+        public Customer Customer { get; set; }
 
         public frmCustomerDetail()
         {
             InitializeComponent();
+            customerRepository = new CustomerRepository();
         }
 
-        public void setDefaultData(Customer c)
+       
+        private void setup()
         {
-            txtID.Text = "" + c.CustomerId;
-            txtName.Text = c.CustomerName;
-            txtPhone.Text = c.CustomerPhoneNumber;
-            txtAddress.Text = c.CustomerAddress;
-            switch (c.Gender)
+            if (isAdd)
             {
-                case "Male":
+                rbtn_X.Checked = true;
+            }
+            else
+            {
+                txtID.Text = Customer.CustomerId.ToString();
+                txtName.Text = Customer.CustomerName;
+                txtAddress.Text = Customer.CustomerAddress;
+                txtPhone.Text = Customer.CustomerPhoneNumber;
+                string gender = Customer.Gender;
+                if (gender.Equals("Male"))
+                {
                     rbtn_Male.Checked = true;
-                    break;
-                case "Female":
+                } else if (gender.Equals("Female"))
+                {
                     rbtn_Female.Checked = true;
-                    break;
-                case "X":
+                }
+                else
+                {
                     rbtn_X.Checked = true;
-                    break;
-                default:
-                    throw new Exception("Data field gender is corrupted.");
+                }
             }
         }
 
 
-
-        public void ResetForm()
-        {
-            foreach (TextBox txt in this.Controls)
-            {
-                txt.Text = "";
-            }
-            txtID.Text = "0";
-            dataString = "";
-        }
-
+       
 
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            dataString = txtID.Text + ','
-                        + txtName.Text + ','
-                        + txtPhone.Text + ','
-                        + txtAddress.Text + ',';
-            if (rbtn_Male.Checked) { dataString += "Male"; }
-            else if (rbtn_Female.Checked) { dataString += "Female"; }
-            else { dataString += "X"; }
-            dataString = dataString.Trim();
+            string id = txtID.Text;
+            if (id.IsNullOrEmpty())
+            {
+                id = "0";
+            }
+            string gender = "X";
+            if (rbtn_Female.Checked)
+            {
+                gender = "Female";
+            }else if (rbtn_Male.Checked)
+            {
+                gender = "Male";
+            }
+            var customer = new Customer
+            {
+                CustomerId = int.Parse(id),
+                CustomerName = txtName.Text,
+                CustomerAddress = txtAddress.Text,
+                Gender = gender,
+                CustomerPhoneNumber = txtPhone.Text,
+            };
+            if (isAdd)
+            {
+                customerRepository.AddNewCustomer(customer);
+            }
+            else
+            {
+                customerRepository.UpdateCustomer(customer);
+            }
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -118,12 +138,12 @@ namespace WF_PhoneManagement
 
         private void frmCustomerDetail_Load(object sender, EventArgs e)
         {
-            this.hasClosed = false;
+            setup();
         }
 
         private void frmCustomerDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            hasClosed = true;
+           this.Close();
         }
     }
 }

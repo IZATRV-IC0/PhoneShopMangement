@@ -88,8 +88,8 @@ namespace MobileSaleLibrary.DataAccess
             Model aModel = null;
             try
             {
-                model = GetModelByID(model.ModelId);
-                if (aModel == null)
+                aModel = GetModelByID(model.ModelId);
+                if (aModel != null)
                 {
                     using var context = new SalePhoneMangementContext();
                     context.TblModels.Update(model);
