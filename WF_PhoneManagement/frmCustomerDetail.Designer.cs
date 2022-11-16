@@ -151,9 +151,9 @@
             this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(135, 46);
             this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(176, 23);
             this.txtID.TabIndex = 0;
-            this.txtID.Text = "0";
             // 
             // rbtn_X
             // 
@@ -185,6 +185,7 @@
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.txtName);
             this.Name = "frmCustomerDetail";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customer Detail";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmCustomerDetail_FormClosed);
             this.Load += new System.EventHandler(this.frmCustomerDetail_Load);

@@ -210,121 +210,43 @@ namespace WF_PhoneManagement
                     case 1:
                         break;
                     case 2:
-                        frmCustomerDetail getAddC = new frmCustomerDetail();
-                        Customer c = new Customer();
-                        c.CustomerId = 0;
-                        c.Gender = "Male";
-                        getAddC.setDefaultData(c);
-                        getAddC.DialogResult = DialogResult.None;
-                        getAddC.ShowDialog();
-                        if (getAddC.DialogResult == DialogResult.OK)
+                        frmCustomerDetail customerDetail = new frmCustomerDetail
                         {
-                            Customer? cData = cRepos.StringConvert(getAddC.dataString);
-                            if (cData is null)
-                            {
-                                MessageBox.Show("Please check your data again.", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-
-                                try
-                                {
-                                    cRepos.AddNewCustomer(cData);
-                                    DefaultSettings();
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show("Add data failed. Details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                                getAddC.Close();
-                            }
-                        }
-                        if (getAddC.DialogResult == DialogResult.Cancel)
+                            isAdd = true,
+                            Text = "Add new customer",
+                        };
+                        customerDetail.ShowDialog();
+                        if (customerDetail.DialogResult == DialogResult.OK)
                         {
-                            getAddC.Close();
+                            ReloadCustomerList();
+                            source.Position = source.Count - 1;
                         }
                         break;
                     case 3:
-                        frmSupplierDetail getAddS = new frmSupplierDetail();
-                        Supplier s = new Supplier();
-                        s.SupplierId = 0;
-                        getAddS.setDefaultData(s);
-                        getAddS.DialogResult = DialogResult.None;
-                        getAddS.ShowDialog();
-                       
-                            if (getAddS.DialogResult == DialogResult.OK)
-                            {
-                                if (ConfirmMsgBox("Perform action?"))
-                                {
-                                    Supplier? sData = sRepos.StringConvert(getAddS.dataString);
-                                    if (sData is null)
-                                    {
-                                        MessageBox.Show("Please check your data again.", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                    else
-                                    {
-                                        getAddS.Close();
-                                        try
-                                        {
-                                            sRepos.AddNewSupplier(sData);
-                                            DefaultSettings();
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            MessageBox.Show("Add data failed. Details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        }
-                                    }
-                                } else
-                                {
-                                    getAddS.DialogResult = DialogResult.None;
-                                }
-                            }
-                            if (getAddS.DialogResult == DialogResult.Cancel)
-                            {
-                                getAddS.Close();
-                            }
-                        
+                        frmSupplierDetail supplierDetail = new frmSupplierDetail
+                        {
+                            isAdd = true,
+                            Text = "Add new supplier"
+                        };
+                        supplierDetail.ShowDialog();
+                        if (supplierDetail.DialogResult == DialogResult.OK)
+                        {
+                            ReloadSupplierList();
+                            source.Position = source.Count - 1;
+                        }
                         break;
                     case 4:
-                        frmModelDetail getAddM = new frmModelDetail();
-                        Model m = new Model();
-                        m.ModelId = 0;
-                        getAddM.setDefaultData(m);
-                        getAddM.DialogResult = DialogResult.None;
-                        getAddM.ShowDialog();
-                        
-                            if (getAddM.DialogResult == DialogResult.OK)
-                            {
-                                if (ConfirmMsgBox("Perform action?"))
-                                {
-                                    Model? mData = mRepos.StringConvert(getAddM.dataString);
-                                    if (mData is null)
-                                    {
-                                        MessageBox.Show("Please check your data again.", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                    else
-                                    {
-                                        getAddM.Close();
-                                        try
-                                        {
-                                            mRepos.AddNewModel(mData);
-                                            DefaultSettings();
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            MessageBox.Show("Add data failed. Details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        }
-                                    }
-                                } else
-                                {
-                                    getAddM.DialogResult = DialogResult.None;
-                                }
-                            }
-                            if (getAddM.DialogResult == DialogResult.Cancel)
-                            {
-                                getAddM.Close();
-                            }
-                        
+                        frmModelDetail model = new frmModelDetail
+                        {
+                            isAdd = true,
+                            Text = "Add new Model"
+                        };
+                        model.ShowDialog();
+                        if (model.DialogResult == DialogResult.OK)
+                        {
+                            ReloadModelList();
+                            source.Position = source.Count - 1;
+                        }
                         break;
                     case 5:
                         frmPhoneDetail phoneDetail = new frmPhoneDetail
@@ -332,7 +254,6 @@ namespace WF_PhoneManagement
                             isAdd = true,
                             Text = "Add new phone"
                         };
-                        Phone p = new Phone();
                         phoneDetail.ShowDialog();
                         if(phoneDetail.DialogResult == DialogResult.OK)
                         {
@@ -350,6 +271,21 @@ namespace WF_PhoneManagement
         private void ReloadPhoneList()
         {
            source.DataSource =  pRepos.GetPhones();
+            dgvShowList.DataSource = source;
+        }
+        private void ReloadModelList()
+        {
+            source.DataSource = mRepos.GetModelsList();
+            dgvShowList.DataSource = source;
+        }
+        private void ReloadCustomerList()
+        {
+            source.DataSource = cRepos.GetCustomerList();
+            dgvShowList.DataSource = source;
+        }
+        private void ReloadSupplierList()
+        {
+            source.DataSource = sRepos.GetSupplierList();
             dgvShowList.DataSource = source;
         }
         private void btnEdit_Click(object sender, EventArgs e)
@@ -372,121 +308,45 @@ namespace WF_PhoneManagement
                             break;
                         case 2:
                             Customer c = cRepos.GetCustomerByID(id);
-                            frmCustomerDetail editC = new frmCustomerDetail();
-                            editC.setDefaultData(c);
-                            editC.ShowDialog();
-                                if (editC.DialogResult == DialogResult.OK)
-                                {
-                                    if (ConfirmMsgBox("Perform action?"))
-                                    {
-                                        Customer? cData = cRepos.StringConvert(editC.dataString);
-                                        if (cData is null)
-                                        {
-                                            MessageBox.Show("Please check your data again.", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        }
-                                        else
-                                        {
-                                            editC.Close();
-                                            try
-                                            {
-                                                cRepos.UpdateCustomer(cData);
-                                                DefaultSettings();
-                                            }
-                                            catch (Exception ex)
-                                            {
-                                                MessageBox.Show("Edit data failed. Details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            }
-                                        }
-                                    } else
-                                    {
-                                        editC.DialogResult = DialogResult.None;
-                                    }
-                                }
-                                if (editC.DialogResult == DialogResult.Cancel)
-                                {
-                                    editC.Close();
-                                }
-                            
+                            frmCustomerDetail customerDetail = new frmCustomerDetail
+                            {
+                                isAdd = false,
+                                Customer = c,
+                                Text = "Update customer",
+                            };
+                            customerDetail.ShowDialog();
+                            if (customerDetail.DialogResult == DialogResult.OK)
+                            {
+                                ReloadCustomerList();
+                            }
                             break;
                         case 3:
-                            frmSupplierDetail editS = new frmSupplierDetail();
                             Supplier s = sRepos.GetSupplierByID(id);
-                            editS.setDefaultData(s);
-                            editS.DialogResult = DialogResult.None;
-                            editS.ShowDialog();
-                            
-                                if (editS.DialogResult == DialogResult.OK)
-                                {
-                                    if (ConfirmMsgBox("Perform action?"))
-                                    {
-                                        Supplier? sData = sRepos.StringConvert(editS.dataString);
-                                        if (sData is null)
-                                        {
-                                            MessageBox.Show("Please check your data again.", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        }
-                                        else
-                                        {
-                                            editS.Close();
-                                            try
-                                            {
-                                                sRepos.AddNewSupplier(sData);
-                                                DefaultSettings();
-                                            }
-                                            catch (Exception ex)
-                                            {
-                                                MessageBox.Show("Edit data failed. Details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            }
-                                        }
-                                    } else
-                                    {
-                                        editS.DialogResult = DialogResult.None;
-                                    }
-                                }
-                                if (editS.DialogResult == DialogResult.Cancel)
-                                {
-                                    editS.Close();
-                                }
-                            
+                            frmSupplierDetail supplierDetail = new frmSupplierDetail
+                            {
+                                isAdd = false,
+                                Supplier = s,
+                                Text = "Update supplier",
+                            };
+                            supplierDetail.ShowDialog();
+                            if (supplierDetail.DialogResult == DialogResult.OK)
+                            {
+                                ReloadSupplierList();
+                            }
                             break;
                         case 4:
-                            frmModelDetail editM = new frmModelDetail();
                             Model m = mRepos.GetModelByID(id);
-                            editM.setDefaultData(m);
-                            editM.DialogResult = DialogResult.None;
-                            editM.ShowDialog();
-                            
-                                if (editM.DialogResult == DialogResult.OK)
-                                {
-                                    if (ConfirmMsgBox("Perform action?"))
-                                    {
-                                        Model? mData = mRepos.StringConvert(editM.dataString);
-                                        if (mData is null)
-                                        {
-                                            MessageBox.Show("Please check your data again.", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        }
-                                        else
-                                        {
-                                            editM.Close();
-                                            try
-                                            {
-                                                mRepos.AddNewModel(mData);
-                                                DefaultSettings();
-                                            }
-                                            catch (Exception ex)
-                                            {
-                                                MessageBox.Show("Add data failed. Details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            }
-                                        }
-                                    } else
-                                    {
-                                        editM.DialogResult = DialogResult.None;
-                                    }
-                                }
-                                if (editM.DialogResult == DialogResult.Cancel)
-                                {
-                                    editM.Close();
-                                }
-                            
+                            frmModelDetail modelDetail = new frmModelDetail
+                            {
+                                isAdd = false,
+                                Model = m,
+                                Text = "Update model",
+                            };
+                            modelDetail.ShowDialog();
+                            if (modelDetail.DialogResult == DialogResult.OK)
+                            {
+                                ReloadModelList();
+                            }
                             break;
                         case 5:
                             Phone p = pRepos.GetPhoneByID(id);
@@ -585,6 +445,7 @@ namespace WF_PhoneManagement
                                     throw new Exception("Detected dependent data affected. Please take action with internal data first.");
                                 }
                                 cRepos.RemoveCustomer(id);
+                                ReloadCustomerList();
                                 break;
                             case 3:
                                 var relationI = from Import i in iRepos.GetImportList()
@@ -595,6 +456,7 @@ namespace WF_PhoneManagement
                                     throw new Exception("Detected dependent data affected. Please take action with internal data first.");
                                 }
                                 sRepos.RemoveSupplier(id);
+                                ReloadSupplierList();
                                 break;
                             case 4:
                                 var relationP = from Phone p in pRepos.GetPhones()
@@ -605,6 +467,7 @@ namespace WF_PhoneManagement
                                     throw new Exception("Detected dependent data affected. Please take action with internal data first.");
                                 }
                                 mRepos.DeleteModel(id);
+                                ReloadModelList();
                                 break;
                             case 5:
                                 var relationPR = from ReceiptInfo rI in rInfoRepos.GetReceiptInfoList()
@@ -621,7 +484,6 @@ namespace WF_PhoneManagement
                                 }
                                 pRepos.DeletePhone(id);
                                 ReloadPhoneList();
-                                source.Position = 0;
                                 break;
                             default:
                                 throw new Exception("Index out of bound exception");

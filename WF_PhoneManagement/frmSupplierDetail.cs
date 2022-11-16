@@ -1,4 +1,6 @@
 ﻿using MobileSaleLibrary.Models;
+using MobileSaleLibrary.Repository;
+using MobileSaleLibrary.Repository.IRepository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,54 +16,66 @@ namespace WF_PhoneManagement
 {
     public partial class frmSupplierDetail : Form
     {
-        public bool hasClosed;
-        public string dataString = "";
+        ISupplierRepository supplierRepository = new SupplierRepository();
+        public bool isAdd { get; set; }
+        public Supplier Supplier { get; set; }
         public frmSupplierDetail()
         {
             InitializeComponent();
         }
 
-        public void ResetForm()
+       
+        private void setup()
         {
-            foreach (TextBox txt in this.Controls)
+            if(isAdd == false)
             {
-                txt.Text = "";
+                txtSupplierID.Text = Supplier.SupplierId.ToString();
+                txtSupplierName.Text = Supplier.SupplierName.ToString();
+                txtAddress.Text = Supplier.SupplierAddress;
+                txtPhone.Text = Supplier.SupplierPhoneNumber;
             }
-            txtSupplierID.Text = "0";
-            dataString = "";
-        }
-        public void setDefaultData(Supplier s)
-        {
-            txtSupplierID.Text = "" + s.SupplierId;
-            txtSupplierName.Text = s.SupplierName;
-            txtPhone.Text = s.SupplierPhoneNumber;
-            txtAddress.Text = s.SupplierAddress;
         }
 
 
         private void frmSupplierDetail_Load(object sender, EventArgs e)
         {
-            ResetForm();
-            hasClosed = false;
+            setup();    
         }
 
         private void frmSupplierDetail_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            
         }
 
         private void frmSupplierDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            hasClosed = true;
+            this.Close();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            dataString = txtSupplierID.Text + ','
-                        + txtSupplierName.Text + ','
-                        + txtPhone.Text + ','
-                        + txtAddress.Text;
-            dataString = dataString.Trim();
+            var supplier = new Supplier
+            {
+                SupplierId = int.Parse(txtSupplierID.Text),
+                SupplierName = txtSupplierName.Text,
+                SupplierAddress = txtAddress.Text,
+                SupplierPhoneNumber = txtPhone.Text,
+            };
+            try
+            {
+                if (isAdd)
+                {
+                    supplierRepository.AddNewSupplier(supplier);
+                }
+                else
+                {
+                    supplierRepository.UpdateSupplier(supplier);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, isAdd ? "Add new supplier" : "Update supplier");
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -37,9 +37,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtModelID = new System.Windows.Forms.TextBox();
             this.txtBrand = new System.Windows.Forms.TextBox();
-            this.txtYearOfWarranty = new System.Windows.Forms.TextBox();
             this.txtOrigin = new System.Windows.Forms.TextBox();
             this.txtModelName = new System.Windows.Forms.TextBox();
+            this.txtYear = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -48,7 +48,7 @@
             this.btnCancel.Location = new System.Drawing.Point(217, 282);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 13;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -59,7 +59,7 @@
             this.btnOK.Location = new System.Drawing.Point(112, 282);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 14;
+            this.btnOK.TabIndex = 4;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -114,6 +114,7 @@
             this.txtModelID.Enabled = false;
             this.txtModelID.Location = new System.Drawing.Point(171, 61);
             this.txtModelID.Name = "txtModelID";
+            this.txtModelID.ReadOnly = true;
             this.txtModelID.Size = new System.Drawing.Size(180, 23);
             this.txtModelID.TabIndex = 3;
             this.txtModelID.Text = "0";
@@ -123,34 +124,37 @@
             this.txtBrand.Location = new System.Drawing.Point(171, 221);
             this.txtBrand.Name = "txtBrand";
             this.txtBrand.Size = new System.Drawing.Size(180, 23);
-            this.txtBrand.TabIndex = 4;
-            // 
-            // txtYearOfWarranty
-            // 
-            this.txtYearOfWarranty.Location = new System.Drawing.Point(171, 179);
-            this.txtYearOfWarranty.Name = "txtYearOfWarranty";
-            this.txtYearOfWarranty.Size = new System.Drawing.Size(180, 23);
-            this.txtYearOfWarranty.TabIndex = 5;
+            this.txtBrand.TabIndex = 3;
             // 
             // txtOrigin
             // 
             this.txtOrigin.Location = new System.Drawing.Point(171, 140);
             this.txtOrigin.Name = "txtOrigin";
             this.txtOrigin.Size = new System.Drawing.Size(180, 23);
-            this.txtOrigin.TabIndex = 6;
+            this.txtOrigin.TabIndex = 1;
             // 
             // txtModelName
             // 
             this.txtModelName.Location = new System.Drawing.Point(171, 100);
             this.txtModelName.Name = "txtModelName";
             this.txtModelName.Size = new System.Drawing.Size(180, 23);
-            this.txtModelName.TabIndex = 7;
+            this.txtModelName.TabIndex = 0;
+            // 
+            // txtYear
+            // 
+            this.txtYear.Location = new System.Drawing.Point(171, 179);
+            this.txtYear.Mask = "0000";
+            this.txtYear.Name = "txtYear";
+            this.txtYear.Size = new System.Drawing.Size(180, 23);
+            this.txtYear.TabIndex = 2;
+            this.txtYear.ValidatingType = typeof(int);
             // 
             // frmModelDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(446, 382);
+            this.Controls.Add(this.txtYear);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.label6);
@@ -160,10 +164,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtModelID);
             this.Controls.Add(this.txtBrand);
-            this.Controls.Add(this.txtYearOfWarranty);
             this.Controls.Add(this.txtOrigin);
             this.Controls.Add(this.txtModelName);
             this.Name = "frmModelDetail";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Model Detail";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmModelDetail_FormClosed);
             this.Load += new System.EventHandler(this.frmModelDetail_Load);
@@ -183,8 +187,8 @@
         private Label label4;
         private TextBox txtModelID;
         private TextBox txtBrand;
-        private TextBox txtYearOfWarranty;
         private TextBox txtOrigin;
         private TextBox txtModelName;
+        private MaskedTextBox txtYear;
     }
 }
