@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtPhoneID = new System.Windows.Forms.TextBox();
             this.txtPhoneName = new System.Windows.Forms.TextBox();
-            this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtType = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,7 +37,6 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtModelID = new System.Windows.Forms.TextBox();
             this.txtModelName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtOrigin = new System.Windows.Forms.TextBox();
@@ -49,37 +46,25 @@
             this.txtBrand = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnModel = new System.Windows.Forms.Button();
+            this.cbModelID = new System.Windows.Forms.ComboBox();
+            this.txtPrice = new System.Windows.Forms.MaskedTextBox();
+            this.txtPhoneID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // txtPhoneID
-            // 
-            this.txtPhoneID.Enabled = false;
-            this.txtPhoneID.Location = new System.Drawing.Point(141, 38);
-            this.txtPhoneID.Name = "txtPhoneID";
-            this.txtPhoneID.Size = new System.Drawing.Size(180, 23);
-            this.txtPhoneID.TabIndex = 0;
-            this.txtPhoneID.Text = "0";
             // 
             // txtPhoneName
             // 
             this.txtPhoneName.Enabled = false;
-            this.txtPhoneName.Location = new System.Drawing.Point(141, 77);
+            this.txtPhoneName.Location = new System.Drawing.Point(138, 77);
             this.txtPhoneName.Name = "txtPhoneName";
-            this.txtPhoneName.Size = new System.Drawing.Size(180, 23);
+            this.txtPhoneName.ReadOnly = true;
+            this.txtPhoneName.Size = new System.Drawing.Size(183, 23);
             this.txtPhoneName.TabIndex = 0;
-            // 
-            // txtPrice
-            // 
-            this.txtPrice.Location = new System.Drawing.Point(141, 117);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(180, 23);
-            this.txtPrice.TabIndex = 0;
             // 
             // txtType
             // 
-            this.txtType.Location = new System.Drawing.Point(141, 156);
+            this.txtType.Location = new System.Drawing.Point(138, 156);
             this.txtType.Name = "txtType";
-            this.txtType.Size = new System.Drawing.Size(180, 23);
+            this.txtType.Size = new System.Drawing.Size(183, 23);
             this.txtType.TabIndex = 0;
             // 
             // label1
@@ -125,7 +110,7 @@
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 2;
-            this.btnOK.Text = "OK";
+            this.btnOK.Text = "Save";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
@@ -148,15 +133,6 @@
             this.label6.Size = new System.Drawing.Size(58, 15);
             this.label6.TabIndex = 1;
             this.label6.Text = "Model ID:";
-            // 
-            // txtModelID
-            // 
-            this.txtModelID.Location = new System.Drawing.Point(504, 38);
-            this.txtModelID.Name = "txtModelID";
-            this.txtModelID.Size = new System.Drawing.Size(180, 23);
-            this.txtModelID.TabIndex = 0;
-            this.txtModelID.Text = "0";
-            this.txtModelID.TextChanged += new System.EventHandler(this.txtModelID_TextChanged);
             // 
             // txtModelName
             // 
@@ -236,11 +212,42 @@
             this.btnModel.UseVisualStyleBackColor = true;
             this.btnModel.Click += new System.EventHandler(this.btnModel_Click);
             // 
+            // cbModelID
+            // 
+            this.cbModelID.AllowDrop = true;
+            this.cbModelID.FormattingEnabled = true;
+            this.cbModelID.Location = new System.Drawing.Point(504, 38);
+            this.cbModelID.Name = "cbModelID";
+            this.cbModelID.Size = new System.Drawing.Size(180, 23);
+            this.cbModelID.TabIndex = 4;
+            this.cbModelID.SelectedIndexChanged += new System.EventHandler(this.cbModelID_SelectedIndexChanged);
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(138, 117);
+            this.txtPrice.Mask = "00000";
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(181, 23);
+            this.txtPrice.TabIndex = 5;
+            this.txtPrice.ValidatingType = typeof(int);
+            // 
+            // txtPhoneID
+            // 
+            this.txtPhoneID.Location = new System.Drawing.Point(138, 41);
+            this.txtPhoneID.Name = "txtPhoneID";
+            this.txtPhoneID.ReadOnly = true;
+            this.txtPhoneID.Size = new System.Drawing.Size(181, 23);
+            this.txtPhoneID.TabIndex = 6;
+            // 
             // frmPhoneDetail
             // 
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(816, 348);
+            this.Controls.Add(this.txtPhoneID);
+            this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.cbModelID);
             this.Controls.Add(this.btnModel);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
@@ -253,16 +260,12 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtModelID);
             this.Controls.Add(this.txtType);
             this.Controls.Add(this.txtBrand);
             this.Controls.Add(this.txtYearOfWarranty);
             this.Controls.Add(this.txtOrigin);
-            this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.txtModelName);
             this.Controls.Add(this.txtPhoneName);
-            this.Controls.Add(this.txtPhoneID);
-            this.Enabled = false;
             this.Name = "frmPhoneDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phone Detail";
@@ -274,10 +277,7 @@
         }
 
         #endregion
-
-        private TextBox txtPhoneID;
         private TextBox txtPhoneName;
-        private TextBox txtPrice;
         private TextBox txtType;
         private Label label1;
         private Label label2;
@@ -286,7 +286,6 @@
         private Button btnOK;
         private Button btnCancel;
         private Label label6;
-        private TextBox txtModelID;
         private TextBox txtModelName;
         private Label label4;
         private TextBox txtOrigin;
@@ -296,5 +295,8 @@
         private TextBox txtBrand;
         private Label label9;
         private Button btnModel;
+        private ComboBox cbModelID;
+        private MaskedTextBox txtPrice;
+        private TextBox txtPhoneID;
     }
 }

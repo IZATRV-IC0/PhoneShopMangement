@@ -1,4 +1,6 @@
-﻿using MobileSaleLibrary.Models;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using Microsoft.IdentityModel.Tokens;
+using MobileSaleLibrary.Models;
 using MobileSaleLibrary.Repository;
 using MobileSaleLibrary.Repository.IRepository;
 using System;
@@ -7,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Serialization.Formatters;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,33 +19,46 @@ namespace WF_PhoneManagement
 {
     public partial class frmPhoneDetail : Form
     {
-        public bool hasClosed;
-        public string dataString = "";
+        public IPhoneRepository phoneRepository = new PhoneRepository();
+        public IModelRepository modelRepository = new ModelRepository();
+        public Phone Phone { get; set; }
+        public bool isAdd { get; set; }
         public frmPhoneDetail()
         {
             InitializeComponent();
         }
-        public void ResetForm()
-        {
-            foreach (TextBox txt in this.Controls)
-            {
-                txt.Text = "";
-            }
-            txtPhoneID.Text = "0";
-            txtModelID.Text = "0";
-            dataString = "";
-        }
         private void btnOK_Click(object sender, EventArgs e)
         {
-            dataString = txtPhoneID.Text + ',' + txtModelID.Text + ',' + txtType.Text + ',' + txtPrice.Text;
-            dataString = dataString.Trim();
-        }
-        public void setDefaultData(Phone p)
-        {
-            txtPhoneID.Text = "" + p.PhoneId;
-            txtType.Text = p.Type;
-            txtPrice.Text = "" + p.ShowPrice;
-            txtModelID.Text = "" + p.ModelId;
+            try
+            {
+                string phoneID = txtPhoneID.Text;
+                if (phoneID.IsNullOrEmpty())
+                {
+                    phoneID = "0";
+                }
+                var phone = new Phone
+                {
+                    
+                    PhoneId = int.Parse(phoneID),
+                    ModelId = int.Parse(cbModelID.Text),
+                    Type = txtType.Text,
+                    ShowPrice = int.Parse(txtPrice.Text),
+                    
+
+                };
+                if (isAdd)
+                {
+                    phoneRepository.AddNewPhone(phone);
+                }
+                else
+                {
+                    phoneRepository.UpdatePhone(phone);
+                }
+
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, isAdd ? "Add new phone" : "Update phone");
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -52,75 +68,55 @@ namespace WF_PhoneManagement
 
         private void frmPhoneDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            hasClosed = true;
+            this.Close();
         }
 
-        private void LoadMethod()
-        {
-            try
-            {
-                IPhoneRepository pRepos = new PhoneRepository();
-                txtPhoneName.Text = pRepos.GetPhoneByID(Int32.Parse(txtPhoneID.Text)).GetPhoneName();
-            } catch (Exception ex)
-            {
-                MessageBox.Show("Load method error: " + ex.Message + "\n" +
-                                "This dialog will automatically close to prevent data corruption.", "LoadError", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-            }
-        }
         private void frmPhoneDetail_Load(object sender, EventArgs e)
         {
-            hasClosed = false;
-            LoadMethod();
+            loadModel();
+            loadPhone();
         }
 
         private void btnModel_Click(object sender, EventArgs e)
         {
-            frmView view = new frmView();
-            view.SetListPickIndex(4);
-            view.index = 4;
-            view.mainFeature = true;
-            view.instock = false;
-            view.sales = false;
-            view.DefaultSettings();
-            view.ShowDialog();
         }
 
         private void txtModelID_TextChanged(object sender, EventArgs e)
         {
-            try
+            
+        }
+        private void loadModel()
+        {
+            var modelList = modelRepository.GetModelsList();
+            foreach(Model model in modelList)
             {
-                if (txtModelID.Text == "0")
-                {
-                    throw new Exception("0");
-                }
-                IModelRepository mRepos = new ModelRepository();
-                if (mRepos.GetModelsList().Count() == 0)
-                {
-                    throw new Exception("Add model first.");
-                }
-                int idOfModel = Int32.Parse(txtModelID.Text);
-                if (idOfModel < 0 || idOfModel >= mRepos.GetModelsList().Count())
-                {
-                    throw new Exception("ID input is out of bound.");
-                } else
-                {
-                    Model curr = mRepos.GetModelByID(idOfModel);
-                    this.txtModelName.Text = curr.ModelName;
-                    this.txtOrigin.Text = curr.ModelOrigin;
-                    this.txtBrand.Text = curr.ModelBrand;
-                    this.txtYearOfWarranty.Text = curr.ModelYearOfWarranty + "";
-                }
+                cbModelID.Items.Add(model.ModelId);
             }
-            catch (Exception ex)
+            cbModelID.SelectedIndex = 0;
+        }
+
+        private void cbModelID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = (int)cbModelID.SelectedItem;
+            var model = modelRepository.GetModelByID(id);
+            txtModelName.Text = model.ModelName;
+            txtBrand.Text = model.ModelBrand;
+            txtOrigin.Text = model.ModelOrigin;
+            txtYearOfWarranty.Text = model.ModelYearOfWarranty.ToString();
+        }
+        public void loadPhone()
+        {
+            if (isAdd)
             {
-                if (!ex.Message.Equals("0"))
-                {
-                    MessageBox.Show("Model info load error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtModelID.Text = "0";
-                }
+                txtPhoneID.Text = "";
             }
-            LoadMethod();
+            else
+            {
+                txtPhoneID.Text = Phone.PhoneId.ToString();
+                cbModelID.SelectedItem = Phone.ModelId;
+                txtPrice.Text = Phone.ShowPrice.ToString();
+                txtType.Text = Phone.Type;
+            }
         }
     }
 }
