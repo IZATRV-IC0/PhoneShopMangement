@@ -118,5 +118,10 @@ namespace WF_PhoneManagement
                 txtType.Text = Phone.Type;
             }
         }
+
+        private void txtPhoneName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
