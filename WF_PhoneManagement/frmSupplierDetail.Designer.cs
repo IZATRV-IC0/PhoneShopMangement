@@ -91,21 +91,21 @@
             this.txtSupplierName.Location = new System.Drawing.Point(127, 78);
             this.txtSupplierName.Name = "txtSupplierName";
             this.txtSupplierName.Size = new System.Drawing.Size(175, 23);
-            this.txtSupplierName.TabIndex = 1;
+            this.txtSupplierName.TabIndex = 0;
             // 
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(127, 129);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(175, 23);
-            this.txtAddress.TabIndex = 2;
+            this.txtAddress.TabIndex = 1;
             // 
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(127, 174);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(175, 23);
-            this.txtPhone.TabIndex = 3;
+            this.txtPhone.TabIndex = 2;
             // 
             // btnSave
             // 
@@ -113,7 +113,7 @@
             this.btnSave.Location = new System.Drawing.Point(127, 237);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 4;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "OK";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -124,7 +124,7 @@
             this.btnCancel.Location = new System.Drawing.Point(227, 237);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 5;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);

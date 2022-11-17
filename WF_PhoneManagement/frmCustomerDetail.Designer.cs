@@ -55,14 +55,14 @@
             this.txtAddress.Location = new System.Drawing.Point(135, 139);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(176, 23);
-            this.txtAddress.TabIndex = 0;
+            this.txtAddress.TabIndex = 1;
             // 
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(135, 185);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(176, 23);
-            this.txtPhone.TabIndex = 0;
+            this.txtPhone.TabIndex = 2;
             // 
             // lblName
             // 
@@ -97,7 +97,7 @@
             this.btn_OK.Location = new System.Drawing.Point(84, 294);
             this.btn_OK.Name = "btn_OK";
             this.btn_OK.Size = new System.Drawing.Size(75, 23);
-            this.btn_OK.TabIndex = 2;
+            this.btn_OK.TabIndex = 3;
             this.btn_OK.Text = "OK";
             this.btn_OK.UseVisualStyleBackColor = true;
             this.btn_OK.Click += new System.EventHandler(this.btn_OK_Click);
@@ -108,7 +108,7 @@
             this.btn_Cancel.Location = new System.Drawing.Point(212, 294);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_Cancel.TabIndex = 2;
+            this.btn_Cancel.TabIndex = 4;
             this.btn_Cancel.Text = "Cancel";
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);

@@ -65,7 +65,7 @@
             this.txtType.Location = new System.Drawing.Point(138, 156);
             this.txtType.Name = "txtType";
             this.txtType.Size = new System.Drawing.Size(183, 23);
-            this.txtType.TabIndex = 0;
+            this.txtType.TabIndex = 1;
             // 
             // label1
             // 
@@ -120,7 +120,7 @@
             this.btnCancel.Location = new System.Drawing.Point(410, 298);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 2;
+            this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -228,7 +228,7 @@
             this.txtPrice.Mask = "00000";
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(181, 23);
-            this.txtPrice.TabIndex = 5;
+            this.txtPrice.TabIndex = 0;
             this.txtPrice.ValidatingType = typeof(int);
             // 
             // txtPhoneID
