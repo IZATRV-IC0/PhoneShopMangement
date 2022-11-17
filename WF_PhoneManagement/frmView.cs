@@ -1,9 +1,12 @@
-﻿using MobileSaleLibrary.Models;
+﻿using Microsoft.IdentityModel.Tokens;
+using MobileSaleLibrary.Models;
 using MobileSaleLibrary.Repository;
 using MobileSaleLibrary.Repository.IRepository;
 using System.ComponentModel;
 using System.Data;
 using System.Linq.Dynamic.Core;
+using System.Linq.Expressions;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Model = MobileSaleLibrary.Models.Model;
 
@@ -196,6 +199,7 @@ namespace WF_PhoneManagement
         private void frmView_Load(object sender, EventArgs e)
         {
             LoadMethod();
+            lboxListPick.SelectedIndex = 0;
             hasClosed = false;
         }
 
@@ -268,24 +272,77 @@ namespace WF_PhoneManagement
                 LoadMethod();
             }
         }
-        private void ReloadPhoneList()
+        private void ReloadPhoneList([Optional] string txtsearch)
         {
-           source.DataSource =  pRepos.GetPhones();
+            var phoneList = pRepos.GetPhones();
+            var modelList = mRepos.GetModelsList();
+            if (!txtsearch.IsNullOrEmpty())
+            {
+                phoneList = phoneList.Where(o => o.PhoneId.ToString().Equals(txtsearch)).ToList();
+            }
+            var list = phoneList.Join(modelList, o1 => o1.ModelId, o2 => o2.ModelId, (o1, o2) => new { o1.PhoneId, o1.ShowPrice, o2.ModelId, o2.ModelName, o2.ModelBrand, o2.ModelYearOfWarranty });
+           
+            source.DataSource = list;
             dgvShowList.DataSource = source;
         }
-        private void ReloadModelList()
+        private void ReloadModelList([Optional] string txtsearch)
         {
-            source.DataSource = mRepos.GetModelsList();
+            var list = mRepos.GetModelsList();
+            if (!txtsearch.IsNullOrEmpty())
+            {
+                list = list.Where(o1 => o1.ModelId.ToString().Equals(txtsearch) || o1.ModelName.Contains(txtsearch)).ToList();
+            }
+            source.DataSource = list;
             dgvShowList.DataSource = source;
+            dgvShowList.Columns[5].Visible = false;
         }
-        private void ReloadCustomerList()
+        private void ReloadCustomerList([Optional] string txtsearch)
         {
-            source.DataSource = cRepos.GetCustomerList();
+            var list = cRepos.GetCustomerList();
+            if (!txtsearch.IsNullOrEmpty())
+            {
+                list = list.Where(o1 => o1.CustomerId.ToString().Equals(txtsearch) || o1.CustomerName.Contains(txtsearch)).ToList();
+            }
+            source.DataSource = list;
             dgvShowList.DataSource = source;
+            dgvShowList.Columns[5].Visible = false;
         }
-        private void ReloadSupplierList()
+        private void ReloadSupplierList([Optional] string txtsearch)
         {
-            source.DataSource = sRepos.GetSupplierList();
+            var list = sRepos.GetSupplierList();
+            if (!txtsearch.IsNullOrEmpty())
+            {
+                list = list.Where(o1 => o1.SupplierId.ToString().Equals(txtsearch) || o1.SupplierName.Contains(txtsearch)).ToList();
+            }
+            source.DataSource = list;
+            dgvShowList.DataSource = source;
+            dgvShowList.Columns[4].Visible = false;
+        }
+
+        private void ReloadReceiptList([Optional] string txtsearch)
+        {
+            var receiptList = rRepos.GetReceiptList();
+            var customer = cRepos.GetCustomerList();
+            var list = receiptList.Join(customer, o1 => o1.CustomerId, o2 => o2.CustomerId, (o1, o2) => new { o1.ReceiptId, o1.ReceiptDate, o2.CustomerId, o2.CustomerName });
+            if (!txtsearch.IsNullOrEmpty())
+            {
+                list = list.Where(o1 => o1.ReceiptId.ToString().Equals(txtsearch)).ToList();
+            }
+            source.DataSource = list;
+            dgvShowList.DataSource = source;
+
+        }
+
+        private void ReloadImportList([Optional] string txtsearch)
+        {
+            var importList = iRepos.GetImportList();
+            var supplierList = sRepos.GetSupplierList();
+            var list = importList.Join(supplierList, o1 => o1.SupplierId, o2 => o2.SupplierId, (o1, o2) => new { o1.ImportId, o1.ImportDate, o2.SupplierId, o2.SupplierName, o2.SupplierPhoneNumber });
+            if (!txtsearch.IsNullOrEmpty())
+            {
+                list = list.Where(o1 => o1.ImportId.ToString().Equals(txtsearch)).ToList();
+            }
+            source.DataSource = list;
             dgvShowList.DataSource = source;
         }
         private void btnEdit_Click(object sender, EventArgs e)
@@ -519,24 +576,26 @@ namespace WF_PhoneManagement
             {
                 string searchValue = txtSearchInfo.Text;
                 dgvShowList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-                bool valueResult = false;
-                foreach (DataGridViewRow row in dgvShowList.Rows)
-                {
-                    for (int i = 0; i < row.Cells.Count; i++)
-                    {
-                        if (row.Cells[i].Value != null && row.Cells[i].Value.ToString().Equals(searchValue))
-                        {
-                            int rowIndex = row.Index;
-                            dgvShowList.Rows[rowIndex].Selected = true;
-                            valueResult = true;
-                            break;
-                        }
-                    }
-                }
-                if (!valueResult)
-                {
-                    throw new Exception("Unable to find " + txtSearchInfo.Text);
+                int index = lboxListPick.SelectedIndex;
+                switch(index){
+                    case 0:
+                        ReloadReceiptList(searchValue);
+                        break;
+                    case 1:
+                        ReloadImportList(searchValue);
+                        break;
+                    case 2:
+                        ReloadCustomerList(searchValue);
+                        break;
+                    case 3:
+                        ReloadSupplierList(searchValue);
+                        break;
+                    case 4:
+                        ReloadModelList(searchValue);
+                        break;
+                    case 5:
+                        ReloadPhoneList(searchValue);
+                        break;
                 }
             }    
             catch (Exception ex)
@@ -596,6 +655,7 @@ namespace WF_PhoneManagement
         private void lboxListPick_SelectedIndexChanged(object sender, EventArgs e)
         {
             RetrieveSettings();
+            DefaultSettings();
             if (mainFeature)
             {
                 if (lboxListPick.SelectedIndex == -1)
@@ -608,25 +668,26 @@ namespace WF_PhoneManagement
                     switch (index)
                     {
                         case 0:
-                            source.DataSource = rList;
+                            ReloadReceiptList();
                             break;
                         case 1:
-                            source.DataSource = iList;
+                            ReloadImportList();
                             break;
                         case 2:
-                            source.DataSource = cList;
+                            ReloadCustomerList();
                             break;
                         case 3:
-                            source.DataSource = sList;
+                            ReloadSupplierList();
                             break;
                         case 4:
-                            source.DataSource = mList;
+                            ReloadModelList();
                             break;
                         case 5:
-                            source.DataSource = pList;
+                            ReloadPhoneList();
                             break;
                         default:
                             source.DataSource = null;
+                            dgvShowList.DataSource = source;
                             break;
                     }
                 }

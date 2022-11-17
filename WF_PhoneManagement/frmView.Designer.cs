@@ -58,6 +58,7 @@
             // 
             this.txtSearchInfo.Location = new System.Drawing.Point(434, 151);
             this.txtSearchInfo.Name = "txtSearchInfo";
+            this.txtSearchInfo.PlaceholderText = "id or name";
             this.txtSearchInfo.Size = new System.Drawing.Size(187, 23);
             this.txtSearchInfo.TabIndex = 2;
             // 
