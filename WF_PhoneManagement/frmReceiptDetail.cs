@@ -28,6 +28,7 @@ namespace WF_PhoneManagement
         public bool isAdd { get; set; }
         public Phone Phone { get; set; }
         public Customer Customer { get; set; }
+        public int ReceiptID { get; set; }
         public frmReceiptDetail()
         {
             InitializeComponent();
@@ -40,18 +41,52 @@ namespace WF_PhoneManagement
         }
         void setup()
         {
-            var phoneList = phoneRepository.GetPhones();
-            var customerList = customerRepository.GetCustomerList();
-            foreach(var phone in phoneList)
+            if (isAdd)
             {
-                txtPhoneID.Items.Add(phone.PhoneId);
+                var phoneList = phoneRepository.GetPhones();
+                var customerList = customerRepository.GetCustomerList();
+                foreach (var phone in phoneList)
+                {
+                    txtPhoneID.Items.Add(phone.PhoneId);
+                }
+                foreach (var customer in customerList)
+                {
+                    txtCustomerID.Items.Add(customer.CustomerId);
+                }
+                txtPhoneID.SelectedIndex = 0;
+                txtCustomerID.SelectedIndex = 0;
             }
-            foreach (var customer in customerList)
+            else
             {
-                txtCustomerID.Items.Add(customer.CustomerId);
+                Receipt receipt = receiptRepository.GetReceiptByID(ReceiptID);
+                IEnumerable<ReceiptInfo> receiptInfos = receiptInfoRepository.GetReceiptInfoList().Where(o => o.ReceiptId == ReceiptID);
+                foreach (ReceiptInfo receiptInfo in receiptInfos)
+                {
+                    var aphone = phoneRepository.GetPhoneByID(receiptInfo.PhoneId);
+                    var model = modelRepository.GetModelByID(aphone.ModelId);
+                    PhoneCart phone = new PhoneCart
+                    {
+                        PhoneID = receiptInfo.PhoneId,
+                        Price = receiptInfo.SellPricePerUnit,
+                        PhoneName = model.ModelName,
+                        Brand = model.ModelBrand,
+                        Type = aphone.Type,
+                        Quantity = receiptInfo.Quantity,
+                    };
+                    phoneList.Add(phone);
+                }
+                grPhone.Visible = false;
+                grImport.Visible = true;
+                btnSave.Visible = false;
+                dgvPhoneList.Location = new Point(270, 250);
+
+                txtReceiptID.Text = receipt.ReceiptId.ToString();
+                txtReceiptDate.Text = receipt.ReceiptDate.ToString();
+                txtCustomerID.Items.Add(receipt.CustomerId);
+                txtCustomerID.SelectedIndex = 0;
+
             }
-            txtPhoneID.SelectedIndex = 0;
-            txtCustomerID.SelectedIndex = 0;
+            
         }
         
 
@@ -166,6 +201,42 @@ namespace WF_PhoneManagement
                 phoneList.Remove(phone);
                 LoadPhoneList();
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            addReceipt();
+            addReceiptInfo();
+        }
+        void addReceipt()
+        {
+            DateTime date = DateTime.Now;
+            int customerId = (int)txtCustomerID.SelectedItem;
+            Receipt receipt = new Receipt
+            {
+                ReceiptDate = date,
+                CustomerId = customerId,
+            };
+            receiptRepository.AddNewReceipt(receipt);
+        }
+        void addReceiptInfo()
+        {
+            int receiptId = getCurrentReceiptID();
+            foreach(PhoneCart phone in phoneList)
+            {
+                ReceiptInfo receiptInfo = new ReceiptInfo
+                {
+                    ReceiptId = receiptId,
+                    PhoneId = phone.PhoneID,
+                    SellPricePerUnit = phone.Price,
+                    Quantity = phone.Quantity,
+                };
+                receiptInfoRepository.CreateReceiptInfo(receiptInfo);
+            }
+        }
+        int getCurrentReceiptID()
+        {
+            return receiptRepository.GetReceiptList().Max(o => o.ReceiptId);
         }
     }
 }

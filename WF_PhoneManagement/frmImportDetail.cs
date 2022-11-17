@@ -26,6 +26,8 @@ namespace WF_PhoneManagement
         IModelRepository modelRepository;
         BindingSource sourse;
         List<PhoneCart> phoneList;
+        public bool isAdd { get; set; }
+        public int ImportID { get; set; }
         
         public frmImportDetail()
         {
@@ -41,18 +43,50 @@ namespace WF_PhoneManagement
         
         void setup()
         {
-            var phoneList = phoneRepository.GetPhones();
-            var supplierList = supplierRepository.GetSupplierList();
-            foreach (var phone in phoneList)
+            
+            if (isAdd)
             {
-                txtPhoneID.Items.Add(phone.PhoneId);
+                var phoneList = phoneRepository.GetPhones();
+                var supplierList = supplierRepository.GetSupplierList();
+                foreach (var phone in phoneList)
+                {
+                    txtPhoneID.Items.Add(phone.PhoneId);
+                }
+                foreach (var supplier in supplierList)
+                {
+                    txtSupplierID.Items.Add(supplier.SupplierId);
+                }
+                txtSupplierID.SelectedIndex = 0;
+                txtPhoneID.SelectedIndex = 0;
             }
-            foreach (var supplier in supplierList)
-            {
-                txtSupplierID.Items.Add(supplier.SupplierId);
+            else{
+                Import import = importRepository.GetImportByID(ImportID);
+                IEnumerable<ImportInfo> importInfoList = importInfoRepository.GetImportInfoList().Where(o => o.ImportId == ImportID);
+                foreach(ImportInfo importInfo in importInfoList)
+                {
+                    var aphone = phoneRepository.GetPhoneByID(importInfo.PhoneId);
+                    var model = modelRepository.GetModelByID(aphone.ModelId);
+                    PhoneCart phone = new PhoneCart
+                    {
+                        PhoneID = importInfo.PhoneId,
+                        Price = importInfo.BuyPricePerUnit,
+                        PhoneName = model.ModelName,
+                        Brand = model.ModelBrand,
+                        Type = aphone.Type,
+                        Quantity = importInfo.Quantity,
+                    };
+                    phoneList.Add(phone);
+                }
+                grPhone.Visible = false;
+                grImport.Visible = true;
+                btnSave.Visible = false;
+                dgvPhoneList.Location = new Point(270, 250);
+
+                txtImportID.Text = import.ImportId.ToString();
+                txtImportDate.Text = import.ImportDate.ToString();
+                txtSupplierID.Items.Add(import.SupplierId);
+                txtSupplierID.SelectedIndex = 0;
             }
-            txtSupplierID.SelectedIndex = 0;
-            txtPhoneID.SelectedIndex = 0;
         }
 
         private void frmImportDetail_Load(object sender, EventArgs e)
@@ -92,7 +126,8 @@ namespace WF_PhoneManagement
             int phoneID = (int)txtPhoneID.SelectedItem;
             var phone = phoneRepository.GetPhoneByID(phoneID);
             txtPhoneName.Text = modelRepository.GetModelByID(phone.ModelId).ModelName;
-            txtPrice.Text = phone.ShowPrice.ToString();
+            txtPrice.Text = "";
+            txtQuantity.Value = 1;
         }
 
         private void txtSupplierID_SelectedIndexChanged(object sender, EventArgs e)
@@ -102,7 +137,7 @@ namespace WF_PhoneManagement
             txtSupplierName.Text = supplier.SupplierName;
             txtSupplierPhone.Text = supplier.SupplierPhoneNumber;
             txtSupplierAddress.Text = supplier.SupplierAddress;
-            txtQuantity.Value = 1;
+            
         }
         PhoneCart getPhoneCart(int id)
         {
@@ -127,7 +162,7 @@ namespace WF_PhoneManagement
                     phoneCart = new PhoneCart
                     {
                         PhoneID = phone.PhoneId,
-                        Price = phone.ShowPrice,
+                        Price = int.Parse(txtPrice.Text),
                         Quantity = (int)txtQuantity.Value,
                         PhoneName = model.ModelName,
                         Brand = model.ModelBrand,
@@ -137,6 +172,7 @@ namespace WF_PhoneManagement
                 }
                 else
                 {
+                    phoneCart.Price = int.Parse(txtPrice.Text);
                     phoneCart.updateQuantity((int)txtQuantity.Value);
                 }
                 LoadPhoneList();
@@ -163,6 +199,43 @@ namespace WF_PhoneManagement
                 phoneList.Remove(phone);
                 LoadPhoneList();
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            addImport();
+            addImportInfo();
+        }
+        void addImport()
+        {
+            DateTime dateTime = DateTime.Now;
+            int supplierID = (int)txtSupplierID.SelectedItem;
+            Import import = new Import
+            {
+                ImportDate = dateTime,
+                SupplierId = supplierID,
+            };
+            importRepository.AddNewImport(import);
+        }
+        int getCurrentImportID()
+        {
+            return importRepository.GetImportList().Max(o => o.ImportId);
+        }
+        void addImportInfo()
+        {
+            int importID = getCurrentImportID();
+            foreach(PhoneCart phone in phoneList)
+            {
+                ImportInfo importInfo = new ImportInfo
+                {
+                    ImportId = importID,
+                    PhoneId = phone.PhoneID,
+                    BuyPricePerUnit = phone.Price,
+                    Quantity = phone.Quantity,
+                };
+                importInfoRepository.AddNewImportInfo(importInfo);
+            }
+
         }
     }
 }

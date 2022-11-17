@@ -111,7 +111,7 @@ namespace WF_PhoneManagement
 
         public void ReImSettings()
         {
-            btnAdd.Hide();
+            /*btnAdd.Hide();*/
             btnEdit.Hide();
             
         }
@@ -210,8 +210,28 @@ namespace WF_PhoneManagement
                 switch (index)
                 {
                     case 0:
+                        frmReceiptDetail frmReceiptDetail = new frmReceiptDetail
+                        {
+                            isAdd = true,
+                        };
+                        frmReceiptDetail.ShowDialog();
+                        if(frmReceiptDetail.DialogResult == DialogResult.OK)
+                        {
+                            ReloadReceiptList();
+                            source.Position = source.Count - 1;
+                        }
                         break;
                     case 1:
+                        frmImportDetail frmImportDetail = new frmImportDetail
+                        {
+                            isAdd = true,
+                        };
+                        frmImportDetail.ShowDialog();
+                        if( frmImportDetail.DialogResult == DialogResult.OK)
+                        {
+                            ReloadImportList();
+                            source.Position = source.Count - 1;
+                        }
                         break;
                     case 2:
                         frmCustomerDetail customerDetail = new frmCustomerDetail
@@ -622,20 +642,21 @@ namespace WF_PhoneManagement
                         switch (index)
                         {
                             case 0:
-                                frmRe_Im viewR = new frmRe_Im();
-                                
-                                viewR.setRec(id);
-                                viewR.ViewRecSettings(id);
-                                viewR.dataBindings();
-                                viewR.ShowDialog();
+                                frmReceiptDetail frmReceiptDetail = new frmReceiptDetail
+                                {
+                                    isAdd = false,
+                                    ReceiptID = id,
+                                    
+                                };
+                                frmReceiptDetail.ShowDialog();
                                 break;
                             case 1:
-                                frmRe_Im viewI = new frmRe_Im();
-                                
-                                viewI.setImp(id);
-                                viewI.ViewImpSettings(id);
-                                viewI.dataBindings();
-                                viewI.ShowDialog();
+                                frmImportDetail frmImportDetail = new frmImportDetail
+                                {
+                                    isAdd = false,
+                                    ImportID = id,
+                                };
+                                frmImportDetail.ShowDialog();
                                 break;
                             default:
                                 throw new Exception("Index out of bound exception.");
