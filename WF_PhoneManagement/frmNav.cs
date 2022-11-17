@@ -83,12 +83,8 @@ namespace WF_PhoneManagement
         private void btnSales_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmView.mainFeature = false;
-            frmView.sales = true;
-            frmView.instock = false;
-            frmView.SalesSettings();
-            frmView.ShowDialog();
-            while (!frmView.hasClosed) { }
+            frmSale saleForm = new frmSale();
+            saleForm.ShowDialog();
             this.Show();
         }
 

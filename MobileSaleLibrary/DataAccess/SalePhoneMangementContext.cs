@@ -155,6 +155,8 @@ namespace MobileSaleLibrary.DataAccess
 
                 entity.Property(e => e.ShowPrice).HasColumnName("showPrice");
 
+
+
                 entity.Property(e => e.Type)
                     .IsRequired()
                     .HasMaxLength(50)

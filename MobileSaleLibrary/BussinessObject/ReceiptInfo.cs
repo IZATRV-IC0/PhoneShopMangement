@@ -34,5 +34,6 @@ namespace MobileSaleLibrary.Models
         
         public virtual Phone Phone { get; set; }
         public virtual Receipt Receipt { get; set; }
+
     }
 }
