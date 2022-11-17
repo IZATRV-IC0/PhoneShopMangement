@@ -322,21 +322,21 @@ namespace WF_PhoneManagement
 
         private void btnRe_PAdd_Click(object sender, EventArgs e)
         {
-            frmReceiptDetail ReDetail = new frmReceiptDetail();
+            /*frmReceiptDetail ReDetail = new frmReceiptDetail();
             ReDetail.ShowDialog();
             if (ReDetail.dataString != null && ReDetail.dataString != ",," && !ReDetail.DialogResult.Equals(DialogResult.Cancel))
             {
                 var rI = recInfoRepos.StringConvert(ReDetail.dataString);
                 recInfo.Add(rI);
             }
-            LoadMethod();
+            LoadMethod();*/
         }
 
         private void btnRe_PUpdate_Click(object sender, EventArgs e)
         {
             try
             {
-                frmReceiptDetail ReDetail = new frmReceiptDetail();
+                /*frmReceiptDetail ReDetail = new frmReceiptDetail();
                 ReDetail.ShowDialog();
                 if (ReDetail.dataString is not null && ReDetail.dataString != ",," && !ReDetail.DialogResult.Equals(DialogResult.Cancel))
                 {
@@ -359,7 +359,7 @@ namespace WF_PhoneManagement
                         recInfo[i] = recInfoRepos.StringConvert(ReDetail.dataString);
                         MessageBox.Show("Update successfully.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -411,7 +411,7 @@ namespace WF_PhoneManagement
         }
         private void btnIm_PAdd_Click(object sender, EventArgs e)
         {
-            frmImportDetail ImDetail = new frmImportDetail();
+            /*frmImportDetail ImDetail = new frmImportDetail();
             ImDetail.ShowDialog();
             if (ImDetail.dataString is not null && ImDetail.dataString != ",," && !ImDetail.DialogResult.Equals(DialogResult.Cancel))
             {
@@ -419,13 +419,13 @@ namespace WF_PhoneManagement
                 impInfo.Add(iI);
             }
             
-            LoadMethod();
+            LoadMethod();*/
         }
         private void btnIm_PUpdate_Click(object sender, EventArgs e)
         {
             try
             {
-                frmImportDetail ImDetail = new frmImportDetail();
+                /*frmImportDetail ImDetail = new frmImportDetail();
                 ImDetail.ShowDialog();
                 if (ImDetail.dataString is not null && ImDetail.dataString != ",," && !ImDetail.DialogResult.Equals(DialogResult.Cancel))
                 {
@@ -448,7 +448,7 @@ namespace WF_PhoneManagement
                         impInfo[i] = impInfoRepos.StringConvert(ImDetail.dataString);
                         MessageBox.Show("Update successfully.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
-                }
+                }*/
             }
             catch (Exception ex)
             {

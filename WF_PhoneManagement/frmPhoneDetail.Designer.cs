@@ -59,6 +59,7 @@
             this.txtPhoneName.ReadOnly = true;
             this.txtPhoneName.Size = new System.Drawing.Size(183, 23);
             this.txtPhoneName.TabIndex = 0;
+            this.txtPhoneName.TextChanged += new System.EventHandler(this.txtPhoneName_TextChanged);
             // 
             // txtType
             // 
@@ -139,6 +140,7 @@
             this.txtModelName.Enabled = false;
             this.txtModelName.Location = new System.Drawing.Point(504, 77);
             this.txtModelName.Name = "txtModelName";
+            this.txtModelName.ReadOnly = true;
             this.txtModelName.Size = new System.Drawing.Size(180, 23);
             this.txtModelName.TabIndex = 0;
             // 
@@ -156,6 +158,7 @@
             this.txtOrigin.Enabled = false;
             this.txtOrigin.Location = new System.Drawing.Point(504, 117);
             this.txtOrigin.Name = "txtOrigin";
+            this.txtOrigin.ReadOnly = true;
             this.txtOrigin.Size = new System.Drawing.Size(180, 23);
             this.txtOrigin.TabIndex = 0;
             // 
@@ -173,6 +176,7 @@
             this.txtYearOfWarranty.Enabled = false;
             this.txtYearOfWarranty.Location = new System.Drawing.Point(504, 156);
             this.txtYearOfWarranty.Name = "txtYearOfWarranty";
+            this.txtYearOfWarranty.ReadOnly = true;
             this.txtYearOfWarranty.Size = new System.Drawing.Size(180, 23);
             this.txtYearOfWarranty.TabIndex = 0;
             // 
@@ -190,6 +194,7 @@
             this.txtBrand.Enabled = false;
             this.txtBrand.Location = new System.Drawing.Point(504, 198);
             this.txtBrand.Name = "txtBrand";
+            this.txtBrand.ReadOnly = true;
             this.txtBrand.Size = new System.Drawing.Size(180, 23);
             this.txtBrand.TabIndex = 0;
             // 
@@ -215,6 +220,7 @@
             // cbModelID
             // 
             this.cbModelID.AllowDrop = true;
+            this.cbModelID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbModelID.FormattingEnabled = true;
             this.cbModelID.Location = new System.Drawing.Point(504, 38);
             this.cbModelID.Name = "cbModelID";
