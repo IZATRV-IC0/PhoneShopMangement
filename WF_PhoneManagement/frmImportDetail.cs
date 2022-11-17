@@ -93,6 +93,18 @@ namespace WF_PhoneManagement
         {
             setup();
             LoadPhoneList();
+            
+        }
+
+        void SetTotalPrice()
+        {
+            int totalPrice = 0; 
+            foreach(var phone in phoneList)
+            {
+                totalPrice += phone.Quantity * phone.Price;
+            }
+
+            txtImportTotal.Text = totalPrice.ToString(); 
         }
 
 
@@ -189,6 +201,7 @@ namespace WF_PhoneManagement
 
             dgvPhoneList.DataSource = null;
             dgvPhoneList.DataSource = sourse;
+            SetTotalPrice();
         }
         private void btndeletePhone_Click(object sender, EventArgs e)
         {

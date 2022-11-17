@@ -121,18 +121,19 @@
             // lblImSID
             // 
             this.lblImSID.AutoSize = true;
-            this.lblImSID.Location = new System.Drawing.Point(29, 32);
+            this.lblImSID.Location = new System.Drawing.Point(33, 43);
             this.lblImSID.Name = "lblImSID";
-            this.lblImSID.Size = new System.Drawing.Size(21, 15);
+            this.lblImSID.Size = new System.Drawing.Size(27, 20);
             this.lblImSID.TabIndex = 1;
             this.lblImSID.Text = "ID:";
             // 
             // btnIm_Supplier
             // 
             this.btnIm_Supplier.Enabled = false;
-            this.btnIm_Supplier.Location = new System.Drawing.Point(635, 28);
+            this.btnIm_Supplier.Location = new System.Drawing.Point(726, 37);
+            this.btnIm_Supplier.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnIm_Supplier.Name = "btnIm_Supplier";
-            this.btnIm_Supplier.Size = new System.Drawing.Size(141, 23);
+            this.btnIm_Supplier.Size = new System.Drawing.Size(161, 31);
             this.btnIm_Supplier.TabIndex = 17;
             this.btnIm_Supplier.Text = "Supplier...";
             this.btnIm_Supplier.UseVisualStyleBackColor = true;
@@ -141,59 +142,62 @@
             // lblImSPhone
             // 
             this.lblImSPhone.AutoSize = true;
-            this.lblImSPhone.Location = new System.Drawing.Point(286, 32);
+            this.lblImSPhone.Location = new System.Drawing.Point(327, 43);
             this.lblImSPhone.Name = "lblImSPhone";
-            this.lblImSPhone.Size = new System.Drawing.Size(44, 15);
+            this.lblImSPhone.Size = new System.Drawing.Size(53, 20);
             this.lblImSPhone.TabIndex = 1;
             this.lblImSPhone.Text = "Phone:";
             // 
             // txtIm_SName
             // 
             this.txtIm_SName.Enabled = false;
-            this.txtIm_SName.Location = new System.Drawing.Point(93, 63);
+            this.txtIm_SName.Location = new System.Drawing.Point(106, 84);
+            this.txtIm_SName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtIm_SName.Name = "txtIm_SName";
             this.txtIm_SName.ReadOnly = true;
-            this.txtIm_SName.Size = new System.Drawing.Size(491, 23);
+            this.txtIm_SName.Size = new System.Drawing.Size(561, 27);
             this.txtIm_SName.TabIndex = 0;
             // 
             // lblImSName
             // 
             this.lblImSName.AutoSize = true;
-            this.lblImSName.Location = new System.Drawing.Point(29, 66);
+            this.lblImSName.Location = new System.Drawing.Point(33, 88);
             this.lblImSName.Name = "lblImSName";
-            this.lblImSName.Size = new System.Drawing.Size(42, 15);
+            this.lblImSName.Size = new System.Drawing.Size(52, 20);
             this.lblImSName.TabIndex = 1;
             this.lblImSName.Text = "Name:";
             // 
             // lblImSAddress
             // 
             this.lblImSAddress.AutoSize = true;
-            this.lblImSAddress.Location = new System.Drawing.Point(29, 101);
+            this.lblImSAddress.Location = new System.Drawing.Point(33, 135);
             this.lblImSAddress.Name = "lblImSAddress";
-            this.lblImSAddress.Size = new System.Drawing.Size(52, 15);
+            this.lblImSAddress.Size = new System.Drawing.Size(65, 20);
             this.lblImSAddress.TabIndex = 1;
             this.lblImSAddress.Text = "Address:";
             // 
             // txtIm_SAddress
             // 
             this.txtIm_SAddress.Enabled = false;
-            this.txtIm_SAddress.Location = new System.Drawing.Point(93, 98);
+            this.txtIm_SAddress.Location = new System.Drawing.Point(106, 131);
+            this.txtIm_SAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtIm_SAddress.Name = "txtIm_SAddress";
             this.txtIm_SAddress.ReadOnly = true;
-            this.txtIm_SAddress.Size = new System.Drawing.Size(683, 23);
+            this.txtIm_SAddress.Size = new System.Drawing.Size(780, 27);
             this.txtIm_SAddress.TabIndex = 0;
             // 
             // nudIm_PQuantity
             // 
             this.nudIm_PQuantity.Enabled = false;
-            this.nudIm_PQuantity.Location = new System.Drawing.Point(92, 161);
+            this.nudIm_PQuantity.Location = new System.Drawing.Point(105, 215);
+            this.nudIm_PQuantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudIm_PQuantity.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.nudIm_PQuantity.Name = "nudIm_PQuantity";
-            this.nudIm_PQuantity.Size = new System.Drawing.Size(120, 23);
+            this.nudIm_PQuantity.Size = new System.Drawing.Size(137, 27);
             this.nudIm_PQuantity.TabIndex = 3;
             this.nudIm_PQuantity.Value = new decimal(new int[] {
             1,
@@ -216,43 +220,47 @@
             this.grbIm_PDetail.Controls.Add(this.txtIm_PPrice);
             this.grbIm_PDetail.Controls.Add(this.lblImPPrice);
             this.grbIm_PDetail.Controls.Add(this.txtIm_PTotal);
-            this.grbIm_PDetail.Location = new System.Drawing.Point(26, 37);
+            this.grbIm_PDetail.Location = new System.Drawing.Point(30, 49);
+            this.grbIm_PDetail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grbIm_PDetail.Name = "grbIm_PDetail";
-            this.grbIm_PDetail.Size = new System.Drawing.Size(358, 358);
+            this.grbIm_PDetail.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grbIm_PDetail.Size = new System.Drawing.Size(409, 477);
             this.grbIm_PDetail.TabIndex = 16;
             this.grbIm_PDetail.TabStop = false;
             this.grbIm_PDetail.Text = "Product Detail";
             // 
             // txtIm_PID
             // 
-            this.txtIm_PID.Location = new System.Drawing.Point(91, 33);
+            this.txtIm_PID.Location = new System.Drawing.Point(104, 44);
+            this.txtIm_PID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtIm_PID.Name = "txtIm_PID";
-            this.txtIm_PID.Size = new System.Drawing.Size(100, 23);
+            this.txtIm_PID.Size = new System.Drawing.Size(114, 27);
             this.txtIm_PID.TabIndex = 13;
             // 
             // lblImPID
             // 
             this.lblImPID.AutoSize = true;
-            this.lblImPID.Location = new System.Drawing.Point(23, 36);
+            this.lblImPID.Location = new System.Drawing.Point(26, 48);
             this.lblImPID.Name = "lblImPID";
-            this.lblImPID.Size = new System.Drawing.Size(21, 15);
+            this.lblImPID.Size = new System.Drawing.Size(27, 20);
             this.lblImPID.TabIndex = 2;
             this.lblImPID.Text = "ID:";
             // 
             // lblImPTotal
             // 
             this.lblImPTotal.AutoSize = true;
-            this.lblImPTotal.Location = new System.Drawing.Point(23, 209);
+            this.lblImPTotal.Location = new System.Drawing.Point(26, 279);
             this.lblImPTotal.Name = "lblImPTotal";
-            this.lblImPTotal.Size = new System.Drawing.Size(35, 15);
+            this.lblImPTotal.Size = new System.Drawing.Size(45, 20);
             this.lblImPTotal.TabIndex = 2;
             this.lblImPTotal.Text = "Total:";
             // 
             // btnIm_PDelete
             // 
-            this.btnIm_PDelete.Location = new System.Drawing.Point(124, 296);
+            this.btnIm_PDelete.Location = new System.Drawing.Point(142, 395);
+            this.btnIm_PDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnIm_PDelete.Name = "btnIm_PDelete";
-            this.btnIm_PDelete.Size = new System.Drawing.Size(96, 23);
+            this.btnIm_PDelete.Size = new System.Drawing.Size(110, 31);
             this.btnIm_PDelete.TabIndex = 10;
             this.btnIm_PDelete.Text = "Delete";
             this.btnIm_PDelete.UseVisualStyleBackColor = true;
@@ -261,26 +269,27 @@
             // lblImPName
             // 
             this.lblImPName.AutoSize = true;
-            this.lblImPName.Location = new System.Drawing.Point(23, 77);
+            this.lblImPName.Location = new System.Drawing.Point(26, 103);
             this.lblImPName.Name = "lblImPName";
-            this.lblImPName.Size = new System.Drawing.Size(42, 15);
+            this.lblImPName.Size = new System.Drawing.Size(52, 20);
             this.lblImPName.TabIndex = 2;
             this.lblImPName.Text = "Name:";
             // 
             // lblImPQuantity
             // 
             this.lblImPQuantity.AutoSize = true;
-            this.lblImPQuantity.Location = new System.Drawing.Point(23, 163);
+            this.lblImPQuantity.Location = new System.Drawing.Point(26, 217);
             this.lblImPQuantity.Name = "lblImPQuantity";
-            this.lblImPQuantity.Size = new System.Drawing.Size(56, 15);
+            this.lblImPQuantity.Size = new System.Drawing.Size(68, 20);
             this.lblImPQuantity.TabIndex = 2;
             this.lblImPQuantity.Text = "Quantity:";
             // 
             // btnIm_PUpdate
             // 
-            this.btnIm_PUpdate.Location = new System.Drawing.Point(204, 255);
+            this.btnIm_PUpdate.Location = new System.Drawing.Point(233, 340);
+            this.btnIm_PUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnIm_PUpdate.Name = "btnIm_PUpdate";
-            this.btnIm_PUpdate.Size = new System.Drawing.Size(96, 23);
+            this.btnIm_PUpdate.Size = new System.Drawing.Size(110, 31);
             this.btnIm_PUpdate.TabIndex = 12;
             this.btnIm_PUpdate.Text = "Update";
             this.btnIm_PUpdate.UseVisualStyleBackColor = true;
@@ -289,17 +298,19 @@
             // txtIm_PName
             // 
             this.txtIm_PName.Enabled = false;
-            this.txtIm_PName.Location = new System.Drawing.Point(91, 74);
+            this.txtIm_PName.Location = new System.Drawing.Point(104, 99);
+            this.txtIm_PName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtIm_PName.Name = "txtIm_PName";
             this.txtIm_PName.ReadOnly = true;
-            this.txtIm_PName.Size = new System.Drawing.Size(233, 23);
+            this.txtIm_PName.Size = new System.Drawing.Size(266, 27);
             this.txtIm_PName.TabIndex = 0;
             // 
             // btnIm_PAdd
             // 
-            this.btnIm_PAdd.Location = new System.Drawing.Point(50, 255);
+            this.btnIm_PAdd.Location = new System.Drawing.Point(57, 340);
+            this.btnIm_PAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnIm_PAdd.Name = "btnIm_PAdd";
-            this.btnIm_PAdd.Size = new System.Drawing.Size(96, 23);
+            this.btnIm_PAdd.Size = new System.Drawing.Size(110, 31);
             this.btnIm_PAdd.TabIndex = 11;
             this.btnIm_PAdd.Text = "Add";
             this.btnIm_PAdd.UseVisualStyleBackColor = true;
@@ -308,28 +319,30 @@
             // txtIm_PPrice
             // 
             this.txtIm_PPrice.Enabled = false;
-            this.txtIm_PPrice.Location = new System.Drawing.Point(91, 116);
+            this.txtIm_PPrice.Location = new System.Drawing.Point(104, 155);
+            this.txtIm_PPrice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtIm_PPrice.Name = "txtIm_PPrice";
             this.txtIm_PPrice.ReadOnly = true;
-            this.txtIm_PPrice.Size = new System.Drawing.Size(121, 23);
+            this.txtIm_PPrice.Size = new System.Drawing.Size(138, 27);
             this.txtIm_PPrice.TabIndex = 0;
             // 
             // lblImPPrice
             // 
             this.lblImPPrice.AutoSize = true;
-            this.lblImPPrice.Location = new System.Drawing.Point(23, 119);
+            this.lblImPPrice.Location = new System.Drawing.Point(26, 159);
             this.lblImPPrice.Name = "lblImPPrice";
-            this.lblImPPrice.Size = new System.Drawing.Size(36, 15);
+            this.lblImPPrice.Size = new System.Drawing.Size(44, 20);
             this.lblImPPrice.TabIndex = 2;
             this.lblImPPrice.Text = "Price:";
             // 
             // txtIm_PTotal
             // 
             this.txtIm_PTotal.Enabled = false;
-            this.txtIm_PTotal.Location = new System.Drawing.Point(91, 206);
+            this.txtIm_PTotal.Location = new System.Drawing.Point(104, 275);
+            this.txtIm_PTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtIm_PTotal.Name = "txtIm_PTotal";
             this.txtIm_PTotal.ReadOnly = true;
-            this.txtIm_PTotal.Size = new System.Drawing.Size(121, 23);
+            this.txtIm_PTotal.Size = new System.Drawing.Size(138, 27);
             this.txtIm_PTotal.TabIndex = 0;
             // 
             // grbIm_Detail
@@ -339,9 +352,11 @@
             this.grbIm_Detail.Controls.Add(this.txtImTotal);
             this.grbIm_Detail.Controls.Add(this.lblImTotal);
             this.grbIm_Detail.Controls.Add(this.dgvIm_DetailList);
-            this.grbIm_Detail.Location = new System.Drawing.Point(25, 205);
+            this.grbIm_Detail.Location = new System.Drawing.Point(29, 273);
+            this.grbIm_Detail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grbIm_Detail.Name = "grbIm_Detail";
-            this.grbIm_Detail.Size = new System.Drawing.Size(1154, 493);
+            this.grbIm_Detail.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grbIm_Detail.Size = new System.Drawing.Size(1319, 657);
             this.grbIm_Detail.TabIndex = 8;
             this.grbIm_Detail.TabStop = false;
             this.grbIm_Detail.Text = "Import Detail";
@@ -349,81 +364,87 @@
             // lblImCurrency
             // 
             this.lblImCurrency.AutoSize = true;
-            this.lblImCurrency.Location = new System.Drawing.Point(1062, 431);
+            this.lblImCurrency.Location = new System.Drawing.Point(1214, 575);
             this.lblImCurrency.Name = "lblImCurrency";
-            this.lblImCurrency.Size = new System.Drawing.Size(31, 15);
+            this.lblImCurrency.Size = new System.Drawing.Size(40, 20);
             this.lblImCurrency.TabIndex = 9;
             this.lblImCurrency.Text = "VND";
             // 
             // txtImTotal
             // 
             this.txtImTotal.Enabled = false;
-            this.txtImTotal.Location = new System.Drawing.Point(908, 428);
+            this.txtImTotal.Location = new System.Drawing.Point(1038, 571);
+            this.txtImTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtImTotal.Name = "txtImTotal";
             this.txtImTotal.ReadOnly = true;
-            this.txtImTotal.Size = new System.Drawing.Size(133, 23);
+            this.txtImTotal.Size = new System.Drawing.Size(151, 27);
             this.txtImTotal.TabIndex = 15;
             this.txtImTotal.Text = "0";
             // 
             // lblImTotal
             // 
             this.lblImTotal.AutoSize = true;
-            this.lblImTotal.Location = new System.Drawing.Point(833, 431);
+            this.lblImTotal.Location = new System.Drawing.Point(952, 575);
             this.lblImTotal.Name = "lblImTotal";
-            this.lblImTotal.Size = new System.Drawing.Size(35, 15);
+            this.lblImTotal.Size = new System.Drawing.Size(45, 20);
             this.lblImTotal.TabIndex = 14;
             this.lblImTotal.Text = "Total:";
             // 
             // dgvIm_DetailList
             // 
             this.dgvIm_DetailList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvIm_DetailList.Location = new System.Drawing.Point(421, 50);
+            this.dgvIm_DetailList.Location = new System.Drawing.Point(481, 67);
+            this.dgvIm_DetailList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvIm_DetailList.Name = "dgvIm_DetailList";
+            this.dgvIm_DetailList.RowHeadersWidth = 51;
             this.dgvIm_DetailList.RowTemplate.Height = 25;
-            this.dgvIm_DetailList.Size = new System.Drawing.Size(691, 345);
+            this.dgvIm_DetailList.Size = new System.Drawing.Size(790, 460);
             this.dgvIm_DetailList.TabIndex = 13;
             // 
             // txtImID
             // 
             this.txtImID.Enabled = false;
-            this.txtImID.Location = new System.Drawing.Point(134, 43);
+            this.txtImID.Location = new System.Drawing.Point(153, 57);
+            this.txtImID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtImID.Name = "txtImID";
-            this.txtImID.Size = new System.Drawing.Size(121, 23);
+            this.txtImID.Size = new System.Drawing.Size(138, 27);
             this.txtImID.TabIndex = 0;
             // 
             // txtIm_SPhone
             // 
             this.txtIm_SPhone.Enabled = false;
-            this.txtIm_SPhone.Location = new System.Drawing.Point(342, 29);
+            this.txtIm_SPhone.Location = new System.Drawing.Point(391, 39);
+            this.txtIm_SPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtIm_SPhone.Name = "txtIm_SPhone";
             this.txtIm_SPhone.ReadOnly = true;
-            this.txtIm_SPhone.Size = new System.Drawing.Size(242, 23);
+            this.txtIm_SPhone.Size = new System.Drawing.Size(276, 27);
             this.txtIm_SPhone.TabIndex = 0;
             // 
             // lblImSellDate
             // 
             this.lblImSellDate.AutoSize = true;
-            this.lblImSellDate.Location = new System.Drawing.Point(26, 80);
+            this.lblImSellDate.Location = new System.Drawing.Point(30, 107);
             this.lblImSellDate.Name = "lblImSellDate";
-            this.lblImSellDate.Size = new System.Drawing.Size(54, 15);
+            this.lblImSellDate.Size = new System.Drawing.Size(70, 20);
             this.lblImSellDate.TabIndex = 1;
             this.lblImSellDate.Text = "Sell date:";
             // 
             // lblImID
             // 
             this.lblImID.AutoSize = true;
-            this.lblImID.Location = new System.Drawing.Point(26, 46);
+            this.lblImID.Location = new System.Drawing.Point(30, 61);
             this.lblImID.Name = "lblImID";
-            this.lblImID.Size = new System.Drawing.Size(60, 15);
+            this.lblImID.Size = new System.Drawing.Size(76, 20);
             this.lblImID.TabIndex = 1;
             this.lblImID.Text = "Import ID:";
             // 
             // txtImSellDate
             // 
             this.txtImSellDate.Enabled = false;
-            this.txtImSellDate.Location = new System.Drawing.Point(134, 77);
+            this.txtImSellDate.Location = new System.Drawing.Point(153, 103);
+            this.txtImSellDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtImSellDate.Name = "txtImSellDate";
-            this.txtImSellDate.Size = new System.Drawing.Size(121, 23);
+            this.txtImSellDate.Size = new System.Drawing.Size(138, 27);
             this.txtImSellDate.TabIndex = 0;
             // 
             // grbIm_SInfo
@@ -437,26 +458,30 @@
             this.grbIm_SInfo.Controls.Add(this.lblImSAddress);
             this.grbIm_SInfo.Controls.Add(this.txtIm_SAddress);
             this.grbIm_SInfo.Controls.Add(this.txtIm_SPhone);
-            this.grbIm_SInfo.Location = new System.Drawing.Point(342, 24);
+            this.grbIm_SInfo.Location = new System.Drawing.Point(391, 32);
+            this.grbIm_SInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grbIm_SInfo.Name = "grbIm_SInfo";
-            this.grbIm_SInfo.Size = new System.Drawing.Size(837, 150);
+            this.grbIm_SInfo.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grbIm_SInfo.Size = new System.Drawing.Size(957, 200);
             this.grbIm_SInfo.TabIndex = 16;
             this.grbIm_SInfo.TabStop = false;
             this.grbIm_SInfo.Text = "Supplier";
             // 
             // txtIm_SID
             // 
-            this.txtIm_SID.Location = new System.Drawing.Point(93, 28);
+            this.txtIm_SID.Location = new System.Drawing.Point(106, 37);
+            this.txtIm_SID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtIm_SID.Name = "txtIm_SID";
-            this.txtIm_SID.Size = new System.Drawing.Size(100, 23);
+            this.txtIm_SID.Size = new System.Drawing.Size(114, 27);
             this.txtIm_SID.TabIndex = 18;
             this.txtIm_SID.TextChanged += new System.EventHandler(this.txtIm_SID_TextChanged);
             // 
             // btn_Action
             // 
-            this.btn_Action.Location = new System.Drawing.Point(924, 781);
+            this.btn_Action.Location = new System.Drawing.Point(972, 618);
+            this.btn_Action.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Action.Name = "btn_Action";
-            this.btn_Action.Size = new System.Drawing.Size(138, 23);
+            this.btn_Action.Size = new System.Drawing.Size(158, 31);
             this.btn_Action.TabIndex = 16;
             this.btn_Action.Text = "Action";
             this.btn_Action.UseVisualStyleBackColor = true;
@@ -467,10 +492,11 @@
             this.tabpgReceipt.Controls.Add(this.grbRe_CInfo);
             this.tabpgReceipt.Controls.Add(this.grbRe_MainInfo);
             this.tabpgReceipt.Controls.Add(this.grbRe_Detail);
-            this.tabpgReceipt.Location = new System.Drawing.Point(4, 24);
+            this.tabpgReceipt.Location = new System.Drawing.Point(4, 29);
+            this.tabpgReceipt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabpgReceipt.Name = "tabpgReceipt";
-            this.tabpgReceipt.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpgReceipt.Size = new System.Drawing.Size(1208, 725);
+            this.tabpgReceipt.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabpgReceipt.Size = new System.Drawing.Size(1358, 940);
             this.tabpgReceipt.TabIndex = 0;
             this.tabpgReceipt.Text = "Receipt";
             this.tabpgReceipt.UseVisualStyleBackColor = true;
@@ -486,36 +512,40 @@
             this.grbRe_CInfo.Controls.Add(this.lblReCAddress);
             this.grbRe_CInfo.Controls.Add(this.txtRe_CAddress);
             this.grbRe_CInfo.Controls.Add(this.txtRe_CPhone);
-            this.grbRe_CInfo.Location = new System.Drawing.Point(342, 24);
+            this.grbRe_CInfo.Location = new System.Drawing.Point(391, 32);
+            this.grbRe_CInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grbRe_CInfo.Name = "grbRe_CInfo";
-            this.grbRe_CInfo.Size = new System.Drawing.Size(837, 150);
+            this.grbRe_CInfo.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grbRe_CInfo.Size = new System.Drawing.Size(957, 200);
             this.grbRe_CInfo.TabIndex = 19;
             this.grbRe_CInfo.TabStop = false;
             this.grbRe_CInfo.Text = "Customer";
             // 
             // txtRe_CID
             // 
-            this.txtRe_CID.Location = new System.Drawing.Point(93, 28);
+            this.txtRe_CID.Location = new System.Drawing.Point(106, 37);
+            this.txtRe_CID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtRe_CID.Name = "txtRe_CID";
-            this.txtRe_CID.Size = new System.Drawing.Size(100, 23);
+            this.txtRe_CID.Size = new System.Drawing.Size(114, 27);
             this.txtRe_CID.TabIndex = 18;
             this.txtRe_CID.TextChanged += new System.EventHandler(this.txtRe_CID_TextChanged);
             // 
             // lblReCID
             // 
             this.lblReCID.AutoSize = true;
-            this.lblReCID.Location = new System.Drawing.Point(29, 32);
+            this.lblReCID.Location = new System.Drawing.Point(33, 43);
             this.lblReCID.Name = "lblReCID";
-            this.lblReCID.Size = new System.Drawing.Size(21, 15);
+            this.lblReCID.Size = new System.Drawing.Size(27, 20);
             this.lblReCID.TabIndex = 1;
             this.lblReCID.Text = "ID:";
             // 
             // btnRe_Customer
             // 
             this.btnRe_Customer.Enabled = false;
-            this.btnRe_Customer.Location = new System.Drawing.Point(635, 28);
+            this.btnRe_Customer.Location = new System.Drawing.Point(726, 37);
+            this.btnRe_Customer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRe_Customer.Name = "btnRe_Customer";
-            this.btnRe_Customer.Size = new System.Drawing.Size(141, 23);
+            this.btnRe_Customer.Size = new System.Drawing.Size(161, 31);
             this.btnRe_Customer.TabIndex = 17;
             this.btnRe_Customer.Text = "Customer...";
             this.btnRe_Customer.UseVisualStyleBackColor = true;
@@ -524,55 +554,58 @@
             // lblReCPhone
             // 
             this.lblReCPhone.AutoSize = true;
-            this.lblReCPhone.Location = new System.Drawing.Point(286, 32);
+            this.lblReCPhone.Location = new System.Drawing.Point(327, 43);
             this.lblReCPhone.Name = "lblReCPhone";
-            this.lblReCPhone.Size = new System.Drawing.Size(44, 15);
+            this.lblReCPhone.Size = new System.Drawing.Size(53, 20);
             this.lblReCPhone.TabIndex = 1;
             this.lblReCPhone.Text = "Phone:";
             // 
             // txtRe_CName
             // 
             this.txtRe_CName.Enabled = false;
-            this.txtRe_CName.Location = new System.Drawing.Point(93, 63);
+            this.txtRe_CName.Location = new System.Drawing.Point(106, 84);
+            this.txtRe_CName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtRe_CName.Name = "txtRe_CName";
             this.txtRe_CName.ReadOnly = true;
-            this.txtRe_CName.Size = new System.Drawing.Size(491, 23);
+            this.txtRe_CName.Size = new System.Drawing.Size(561, 27);
             this.txtRe_CName.TabIndex = 0;
             // 
             // lblReCName
             // 
             this.lblReCName.AutoSize = true;
-            this.lblReCName.Location = new System.Drawing.Point(29, 66);
+            this.lblReCName.Location = new System.Drawing.Point(33, 88);
             this.lblReCName.Name = "lblReCName";
-            this.lblReCName.Size = new System.Drawing.Size(42, 15);
+            this.lblReCName.Size = new System.Drawing.Size(52, 20);
             this.lblReCName.TabIndex = 1;
             this.lblReCName.Text = "Name:";
             // 
             // lblReCAddress
             // 
             this.lblReCAddress.AutoSize = true;
-            this.lblReCAddress.Location = new System.Drawing.Point(29, 101);
+            this.lblReCAddress.Location = new System.Drawing.Point(33, 135);
             this.lblReCAddress.Name = "lblReCAddress";
-            this.lblReCAddress.Size = new System.Drawing.Size(52, 15);
+            this.lblReCAddress.Size = new System.Drawing.Size(65, 20);
             this.lblReCAddress.TabIndex = 1;
             this.lblReCAddress.Text = "Address:";
             // 
             // txtRe_CAddress
             // 
             this.txtRe_CAddress.Enabled = false;
-            this.txtRe_CAddress.Location = new System.Drawing.Point(93, 98);
+            this.txtRe_CAddress.Location = new System.Drawing.Point(106, 131);
+            this.txtRe_CAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtRe_CAddress.Name = "txtRe_CAddress";
             this.txtRe_CAddress.ReadOnly = true;
-            this.txtRe_CAddress.Size = new System.Drawing.Size(683, 23);
+            this.txtRe_CAddress.Size = new System.Drawing.Size(780, 27);
             this.txtRe_CAddress.TabIndex = 0;
             // 
             // txtRe_CPhone
             // 
             this.txtRe_CPhone.Enabled = false;
-            this.txtRe_CPhone.Location = new System.Drawing.Point(342, 29);
+            this.txtRe_CPhone.Location = new System.Drawing.Point(391, 39);
+            this.txtRe_CPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtRe_CPhone.Name = "txtRe_CPhone";
             this.txtRe_CPhone.ReadOnly = true;
-            this.txtRe_CPhone.Size = new System.Drawing.Size(242, 23);
+            this.txtRe_CPhone.Size = new System.Drawing.Size(276, 27);
             this.txtRe_CPhone.TabIndex = 0;
             // 
             // grbRe_MainInfo
@@ -581,9 +614,11 @@
             this.grbRe_MainInfo.Controls.Add(this.lblReID);
             this.grbRe_MainInfo.Controls.Add(this.txtReSellDate);
             this.grbRe_MainInfo.Controls.Add(this.txtReID);
-            this.grbRe_MainInfo.Location = new System.Drawing.Point(25, 24);
+            this.grbRe_MainInfo.Location = new System.Drawing.Point(29, 32);
+            this.grbRe_MainInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grbRe_MainInfo.Name = "grbRe_MainInfo";
-            this.grbRe_MainInfo.Size = new System.Drawing.Size(286, 150);
+            this.grbRe_MainInfo.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grbRe_MainInfo.Size = new System.Drawing.Size(327, 200);
             this.grbRe_MainInfo.TabIndex = 17;
             this.grbRe_MainInfo.TabStop = false;
             this.grbRe_MainInfo.Text = "Main";
@@ -591,47 +626,53 @@
             // lblReSellDate
             // 
             this.lblReSellDate.AutoSize = true;
-            this.lblReSellDate.Location = new System.Drawing.Point(26, 80);
+            this.lblReSellDate.Location = new System.Drawing.Point(30, 107);
             this.lblReSellDate.Name = "lblReSellDate";
-            this.lblReSellDate.Size = new System.Drawing.Size(54, 15);
+            this.lblReSellDate.Size = new System.Drawing.Size(70, 20);
             this.lblReSellDate.TabIndex = 1;
             this.lblReSellDate.Text = "Sell date:";
             // 
             // lblReID
             // 
             this.lblReID.AutoSize = true;
-            this.lblReID.Location = new System.Drawing.Point(26, 46);
+            this.lblReID.Location = new System.Drawing.Point(30, 61);
             this.lblReID.Name = "lblReID";
-            this.lblReID.Size = new System.Drawing.Size(63, 15);
+            this.lblReID.Size = new System.Drawing.Size(81, 20);
             this.lblReID.TabIndex = 1;
             this.lblReID.Text = "Receipt ID:";
             // 
             // txtReSellDate
             // 
             this.txtReSellDate.Enabled = false;
-            this.txtReSellDate.Location = new System.Drawing.Point(134, 77);
+            this.txtReSellDate.Location = new System.Drawing.Point(153, 103);
+            this.txtReSellDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtReSellDate.Name = "txtReSellDate";
-            this.txtReSellDate.Size = new System.Drawing.Size(121, 23);
+            this.txtReSellDate.Size = new System.Drawing.Size(138, 27);
             this.txtReSellDate.TabIndex = 0;
             // 
             // txtReID
             // 
             this.txtReID.Enabled = false;
-            this.txtReID.Location = new System.Drawing.Point(134, 43);
+            this.txtReID.Location = new System.Drawing.Point(153, 57);
+            this.txtReID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtReID.Name = "txtReID";
-            this.txtReID.Size = new System.Drawing.Size(121, 23);
+            this.txtReID.Size = new System.Drawing.Size(138, 27);
             this.txtReID.TabIndex = 0;
             // 
             // grbRe_Detail
             // 
+            this.grbRe_Detail.Controls.Add(this.btn_Exit);
             this.grbRe_Detail.Controls.Add(this.grbRe_PDetail);
+            this.grbRe_Detail.Controls.Add(this.btn_Action);
             this.grbRe_Detail.Controls.Add(this.lblReCurrency);
             this.grbRe_Detail.Controls.Add(this.txtReTotal);
             this.grbRe_Detail.Controls.Add(this.lblReTotal);
             this.grbRe_Detail.Controls.Add(this.dgvRe_DetailList);
-            this.grbRe_Detail.Location = new System.Drawing.Point(25, 205);
+            this.grbRe_Detail.Location = new System.Drawing.Point(29, 273);
+            this.grbRe_Detail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grbRe_Detail.Name = "grbRe_Detail";
-            this.grbRe_Detail.Size = new System.Drawing.Size(1154, 493);
+            this.grbRe_Detail.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grbRe_Detail.Size = new System.Drawing.Size(1319, 657);
             this.grbRe_Detail.TabIndex = 18;
             this.grbRe_Detail.TabStop = false;
             this.grbRe_Detail.Text = "Receipt Detail";
@@ -651,31 +692,35 @@
             this.grbRe_PDetail.Controls.Add(this.txtRe_PPrice);
             this.grbRe_PDetail.Controls.Add(this.lblRePPrice);
             this.grbRe_PDetail.Controls.Add(this.txtRe_PTotal);
-            this.grbRe_PDetail.Location = new System.Drawing.Point(26, 37);
+            this.grbRe_PDetail.Location = new System.Drawing.Point(30, 49);
+            this.grbRe_PDetail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grbRe_PDetail.Name = "grbRe_PDetail";
-            this.grbRe_PDetail.Size = new System.Drawing.Size(358, 358);
+            this.grbRe_PDetail.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grbRe_PDetail.Size = new System.Drawing.Size(409, 477);
             this.grbRe_PDetail.TabIndex = 16;
             this.grbRe_PDetail.TabStop = false;
             this.grbRe_PDetail.Text = "Product Detail";
             // 
             // txtRe_PID
             // 
-            this.txtRe_PID.Location = new System.Drawing.Point(91, 33);
+            this.txtRe_PID.Location = new System.Drawing.Point(104, 44);
+            this.txtRe_PID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtRe_PID.Name = "txtRe_PID";
-            this.txtRe_PID.Size = new System.Drawing.Size(100, 23);
+            this.txtRe_PID.Size = new System.Drawing.Size(114, 27);
             this.txtRe_PID.TabIndex = 13;
             // 
             // nudRe_PQuantity
             // 
             this.nudRe_PQuantity.Enabled = false;
-            this.nudRe_PQuantity.Location = new System.Drawing.Point(92, 161);
+            this.nudRe_PQuantity.Location = new System.Drawing.Point(105, 215);
+            this.nudRe_PQuantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudRe_PQuantity.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.nudRe_PQuantity.Name = "nudRe_PQuantity";
-            this.nudRe_PQuantity.Size = new System.Drawing.Size(120, 23);
+            this.nudRe_PQuantity.Size = new System.Drawing.Size(137, 27);
             this.nudRe_PQuantity.TabIndex = 3;
             this.nudRe_PQuantity.Value = new decimal(new int[] {
             1,
@@ -686,26 +731,27 @@
             // lblRePID
             // 
             this.lblRePID.AutoSize = true;
-            this.lblRePID.Location = new System.Drawing.Point(23, 36);
+            this.lblRePID.Location = new System.Drawing.Point(26, 48);
             this.lblRePID.Name = "lblRePID";
-            this.lblRePID.Size = new System.Drawing.Size(21, 15);
+            this.lblRePID.Size = new System.Drawing.Size(27, 20);
             this.lblRePID.TabIndex = 2;
             this.lblRePID.Text = "ID:";
             // 
             // lblRePTotal
             // 
             this.lblRePTotal.AutoSize = true;
-            this.lblRePTotal.Location = new System.Drawing.Point(23, 209);
+            this.lblRePTotal.Location = new System.Drawing.Point(26, 279);
             this.lblRePTotal.Name = "lblRePTotal";
-            this.lblRePTotal.Size = new System.Drawing.Size(35, 15);
+            this.lblRePTotal.Size = new System.Drawing.Size(45, 20);
             this.lblRePTotal.TabIndex = 2;
             this.lblRePTotal.Text = "Total:";
             // 
             // btnRe_PDelete
             // 
-            this.btnRe_PDelete.Location = new System.Drawing.Point(124, 296);
+            this.btnRe_PDelete.Location = new System.Drawing.Point(142, 395);
+            this.btnRe_PDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRe_PDelete.Name = "btnRe_PDelete";
-            this.btnRe_PDelete.Size = new System.Drawing.Size(96, 23);
+            this.btnRe_PDelete.Size = new System.Drawing.Size(110, 31);
             this.btnRe_PDelete.TabIndex = 10;
             this.btnRe_PDelete.Text = "Delete";
             this.btnRe_PDelete.UseVisualStyleBackColor = true;
@@ -714,26 +760,27 @@
             // lblRePName
             // 
             this.lblRePName.AutoSize = true;
-            this.lblRePName.Location = new System.Drawing.Point(23, 77);
+            this.lblRePName.Location = new System.Drawing.Point(26, 103);
             this.lblRePName.Name = "lblRePName";
-            this.lblRePName.Size = new System.Drawing.Size(42, 15);
+            this.lblRePName.Size = new System.Drawing.Size(52, 20);
             this.lblRePName.TabIndex = 2;
             this.lblRePName.Text = "Name:";
             // 
             // lblRePQuantity
             // 
             this.lblRePQuantity.AutoSize = true;
-            this.lblRePQuantity.Location = new System.Drawing.Point(23, 163);
+            this.lblRePQuantity.Location = new System.Drawing.Point(26, 217);
             this.lblRePQuantity.Name = "lblRePQuantity";
-            this.lblRePQuantity.Size = new System.Drawing.Size(56, 15);
+            this.lblRePQuantity.Size = new System.Drawing.Size(68, 20);
             this.lblRePQuantity.TabIndex = 2;
             this.lblRePQuantity.Text = "Quantity:";
             // 
             // btnRe_PUpdate
             // 
-            this.btnRe_PUpdate.Location = new System.Drawing.Point(204, 255);
+            this.btnRe_PUpdate.Location = new System.Drawing.Point(233, 340);
+            this.btnRe_PUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRe_PUpdate.Name = "btnRe_PUpdate";
-            this.btnRe_PUpdate.Size = new System.Drawing.Size(96, 23);
+            this.btnRe_PUpdate.Size = new System.Drawing.Size(110, 31);
             this.btnRe_PUpdate.TabIndex = 12;
             this.btnRe_PUpdate.Text = "Update";
             this.btnRe_PUpdate.UseVisualStyleBackColor = true;
@@ -742,17 +789,19 @@
             // txtRe_PName
             // 
             this.txtRe_PName.Enabled = false;
-            this.txtRe_PName.Location = new System.Drawing.Point(91, 74);
+            this.txtRe_PName.Location = new System.Drawing.Point(104, 99);
+            this.txtRe_PName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtRe_PName.Name = "txtRe_PName";
             this.txtRe_PName.ReadOnly = true;
-            this.txtRe_PName.Size = new System.Drawing.Size(233, 23);
+            this.txtRe_PName.Size = new System.Drawing.Size(266, 27);
             this.txtRe_PName.TabIndex = 0;
             // 
             // btnRe_PAdd
             // 
-            this.btnRe_PAdd.Location = new System.Drawing.Point(50, 255);
+            this.btnRe_PAdd.Location = new System.Drawing.Point(57, 340);
+            this.btnRe_PAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRe_PAdd.Name = "btnRe_PAdd";
-            this.btnRe_PAdd.Size = new System.Drawing.Size(96, 23);
+            this.btnRe_PAdd.Size = new System.Drawing.Size(110, 31);
             this.btnRe_PAdd.TabIndex = 11;
             this.btnRe_PAdd.Text = "Add";
             this.btnRe_PAdd.UseVisualStyleBackColor = true;
@@ -761,64 +810,69 @@
             // txtRe_PPrice
             // 
             this.txtRe_PPrice.Enabled = false;
-            this.txtRe_PPrice.Location = new System.Drawing.Point(91, 116);
+            this.txtRe_PPrice.Location = new System.Drawing.Point(104, 155);
+            this.txtRe_PPrice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtRe_PPrice.Name = "txtRe_PPrice";
             this.txtRe_PPrice.ReadOnly = true;
-            this.txtRe_PPrice.Size = new System.Drawing.Size(121, 23);
+            this.txtRe_PPrice.Size = new System.Drawing.Size(138, 27);
             this.txtRe_PPrice.TabIndex = 0;
             // 
             // lblRePPrice
             // 
             this.lblRePPrice.AutoSize = true;
-            this.lblRePPrice.Location = new System.Drawing.Point(23, 119);
+            this.lblRePPrice.Location = new System.Drawing.Point(26, 159);
             this.lblRePPrice.Name = "lblRePPrice";
-            this.lblRePPrice.Size = new System.Drawing.Size(36, 15);
+            this.lblRePPrice.Size = new System.Drawing.Size(44, 20);
             this.lblRePPrice.TabIndex = 2;
             this.lblRePPrice.Text = "Price:";
             // 
             // txtRe_PTotal
             // 
             this.txtRe_PTotal.Enabled = false;
-            this.txtRe_PTotal.Location = new System.Drawing.Point(91, 206);
+            this.txtRe_PTotal.Location = new System.Drawing.Point(104, 275);
+            this.txtRe_PTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtRe_PTotal.Name = "txtRe_PTotal";
             this.txtRe_PTotal.ReadOnly = true;
-            this.txtRe_PTotal.Size = new System.Drawing.Size(121, 23);
+            this.txtRe_PTotal.Size = new System.Drawing.Size(138, 27);
             this.txtRe_PTotal.TabIndex = 0;
             // 
             // lblReCurrency
             // 
             this.lblReCurrency.AutoSize = true;
-            this.lblReCurrency.Location = new System.Drawing.Point(1062, 431);
+            this.lblReCurrency.Location = new System.Drawing.Point(1214, 575);
             this.lblReCurrency.Name = "lblReCurrency";
-            this.lblReCurrency.Size = new System.Drawing.Size(31, 15);
+            this.lblReCurrency.Size = new System.Drawing.Size(40, 20);
             this.lblReCurrency.TabIndex = 9;
             this.lblReCurrency.Text = "VND";
             // 
             // txtReTotal
             // 
             this.txtReTotal.Enabled = false;
-            this.txtReTotal.Location = new System.Drawing.Point(908, 428);
+            this.txtReTotal.Location = new System.Drawing.Point(1038, 571);
+            this.txtReTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtReTotal.Name = "txtReTotal";
             this.txtReTotal.ReadOnly = true;
-            this.txtReTotal.Size = new System.Drawing.Size(133, 23);
+            this.txtReTotal.Size = new System.Drawing.Size(151, 27);
             this.txtReTotal.TabIndex = 15;
             // 
             // lblReTotal
             // 
             this.lblReTotal.AutoSize = true;
-            this.lblReTotal.Location = new System.Drawing.Point(833, 431);
+            this.lblReTotal.Location = new System.Drawing.Point(952, 575);
             this.lblReTotal.Name = "lblReTotal";
-            this.lblReTotal.Size = new System.Drawing.Size(35, 15);
+            this.lblReTotal.Size = new System.Drawing.Size(45, 20);
             this.lblReTotal.TabIndex = 14;
             this.lblReTotal.Text = "Total:";
             // 
             // dgvRe_DetailList
             // 
             this.dgvRe_DetailList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRe_DetailList.Location = new System.Drawing.Point(421, 50);
+            this.dgvRe_DetailList.Location = new System.Drawing.Point(481, 67);
+            this.dgvRe_DetailList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvRe_DetailList.Name = "dgvRe_DetailList";
+            this.dgvRe_DetailList.RowHeadersWidth = 51;
             this.dgvRe_DetailList.RowTemplate.Height = 25;
-            this.dgvRe_DetailList.Size = new System.Drawing.Size(691, 345);
+            this.dgvRe_DetailList.Size = new System.Drawing.Size(790, 460);
             this.dgvRe_DetailList.TabIndex = 13;
             // 
             // tabpgImport
@@ -826,10 +880,11 @@
             this.tabpgImport.Controls.Add(this.grbIm_SInfo);
             this.tabpgImport.Controls.Add(this.grbIm_MainInfo);
             this.tabpgImport.Controls.Add(this.grbIm_Detail);
-            this.tabpgImport.Location = new System.Drawing.Point(4, 24);
+            this.tabpgImport.Location = new System.Drawing.Point(4, 29);
+            this.tabpgImport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabpgImport.Name = "tabpgImport";
-            this.tabpgImport.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpgImport.Size = new System.Drawing.Size(1208, 725);
+            this.tabpgImport.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabpgImport.Size = new System.Drawing.Size(1382, 971);
             this.tabpgImport.TabIndex = 1;
             this.tabpgImport.Text = "Import";
             this.tabpgImport.UseVisualStyleBackColor = true;
@@ -840,9 +895,11 @@
             this.grbIm_MainInfo.Controls.Add(this.lblImID);
             this.grbIm_MainInfo.Controls.Add(this.txtImSellDate);
             this.grbIm_MainInfo.Controls.Add(this.txtImID);
-            this.grbIm_MainInfo.Location = new System.Drawing.Point(25, 24);
+            this.grbIm_MainInfo.Location = new System.Drawing.Point(29, 32);
+            this.grbIm_MainInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grbIm_MainInfo.Name = "grbIm_MainInfo";
-            this.grbIm_MainInfo.Size = new System.Drawing.Size(286, 150);
+            this.grbIm_MainInfo.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grbIm_MainInfo.Size = new System.Drawing.Size(327, 200);
             this.grbIm_MainInfo.TabIndex = 7;
             this.grbIm_MainInfo.TabStop = false;
             this.grbIm_MainInfo.Text = "Main";
@@ -851,17 +908,19 @@
             // 
             this.tabRI.Controls.Add(this.tabpgReceipt);
             this.tabRI.Controls.Add(this.tabpgImport);
-            this.tabRI.Location = new System.Drawing.Point(6, 4);
+            this.tabRI.Location = new System.Drawing.Point(7, 5);
+            this.tabRI.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabRI.Name = "tabRI";
             this.tabRI.SelectedIndex = 0;
-            this.tabRI.Size = new System.Drawing.Size(1216, 753);
+            this.tabRI.Size = new System.Drawing.Size(1366, 973);
             this.tabRI.TabIndex = 13;
             // 
             // btn_Exit
             // 
-            this.btn_Exit.Location = new System.Drawing.Point(1114, 781);
+            this.btn_Exit.Location = new System.Drawing.Point(1163, 618);
+            this.btn_Exit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Exit.Name = "btn_Exit";
-            this.btn_Exit.Size = new System.Drawing.Size(75, 23);
+            this.btn_Exit.Size = new System.Drawing.Size(86, 31);
             this.btn_Exit.TabIndex = 19;
             this.btn_Exit.Text = "Exit";
             this.btn_Exit.UseVisualStyleBackColor = true;
@@ -869,12 +928,11 @@
             // 
             // frmRe_Im
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1238, 826);
-            this.Controls.Add(this.btn_Exit);
-            this.Controls.Add(this.btn_Action);
+            this.ClientSize = new System.Drawing.Size(1415, 1055);
             this.Controls.Add(this.tabRI);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmRe_Im";
             this.Text = "Receipt and Import Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmRe_Im_FormClosing);

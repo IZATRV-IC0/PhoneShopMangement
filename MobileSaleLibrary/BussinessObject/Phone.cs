@@ -32,7 +32,7 @@ namespace MobileSaleLibrary.Models
         {
             IModelRepository mRepos = new ModelRepository();
             Model m = mRepos.GetModelByID(this.ModelId);
-            return m.ModelName + ":" + Type;
+            return m.ModelName;
         }
         public virtual Model Model { get; set; }
         public virtual ICollection<ImportInfo> TblImportInfos { get; set; }

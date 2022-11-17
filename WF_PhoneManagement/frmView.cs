@@ -201,6 +201,8 @@ namespace WF_PhoneManagement
             LoadMethod();
             lboxListPick.SelectedIndex = 0;
             hasClosed = false;
+            SetListPickIndex(0);
+            ReloadReceiptList();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -298,7 +300,7 @@ namespace WF_PhoneManagement
             var modelList = mRepos.GetModelsList();
             if (!txtsearch.IsNullOrEmpty())
             {
-                phoneList = phoneList.Where(o => o.PhoneId.ToString().Equals(txtsearch)).ToList();
+                phoneList = phoneList.Where(o => o.PhoneId.ToString().Equals(txtsearch) || o.GetPhoneName().ToLower().Contains(txtsearch.ToLower())).ToList();
             }
             var list = phoneList.Join(modelList, o1 => o1.ModelId, o2 => o2.ModelId, (o1, o2) => new { o1.PhoneId, o1.ShowPrice, o2.ModelId, o2.ModelName, o2.ModelBrand, o2.ModelYearOfWarranty });
            
@@ -310,7 +312,7 @@ namespace WF_PhoneManagement
             var list = mRepos.GetModelsList();
             if (!txtsearch.IsNullOrEmpty())
             {
-                list = list.Where(o1 => o1.ModelId.ToString().Equals(txtsearch) || o1.ModelName.Contains(txtsearch)).ToList();
+                list = list.Where(o1 => o1.ModelId.ToString().Equals(txtsearch) || o1.ModelName.ToLower().Contains(txtsearch.ToLower())).ToList();
             }
             source.DataSource = list;
             dgvShowList.DataSource = source;
@@ -321,7 +323,7 @@ namespace WF_PhoneManagement
             var list = cRepos.GetCustomerList();
             if (!txtsearch.IsNullOrEmpty())
             {
-                list = list.Where(o1 => o1.CustomerId.ToString().Equals(txtsearch) || o1.CustomerName.Contains(txtsearch)).ToList();
+                list = list.Where(o1 => o1.CustomerId.ToString().Equals(txtsearch) || o1.CustomerName.ToLower().Contains(txtsearch.ToLower())).ToList();
             }
             source.DataSource = list;
             dgvShowList.DataSource = source;
@@ -332,7 +334,7 @@ namespace WF_PhoneManagement
             var list = sRepos.GetSupplierList();
             if (!txtsearch.IsNullOrEmpty())
             {
-                list = list.Where(o1 => o1.SupplierId.ToString().Equals(txtsearch) || o1.SupplierName.Contains(txtsearch)).ToList();
+                list = list.Where(o1 => o1.SupplierId.ToString().Equals(txtsearch) || o1.SupplierName.ToLower().Contains(txtsearch.ToLower())).ToList();
             }
             source.DataSource = list;
             dgvShowList.DataSource = source;
@@ -343,10 +345,10 @@ namespace WF_PhoneManagement
         {
             var receiptList = rRepos.GetReceiptList();
             var customer = cRepos.GetCustomerList();
-            var list = receiptList.Join(customer, o1 => o1.CustomerId, o2 => o2.CustomerId, (o1, o2) => new { o1.ReceiptId, o1.ReceiptDate, o2.CustomerId, o2.CustomerName });
+            var list = receiptList.Join(customer, o1 => o1.CustomerId, o2 => o2.CustomerId, (o1, o2) => new { o1.ReceiptId, o1.ReceiptDate, o2.CustomerId, o2.CustomerName, o2.CustomerPhoneNumber });
             if (!txtsearch.IsNullOrEmpty())
             {
-                list = list.Where(o1 => o1.ReceiptId.ToString().Equals(txtsearch)).ToList();
+                list = list.Where(o1 => o1.ReceiptId.ToString().Equals(txtsearch) || o1.CustomerName.ToLower().Contains(txtsearch.ToLower())).ToList();
             }
             source.DataSource = list;
             dgvShowList.DataSource = source;
@@ -360,7 +362,7 @@ namespace WF_PhoneManagement
             var list = importList.Join(supplierList, o1 => o1.SupplierId, o2 => o2.SupplierId, (o1, o2) => new { o1.ImportId, o1.ImportDate, o2.SupplierId, o2.SupplierName, o2.SupplierPhoneNumber });
             if (!txtsearch.IsNullOrEmpty())
             {
-                list = list.Where(o1 => o1.ImportId.ToString().Equals(txtsearch)).ToList();
+                list = list.Where(o1 => o1.ImportId.ToString().Equals(txtsearch) || o1.SupplierName.ToLower().Contains(txtsearch.ToLower())).ToList();
             }
             source.DataSource = list;
             dgvShowList.DataSource = source;
@@ -488,6 +490,7 @@ namespace WF_PhoneManagement
                                     }
                                 }
                                 rRepos.RemoveReceipt(id);
+                                ReloadReceiptList();
                                 break;
                             case 1:
                                 var relationII = from ImportInfo i in iInfoRepos.GetImportInfoList()
@@ -511,6 +514,7 @@ namespace WF_PhoneManagement
                                     }
                                 }
                                 iRepos.RemoveImport(id);
+                                ReloadImportList();
                                 break;
                             case 2:
                                 
@@ -677,6 +681,7 @@ namespace WF_PhoneManagement
         {
             RetrieveSettings();
             DefaultSettings();
+            txtSearchInfo.Text = "";
             if (mainFeature)
             {
                 if (lboxListPick.SelectedIndex == -1)

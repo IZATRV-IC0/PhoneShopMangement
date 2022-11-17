@@ -188,8 +188,22 @@ namespace WF_PhoneManagement
             sourse = new BindingSource();
             sourse.DataSource = this.phoneList;
 
+
             dgvPhoneList.DataSource = null;
             dgvPhoneList.DataSource = sourse;
+            SetTotalPrice();
+        }
+
+        void SetTotalPrice ()
+        {
+
+            int totalPrice = 0;
+            foreach (PhoneCart phoneCart in phoneList)
+            {
+                totalPrice += phoneCart.Price * phoneCart.Quantity;
+            }
+
+            txtTotal.Text = totalPrice.ToString();
         }
 
         private void btndeletePhone_Click(object sender, EventArgs e)
