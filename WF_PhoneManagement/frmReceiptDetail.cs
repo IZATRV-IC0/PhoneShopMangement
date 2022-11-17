@@ -41,9 +41,10 @@ namespace WF_PhoneManagement
         }
         void setup()
         {
+            
             if (isAdd)
             {
-                var phoneList = phoneRepository.GetPhones();
+                var phoneList = phoneRepository.GetPhones().Where(phone => phone.Quanity > 0);
                 var customerList = customerRepository.GetCustomerList();
                 foreach (var phone in phoneList)
                 {
@@ -134,11 +135,11 @@ namespace WF_PhoneManagement
 
         private void txtPhoneID_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txtQuantity.Value = 1;
             int phoneID = (int)txtPhoneID.SelectedItem; 
             var phone = phoneRepository.GetPhoneByID(phoneID);
             txtPhoneName.Text = modelRepository.GetModelByID(phone.ModelId).ModelName;
             txtPrice.Text = phone.ShowPrice.ToString();
-            txtQuantity.Value = 1;
         }
         PhoneCart getPhoneCart(int id)
         {
@@ -219,9 +220,18 @@ namespace WF_PhoneManagement
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            addReceipt();
-            addReceiptInfo();
+            try
+            {
+                addReceipt();
+                addReceiptInfo();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
+
         void addReceipt()
         {
             DateTime date = DateTime.Now;
@@ -251,6 +261,24 @@ namespace WF_PhoneManagement
         int getCurrentReceiptID()
         {
             return receiptRepository.GetReceiptList().Max(o => o.ReceiptId);
+        }
+
+        private void txtQuantity_ValueChanged(object sender, EventArgs e)
+        {
+            int phoneId = (int)txtPhoneID.SelectedItem;
+            var phone = phoneRepository.GetPhoneByID(phoneId);
+
+            if(txtQuantity.Value > phone.Quanity )
+            {
+                MessageBox.Show($"We only have {phone.Quanity} in stock ");
+                txtQuantity.Value = phone.Quanity;
+            }
+
+            if(txtQuantity.Value < 1)
+            {
+                MessageBox.Show("Quantity cannot smaller than 1");
+                txtQuantity.Value = 1;
+            }
         }
     }
 }

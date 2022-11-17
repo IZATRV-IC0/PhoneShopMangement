@@ -223,6 +223,7 @@
             0,
             0,
             0});
+            this.txtQuantity.ValueChanged += new System.EventHandler(this.txtQuantity_ValueChanged);
             // 
             // label1
             // 

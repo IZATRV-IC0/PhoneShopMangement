@@ -155,7 +155,7 @@ namespace MobileSaleLibrary.DataAccess
 
                 entity.Property(e => e.ShowPrice).HasColumnName("showPrice");
 
-
+                entity.Property(e => e.Quanity).HasColumnName("quantity");
 
                 entity.Property(e => e.Type)
                     .IsRequired()

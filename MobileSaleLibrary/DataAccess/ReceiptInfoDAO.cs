@@ -71,7 +71,7 @@ namespace MobileSaleLibrary.DataAccess
                 {
                     using var context = new SalePhoneMangementContext();
                     ReceiptInfo deleteReceipt = context.TblReceiptInfos.SingleOrDefault(reci => reci.ReceiptId == dRec.ReceiptId && reci.PhoneId == phoneID);
-                    if(deleteReceipt != null)
+                    if (deleteReceipt != null)
                     {
                         context.TblReceiptInfos.Remove(deleteReceipt);
                     }
@@ -94,10 +94,28 @@ namespace MobileSaleLibrary.DataAccess
 
         public bool CreateNewReceiptInfo(ReceiptInfo recInf)
         {
+            IPhoneRepository phoneRepo = new PhoneRepository();
+            int toCheckPhoneID = recInf.PhoneId;
+            Phone phone = phoneRepo.GetPhoneByID(toCheckPhoneID);
+
             try
             {
                 using var context = new SalePhoneMangementContext();
                 context.TblReceiptInfos.Add(recInf);
+
+
+                //* Update phone quantity if importing an existing phone
+                if (phone != null)
+                {
+
+                    phone.Quanity -= recInf.Quantity;
+                    if(phone.Quanity < 0)
+                    {
+                        throw new Exception("Out of stock");
+                    }
+                    phoneRepo.UpdatePhone(phone);
+                }
+
                 return context.SaveChanges() == 1;
             }
             catch (Exception e)

@@ -36,6 +36,14 @@ namespace WF_PhoneManagement
                 {
                     phoneID = "0";
                 }
+
+                int quantity = 0;
+                if( !isAdd )
+                {
+                    quantity = Phone.Quanity;
+
+                }
+
                 var phone = new Phone
                 {
                     
@@ -43,8 +51,7 @@ namespace WF_PhoneManagement
                     ModelId = int.Parse(cbModelID.Text),
                     Type = txtType.Text,
                     ShowPrice = int.Parse(txtPrice.Text),
-                    
-
+                    Quanity = quantity,
                 };
                 if (isAdd)
                 {

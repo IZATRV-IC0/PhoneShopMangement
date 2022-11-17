@@ -1,4 +1,6 @@
 ﻿using MobileSaleLibrary.Models;
+using MobileSaleLibrary.Repository;
+using MobileSaleLibrary.Repository.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,14 +64,25 @@ namespace MobileSaleLibrary.DataAccess
         public bool AddNewImportInfo(ImportInfo importInfo)
         {
             ImportInfo aImportInfo;
+            IPhoneRepository phoneRepo = new PhoneRepository();
             try
             {
                
                 aImportInfo = GetImportInfoByID(importInfo.ImportId, importInfo.PhoneId);
+                int toCheckPhoneID = importInfo.PhoneId;
+                Phone phone = phoneRepo.GetPhoneByID(toCheckPhoneID);
                 if (aImportInfo == null)
                 {
                     using var context = new SalePhoneMangementContext();
                     context.TblImportInfos.Add(importInfo);
+
+                    //* Update phone quantity if importing an existing phone
+                    if(phone != null)
+                    {
+                        phone.Quanity += importInfo.Quantity;
+                        phoneRepo.UpdatePhone(phone);
+                    }
+                    
                     return context.SaveChanges() == 1;
                 }
                 else

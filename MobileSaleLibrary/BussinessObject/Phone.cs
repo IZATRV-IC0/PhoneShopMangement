@@ -47,9 +47,13 @@ namespace MobileSaleLibrary.Models
             {
                 IReceiptInfoRepository rRepos = new ReceiptInfoRepository();
                 IImportInfoRepository iRepos = new ImportInfoRepository();
+
+                // Get all recipt has phone id
                 var OutList = from rec in rRepos.GetReceiptInfoList()
                               where rec.PhoneId == PhoneId
                               select rec;
+
+                // Get all import has phone id
                 var InList = from imp in iRepos.GetImportInfoList()
                              where imp.PhoneId == PhoneId
                              select imp;

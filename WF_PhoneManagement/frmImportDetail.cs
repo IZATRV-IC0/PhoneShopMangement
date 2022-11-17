@@ -246,6 +246,7 @@ namespace WF_PhoneManagement
                     BuyPricePerUnit = phone.Price,
                     Quantity = phone.Quantity,
                 };
+
                 importInfoRepository.AddNewImportInfo(importInfo);
             }
 

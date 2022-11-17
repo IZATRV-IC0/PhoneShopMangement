@@ -122,7 +122,6 @@ namespace WF_PhoneManagement
         }
         public void AllowDataHandling(bool check)
         {
-            lboxBox.Enabled = check;
             btnSearch.Enabled = check;
             txtSearchInfo.Enabled = check;
         }
@@ -166,19 +165,10 @@ namespace WF_PhoneManagement
             dgvShowList.DataSource = source;
             if (dgvShowList.DataSource is not null)
             {
-                lboxBox.Items.Clear();
-                foreach (DataGridViewColumn c in dgvShowList.Columns)
-                {
-                    lboxBox.Items.Add(c.Name);
-                }
                 AllowDataHandling(true);
             } else
             {
                 AllowDataHandling(false);
-            }
-            if (dgvShowList.DataSource is null || !lboxBox.Enabled)
-            {
-                lboxBox.SelectedIndex = -1;
             }
         }
 
@@ -302,7 +292,7 @@ namespace WF_PhoneManagement
             {
                 phoneList = phoneList.Where(o => o.PhoneId.ToString().Equals(txtsearch) || o.GetPhoneName().ToLower().Contains(txtsearch.ToLower())).ToList();
             }
-            var list = phoneList.Join(modelList, o1 => o1.ModelId, o2 => o2.ModelId, (o1, o2) => new { o1.PhoneId, o1.ShowPrice, o2.ModelId, o2.ModelName, o2.ModelBrand, o2.ModelYearOfWarranty });
+            var list = phoneList.Join(modelList, o1 => o1.ModelId, o2 => o2.ModelId, (o1, o2) => new { o1.PhoneId, o1.ShowPrice,o1.Quanity, o2.ModelId, o2.ModelName, o2.ModelBrand, o2.ModelYearOfWarranty });
            
             source.DataSource = list;
             dgvShowList.DataSource = source;
