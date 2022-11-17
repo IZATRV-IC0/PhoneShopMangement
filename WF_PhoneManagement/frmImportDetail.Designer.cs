@@ -30,9 +30,9 @@
         {
             this.button2 = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.grbRe_PDetail = new System.Windows.Forms.GroupBox();
+            this.grPhone = new System.Windows.Forms.GroupBox();
+            this.txtPrice = new System.Windows.Forms.MaskedTextBox();
             this.txtPhoneID = new System.Windows.Forms.ComboBox();
-            this.dgvPhoneList = new System.Windows.Forms.DataGridView();
             this.txtQuantity = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.btndeletePhone = new System.Windows.Forms.Button();
@@ -40,8 +40,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtPhoneName = new System.Windows.Forms.TextBox();
             this.btnAddphone = new System.Windows.Forms.Button();
-            this.txtPrice = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.dgvPhoneList = new System.Windows.Forms.DataGridView();
             this.lblReCAddress = new System.Windows.Forms.Label();
             this.txtSupplierAddress = new System.Windows.Forms.TextBox();
             this.txtSupplierPhone = new System.Windows.Forms.TextBox();
@@ -52,10 +52,16 @@
             this.lblReCPhone = new System.Windows.Forms.Label();
             this.txtSupplierName = new System.Windows.Forms.TextBox();
             this.lblReCName = new System.Windows.Forms.Label();
-            this.grbRe_PDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoneList)).BeginInit();
+            this.grImport = new System.Windows.Forms.GroupBox();
+            this.txtImportDate = new System.Windows.Forms.TextBox();
+            this.txtImportID = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.grPhone.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoneList)).BeginInit();
             this.grbRe_CInfo.SuspendLayout();
+            this.grImport.SuspendLayout();
             this.SuspendLayout();
             // 
             // button2
@@ -78,26 +84,35 @@
             this.btnSave.TabIndex = 26;
             this.btnSave.Text = "Save Import";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // grbRe_PDetail
+            // grPhone
             // 
-            this.grbRe_PDetail.Controls.Add(this.txtPhoneID);
-            this.grbRe_PDetail.Controls.Add(this.dgvPhoneList);
-            this.grbRe_PDetail.Controls.Add(this.txtQuantity);
-            this.grbRe_PDetail.Controls.Add(this.label1);
-            this.grbRe_PDetail.Controls.Add(this.btndeletePhone);
-            this.grbRe_PDetail.Controls.Add(this.label3);
-            this.grbRe_PDetail.Controls.Add(this.label4);
-            this.grbRe_PDetail.Controls.Add(this.txtPhoneName);
-            this.grbRe_PDetail.Controls.Add(this.btnAddphone);
-            this.grbRe_PDetail.Controls.Add(this.txtPrice);
-            this.grbRe_PDetail.Controls.Add(this.label5);
-            this.grbRe_PDetail.Location = new System.Drawing.Point(53, 247);
-            this.grbRe_PDetail.Name = "grbRe_PDetail";
-            this.grbRe_PDetail.Size = new System.Drawing.Size(993, 382);
-            this.grbRe_PDetail.TabIndex = 24;
-            this.grbRe_PDetail.TabStop = false;
-            this.grbRe_PDetail.Text = "Product Detail";
+            this.grPhone.Controls.Add(this.txtPrice);
+            this.grPhone.Controls.Add(this.txtPhoneID);
+            this.grPhone.Controls.Add(this.txtQuantity);
+            this.grPhone.Controls.Add(this.label1);
+            this.grPhone.Controls.Add(this.btndeletePhone);
+            this.grPhone.Controls.Add(this.label3);
+            this.grPhone.Controls.Add(this.label4);
+            this.grPhone.Controls.Add(this.txtPhoneName);
+            this.grPhone.Controls.Add(this.btnAddphone);
+            this.grPhone.Controls.Add(this.label5);
+            this.grPhone.Location = new System.Drawing.Point(53, 247);
+            this.grPhone.Name = "grPhone";
+            this.grPhone.Size = new System.Drawing.Size(358, 382);
+            this.grPhone.TabIndex = 24;
+            this.grPhone.TabStop = false;
+            this.grPhone.Text = "Product Detail";
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(92, 120);
+            this.txtPrice.Mask = "000000";
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(142, 23);
+            this.txtPrice.TabIndex = 24;
+            this.txtPrice.ValidatingType = typeof(int);
             // 
             // txtPhoneID
             // 
@@ -108,15 +123,6 @@
             this.txtPhoneID.Size = new System.Drawing.Size(121, 23);
             this.txtPhoneID.TabIndex = 23;
             this.txtPhoneID.SelectedIndexChanged += new System.EventHandler(this.txtPhoneID_SelectedIndexChanged);
-            // 
-            // dgvPhoneList
-            // 
-            this.dgvPhoneList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPhoneList.Location = new System.Drawing.Point(342, 36);
-            this.dgvPhoneList.Name = "dgvPhoneList";
-            this.dgvPhoneList.RowTemplate.Height = 25;
-            this.dgvPhoneList.Size = new System.Drawing.Size(602, 318);
-            this.dgvPhoneList.TabIndex = 22;
             // 
             // txtQuantity
             // 
@@ -150,7 +156,7 @@
             this.btndeletePhone.Name = "btndeletePhone";
             this.btndeletePhone.Size = new System.Drawing.Size(170, 40);
             this.btndeletePhone.TabIndex = 10;
-            this.btndeletePhone.Text = "Delete phone from list";
+            this.btndeletePhone.Text = "Delete phone from Import";
             this.btndeletePhone.UseVisualStyleBackColor = true;
             this.btndeletePhone.Click += new System.EventHandler(this.btndeletePhone_Click);
             // 
@@ -187,18 +193,9 @@
             this.btnAddphone.Name = "btnAddphone";
             this.btnAddphone.Size = new System.Drawing.Size(170, 40);
             this.btnAddphone.TabIndex = 11;
-            this.btnAddphone.Text = "Add phone to list";
+            this.btnAddphone.Text = "Add phone to Import";
             this.btnAddphone.UseVisualStyleBackColor = true;
             this.btnAddphone.Click += new System.EventHandler(this.btnAddphone_Click);
-            // 
-            // txtPrice
-            // 
-            this.txtPrice.Enabled = false;
-            this.txtPrice.Location = new System.Drawing.Point(91, 116);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.ReadOnly = true;
-            this.txtPrice.Size = new System.Drawing.Size(121, 23);
-            this.txtPrice.TabIndex = 0;
             // 
             // label5
             // 
@@ -208,6 +205,15 @@
             this.label5.Size = new System.Drawing.Size(36, 15);
             this.label5.TabIndex = 2;
             this.label5.Text = "Price:";
+            // 
+            // dgvPhoneList
+            // 
+            this.dgvPhoneList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPhoneList.Location = new System.Drawing.Point(468, 247);
+            this.dgvPhoneList.Name = "dgvPhoneList";
+            this.dgvPhoneList.RowTemplate.Height = 25;
+            this.dgvPhoneList.Size = new System.Drawing.Size(711, 382);
+            this.dgvPhoneList.TabIndex = 22;
             // 
             // lblReCAddress
             // 
@@ -247,9 +253,9 @@
             this.grbRe_CInfo.Controls.Add(this.lblReCAddress);
             this.grbRe_CInfo.Controls.Add(this.txtSupplierAddress);
             this.grbRe_CInfo.Controls.Add(this.txtSupplierPhone);
-            this.grbRe_CInfo.Location = new System.Drawing.Point(53, 34);
+            this.grbRe_CInfo.Location = new System.Drawing.Point(373, 25);
             this.grbRe_CInfo.Name = "grbRe_CInfo";
-            this.grbRe_CInfo.Size = new System.Drawing.Size(993, 150);
+            this.grbRe_CInfo.Size = new System.Drawing.Size(838, 150);
             this.grbRe_CInfo.TabIndex = 23;
             this.grbRe_CInfo.TabStop = false;
             this.grbRe_CInfo.Text = "Supplier";
@@ -310,25 +316,77 @@
             this.lblReCName.TabIndex = 1;
             this.lblReCName.Text = "Name:";
             // 
+            // grImport
+            // 
+            this.grImport.Controls.Add(this.txtImportDate);
+            this.grImport.Controls.Add(this.txtImportID);
+            this.grImport.Controls.Add(this.label6);
+            this.grImport.Controls.Add(this.label2);
+            this.grImport.Location = new System.Drawing.Point(24, 25);
+            this.grImport.Name = "grImport";
+            this.grImport.Size = new System.Drawing.Size(263, 150);
+            this.grImport.TabIndex = 27;
+            this.grImport.TabStop = false;
+            this.grImport.Text = "Import";
+            this.grImport.Visible = false;
+            // 
+            // txtImportDate
+            // 
+            this.txtImportDate.Location = new System.Drawing.Point(100, 77);
+            this.txtImportDate.Name = "txtImportDate";
+            this.txtImportDate.ReadOnly = true;
+            this.txtImportDate.Size = new System.Drawing.Size(141, 23);
+            this.txtImportDate.TabIndex = 2;
+            // 
+            // txtImportID
+            // 
+            this.txtImportID.Location = new System.Drawing.Point(100, 34);
+            this.txtImportID.Name = "txtImportID";
+            this.txtImportID.ReadOnly = true;
+            this.txtImportID.Size = new System.Drawing.Size(141, 23);
+            this.txtImportID.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 80);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(70, 15);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Import Date";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 15);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Import ID";
+            // 
             // frmImportDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1233, 796);
+            this.Controls.Add(this.grImport);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.dgvPhoneList);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.grbRe_PDetail);
             this.Controls.Add(this.grbRe_CInfo);
+            this.Controls.Add(this.grPhone);
             this.Name = "frmImportDetail";
             this.Text = "Import Detail";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmImportDetail_FormClosed);
             this.Load += new System.EventHandler(this.frmImportDetail_Load);
-            this.grbRe_PDetail.ResumeLayout(false);
-            this.grbRe_PDetail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoneList)).EndInit();
+            this.grPhone.ResumeLayout(false);
+            this.grPhone.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoneList)).EndInit();
             this.grbRe_CInfo.ResumeLayout(false);
             this.grbRe_CInfo.PerformLayout();
+            this.grImport.ResumeLayout(false);
+            this.grImport.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -337,7 +395,7 @@
 
         private Button button2;
         private Button btnSave;
-        private GroupBox grbRe_PDetail;
+        private GroupBox grPhone;
         private ComboBox txtPhoneID;
         private DataGridView dgvPhoneList;
         private NumericUpDown txtQuantity;
@@ -347,7 +405,6 @@
         private Label label4;
         private TextBox txtPhoneName;
         private Button btnAddphone;
-        private TextBox txtPrice;
         private Label label5;
         private Label lblReCAddress;
         private TextBox txtSupplierAddress;
@@ -359,5 +416,11 @@
         private Label lblReCPhone;
         private TextBox txtSupplierName;
         private Label lblReCName;
+        private MaskedTextBox txtPrice;
+        private GroupBox grImport;
+        private TextBox txtImportDate;
+        private TextBox txtImportID;
+        private Label label6;
+        private Label label2;
     }
 }

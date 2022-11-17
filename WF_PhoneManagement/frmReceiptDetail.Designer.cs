@@ -38,9 +38,8 @@
             this.lblReCAddress = new System.Windows.Forms.Label();
             this.txtCustomerAddress = new System.Windows.Forms.TextBox();
             this.txtCustomerPhone = new System.Windows.Forms.TextBox();
-            this.grbRe_PDetail = new System.Windows.Forms.GroupBox();
+            this.grPhone = new System.Windows.Forms.GroupBox();
             this.txtPhoneID = new System.Windows.Forms.ComboBox();
-            this.dgvPhoneList = new System.Windows.Forms.DataGridView();
             this.txtQuantity = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.btndeletePhone = new System.Windows.Forms.Button();
@@ -50,12 +49,21 @@
             this.btnAddphone = new System.Windows.Forms.Button();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.dgvPhoneList = new System.Windows.Forms.DataGridView();
             this.btnSave = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.grImport = new System.Windows.Forms.GroupBox();
+            this.txtReceiptDate = new System.Windows.Forms.TextBox();
+            this.txtReceiptID = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.grbRe_CInfo.SuspendLayout();
-            this.grbRe_PDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoneList)).BeginInit();
+            this.grPhone.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoneList)).BeginInit();
+            this.grImport.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbRe_CInfo
@@ -69,9 +77,9 @@
             this.grbRe_CInfo.Controls.Add(this.lblReCAddress);
             this.grbRe_CInfo.Controls.Add(this.txtCustomerAddress);
             this.grbRe_CInfo.Controls.Add(this.txtCustomerPhone);
-            this.grbRe_CInfo.Location = new System.Drawing.Point(44, 12);
+            this.grbRe_CInfo.Location = new System.Drawing.Point(308, 12);
             this.grbRe_CInfo.Name = "grbRe_CInfo";
-            this.grbRe_CInfo.Size = new System.Drawing.Size(993, 150);
+            this.grbRe_CInfo.Size = new System.Drawing.Size(859, 150);
             this.grbRe_CInfo.TabIndex = 20;
             this.grbRe_CInfo.TabStop = false;
             this.grbRe_CInfo.Text = "Customer";
@@ -159,25 +167,24 @@
             this.txtCustomerPhone.Size = new System.Drawing.Size(242, 23);
             this.txtCustomerPhone.TabIndex = 0;
             // 
-            // grbRe_PDetail
+            // grPhone
             // 
-            this.grbRe_PDetail.Controls.Add(this.txtPhoneID);
-            this.grbRe_PDetail.Controls.Add(this.dgvPhoneList);
-            this.grbRe_PDetail.Controls.Add(this.txtQuantity);
-            this.grbRe_PDetail.Controls.Add(this.label1);
-            this.grbRe_PDetail.Controls.Add(this.btndeletePhone);
-            this.grbRe_PDetail.Controls.Add(this.label3);
-            this.grbRe_PDetail.Controls.Add(this.label4);
-            this.grbRe_PDetail.Controls.Add(this.txtPhoneName);
-            this.grbRe_PDetail.Controls.Add(this.btnAddphone);
-            this.grbRe_PDetail.Controls.Add(this.txtPrice);
-            this.grbRe_PDetail.Controls.Add(this.label5);
-            this.grbRe_PDetail.Location = new System.Drawing.Point(44, 200);
-            this.grbRe_PDetail.Name = "grbRe_PDetail";
-            this.grbRe_PDetail.Size = new System.Drawing.Size(993, 382);
-            this.grbRe_PDetail.TabIndex = 21;
-            this.grbRe_PDetail.TabStop = false;
-            this.grbRe_PDetail.Text = "Product Detail";
+            this.grPhone.Controls.Add(this.txtPhoneID);
+            this.grPhone.Controls.Add(this.txtQuantity);
+            this.grPhone.Controls.Add(this.label1);
+            this.grPhone.Controls.Add(this.btndeletePhone);
+            this.grPhone.Controls.Add(this.label3);
+            this.grPhone.Controls.Add(this.label4);
+            this.grPhone.Controls.Add(this.txtPhoneName);
+            this.grPhone.Controls.Add(this.btnAddphone);
+            this.grPhone.Controls.Add(this.txtPrice);
+            this.grPhone.Controls.Add(this.label5);
+            this.grPhone.Location = new System.Drawing.Point(32, 236);
+            this.grPhone.Name = "grPhone";
+            this.grPhone.Size = new System.Drawing.Size(365, 382);
+            this.grPhone.TabIndex = 21;
+            this.grPhone.TabStop = false;
+            this.grPhone.Text = "Product Detail";
             // 
             // txtPhoneID
             // 
@@ -188,15 +195,6 @@
             this.txtPhoneID.Size = new System.Drawing.Size(121, 23);
             this.txtPhoneID.TabIndex = 23;
             this.txtPhoneID.SelectedIndexChanged += new System.EventHandler(this.txtPhoneID_SelectedIndexChanged);
-            // 
-            // dgvPhoneList
-            // 
-            this.dgvPhoneList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPhoneList.Location = new System.Drawing.Point(342, 36);
-            this.dgvPhoneList.Name = "dgvPhoneList";
-            this.dgvPhoneList.RowTemplate.Height = 25;
-            this.dgvPhoneList.Size = new System.Drawing.Size(602, 318);
-            this.dgvPhoneList.TabIndex = 22;
             // 
             // txtQuantity
             // 
@@ -289,6 +287,15 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Price:";
             // 
+            // dgvPhoneList
+            // 
+            this.dgvPhoneList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPhoneList.Location = new System.Drawing.Point(432, 236);
+            this.dgvPhoneList.Name = "dgvPhoneList";
+            this.dgvPhoneList.RowTemplate.Height = 25;
+            this.dgvPhoneList.Size = new System.Drawing.Size(735, 382);
+            this.dgvPhoneList.TabIndex = 22;
+            // 
             // btnSave
             // 
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -298,6 +305,7 @@
             this.btnSave.TabIndex = 22;
             this.btnSave.Text = "Save Receipt";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // button2
             // 
@@ -310,14 +318,83 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // grImport
+            // 
+            this.grImport.Controls.Add(this.txtReceiptDate);
+            this.grImport.Controls.Add(this.txtReceiptID);
+            this.grImport.Controls.Add(this.label6);
+            this.grImport.Controls.Add(this.label2);
+            this.grImport.Location = new System.Drawing.Point(21, 12);
+            this.grImport.Name = "grImport";
+            this.grImport.Size = new System.Drawing.Size(263, 150);
+            this.grImport.TabIndex = 28;
+            this.grImport.TabStop = false;
+            this.grImport.Text = "Receipt";
+            this.grImport.Visible = false;
+            // 
+            // txtReceiptDate
+            // 
+            this.txtReceiptDate.Location = new System.Drawing.Point(100, 77);
+            this.txtReceiptDate.Name = "txtReceiptDate";
+            this.txtReceiptDate.ReadOnly = true;
+            this.txtReceiptDate.Size = new System.Drawing.Size(141, 23);
+            this.txtReceiptDate.TabIndex = 2;
+            // 
+            // txtReceiptID
+            // 
+            this.txtReceiptID.Location = new System.Drawing.Point(100, 34);
+            this.txtReceiptID.Name = "txtReceiptID";
+            this.txtReceiptID.ReadOnly = true;
+            this.txtReceiptID.Size = new System.Drawing.Size(141, 23);
+            this.txtReceiptID.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 80);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(70, 15);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Import Date";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 15);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Import ID";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(953, 647);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(31, 15);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "total";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Location = new System.Drawing.Point(1019, 644);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(100, 23);
+            this.txtTotal.TabIndex = 30;
+            // 
             // frmReceiptDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1101, 758);
+            this.ClientSize = new System.Drawing.Size(1268, 758);
+            this.Controls.Add(this.txtTotal);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.grImport);
+            this.Controls.Add(this.dgvPhoneList);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.grbRe_PDetail);
+            this.Controls.Add(this.grPhone);
             this.Controls.Add(this.grbRe_CInfo);
             this.Name = "frmReceiptDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -326,11 +403,14 @@
             this.Load += new System.EventHandler(this.frmReceiptDetail_Load);
             this.grbRe_CInfo.ResumeLayout(false);
             this.grbRe_CInfo.PerformLayout();
-            this.grbRe_PDetail.ResumeLayout(false);
-            this.grbRe_PDetail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoneList)).EndInit();
+            this.grPhone.ResumeLayout(false);
+            this.grPhone.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoneList)).EndInit();
+            this.grImport.ResumeLayout(false);
+            this.grImport.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -344,7 +424,7 @@
         private Label lblReCAddress;
         private TextBox txtCustomerAddress;
         private TextBox txtCustomerPhone;
-        private GroupBox grbRe_PDetail;
+        private GroupBox grPhone;
         private DataGridView dgvPhoneList;
         private NumericUpDown txtQuantity;
         private Label label1;
@@ -359,5 +439,12 @@
         private ComboBox txtPhoneID;
         private Button btnSave;
         private Button button2;
+        private GroupBox grImport;
+        private TextBox txtReceiptDate;
+        private TextBox txtReceiptID;
+        private Label label6;
+        private Label label2;
+        private Label label7;
+        private TextBox txtTotal;
     }
 }
